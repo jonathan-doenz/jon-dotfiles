@@ -12,11 +12,11 @@ git clone https://github.com/jonathan-doenz/jon-dotfiles ~/.dotfiles/
 ```
 3) Copy all the dotfiles in home (~) folder
 ```
-cp ~/.dotfiles/.[a-z]\* ~
+cp ~/.dotfiles/.[a-z]* ~
 ```
 4) Source the fresh .bash_profile file
 ```
-source ~/bash\_profile
+source ~/bash_profile
 ```
 
 ## In the future I would prefer to have it implemented this way:
