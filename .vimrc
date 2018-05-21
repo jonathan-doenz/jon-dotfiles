@@ -66,6 +66,9 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
+" Easily align equations, tables on same character
+Plugin 'junegunn/vim-easy-align'
+
 " Use easy dragging in visual modes
 Bundle 'zirrostig/vim-schlepp'
 
@@ -429,6 +432,13 @@ nmap <silent> <LEFT><LEFT>	:cpfile<CR><C-G>
 nnoremap <silent> <RIGHT><RIGHT><RIGHT> g,
 " Triple right arrow mapped to go to the next place of edit
 nnoremap <silent> <LEFT><LEFT><LEFT> g;
+
+" EasyAlign mappings
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 
 " Easy dragging of blocks in visual modes using Schlepp's plugin
