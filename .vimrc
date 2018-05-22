@@ -69,6 +69,9 @@ Plugin 'honza/vim-snippets'
 " Easily align equations, tables on same character
 Plugin 'junegunn/vim-easy-align'
 
+" Easily align equations, tables on same character using Tabular
+Plugin 'godlygeek/tabular'
+
 " Use easy dragging in visual modes
 Bundle 'zirrostig/vim-schlepp'
 
@@ -377,6 +380,9 @@ set wildmode=list:longest,full
 :set define=^\\s*sub
 " example:
 "sub defenestrate_exception {...} " is defined somewhere in your file
+inoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+vnoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+map        <Space><Tab> <Esc>/<++><Enter>"_c4l
 "$result = de<C-X><C-D>
 "and you get 
 "$result = defenestrate_exception {...}
@@ -407,9 +413,6 @@ set wildmode=list:longest,full
 "==============[ Mappings ]================
 
 " Navigating with guides
-inoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
-vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
-map <Space><Tab> <Esc>/<++><Enter>"_c4l
 inoremap ;gui <++>
 
 " Escape insert mode via 'jk' or 'kj'
@@ -432,6 +435,29 @@ nmap <silent> <LEFT><LEFT>	:cpfile<CR><C-G>
 nnoremap <silent> <RIGHT><RIGHT><RIGHT> g,
 " Triple right arrow mapped to go to the next place of edit
 nnoremap <silent> <LEFT><LEFT><LEFT> g;
+
+" Tabular mappings
+if exists(":Tabularize")
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+" Enable insert mode alignment when pressing <Bar>
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
 
 " EasyAlign mappings
 " Start interactive EasyAlign in visual mode (e.g. vipga)
