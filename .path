@@ -1,1 +1,22 @@
-/Users/jonathandoenz/.path
+#!/usr/bin/env bash
+
+# Setting PATH for Python 3.4
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
+export PATH
+export PATH=/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:~/Dropbox/fromNANDtoTetris/nand2tetris/tools
+
+# added by Anaconda3 5.0.1 installer
+export PATH="/Users/jonathandoenz/anaconda3/bin:$PATH"
+
+# added to use new Vim 8.0 placed there. It might cause problems!
+# PATH=/opt/local/bin:$PATH
+export PATH="/usr/local/opt/gnuplot@4/bin:$PATH"
+
+# Go
+export GOPATH=$HOME/go
+export GOPATH=$HOME/repos/go
+export PATH=$PATH:$GOPATH/bin
+
+# TeX
+export PATH="$PATH:/Library/TeX/texbin"
