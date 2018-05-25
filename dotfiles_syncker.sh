@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotfiles=("aliases" "bash_profile" "bash_prompt" "bashrc" "exports" "functions" "path") 
+dotfiles=(".aliases" ".bash_profile" ".bash_prompt" ".bashrc" ".exports" ".functions" ".path" ".vimrc") 
 #dotfiles=$(find ~/jon-dotfiles/ -name "\.[a-z,A-Z]*")
 dir="${HOME}/jon-dotfiles"
 

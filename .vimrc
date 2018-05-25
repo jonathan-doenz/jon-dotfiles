@@ -1,9 +1,1 @@
-/Users/jonathandoenz/jon-dotfiles//.aliases
-/Users/jonathandoenz/jon-dotfiles//.bash_profile
-/Users/jonathandoenz/jon-dotfiles//.bash_prompt
-/Users/jonathandoenz/jon-dotfiles//.bashrc
-/Users/jonathandoenz/jon-dotfiles//.exports
-/Users/jonathandoenz/jon-dotfiles//.functions
-/Users/jonathandoenz/jon-dotfiles//.git
-/Users/jonathandoenz/jon-dotfiles//.path
-/Users/jonathandoenz/jon-dotfiles//.vimrc
+/Users/jonathandoenz/.vimrc
