@@ -9,11 +9,32 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+# Navigation shortcuts
+alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
+alias cdt="cd ~/Dropbox/TeX_stuff"
+alias cdtt="cd ~/Dropbox/TeX_stuff/templates"
+alias cdm="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning"
+alias cdmp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/projects"
+
+# Github shortcuts
 alias g="git"
+
+# Vim shortcuts
+alias lvim="vim -c \"normal '0\"" # open last modified file in vim
+alias v="vim \"+normal\\\`\\\"" # (does not work for now) open in vim at last modified line)
+alias vimv="vim ~/.vimrc"
+alias vima="vim ~/.aliases"
+alias vimf="vim ~/.functions"
+
+# TeX shortcuts
+alias TeXa="cp ~/Dropbox/TeX_stuff/templates/article_template.tex"
+alias TeXb="cp ~/Dropbox/TeX_stuff/templates/beamer_template.tex"
+
+# Miscellaneous shortcuts
+alias sb="source ~/.bash_profile"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
