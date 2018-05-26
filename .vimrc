@@ -1,6 +1,24 @@
+
+" ================== If use Pathogen, uncomment from here ==================
+
+" execute pathogen#infect()
+" syntax on
+" filetype plugin indent on
+
+" " Add my personal plugins
+" " execute pathogen#infect('bundle/yankmatches', '~/Dropbox/vim/plugin/yankmatches.vim')
+" execute pathogen#infect('bundle/yankmatches', '~/Dropbox/vim/plugin/yankmatches')
+" " execute pathogen#infect('bundle/smartcom', '~/Dropbox/vim/plugin/smartcom.vim')
+" execute pathogen#infect('bundle/smartcom', '~/Dropbox/vim/plugin/smartcom')
+" " execute pathogen#infect('bundle/persistentvisuals', '~/Dropbox/vim/plugin/persistentvisuals.vim')
+" execute pathogen#infect('bundle/persistentvisuals', '~/Dropbox/vim/plugin/persistentvisuals')
+
+" ================== If use Pathogen, uncomment to here ==================
+
+" ================= If use VUNDLE, uncomment from here ===================
+
 set nocompatible              " required
 filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -21,7 +39,7 @@ Plugin 'vim-scripts/indentpython.vim'
 
 " Auto complete plugin (only works on vim 8.0 and I cannot install it on OS
 " 10.10
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 
 " Checking syntax of document on each save
 Plugin 'vim-syntastic/syntastic'
@@ -75,29 +93,39 @@ Plugin 'godlygeek/tabular'
 " Use easy dragging in visual modes
 Bundle 'zirrostig/vim-schlepp'
 
-" git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin'
+"" git repos on your local machine (i.e. when working on your own plugin)
+"" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
+"Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin'
 
-" From Damian Conway's vimrc
-"====[ Ensure autodoc'd plugins are supported ]===========
-" Plugin '_autodoc.vim' " this file is not present
+"" From Damian Conway's vimrc
+""====[ Ensure autodoc'd plugins are supported ]===========
+"" Plugin '_autodoc.vim' " this file is not present
 
-"=====[ Enable Nmap command for documented mappings ]================
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " example how to include personal plugins
-Plugin 'yankmatches.vim'
+""=====[ Enable Nmap command for documented mappings ]================
+""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " example how to include personal plugins
+"Plugin 'yankmatches', {'rtp': 'yankmatches/'}
+"" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/yankmatches.vim'
+"" Plugin 'yankmatches', {'rtp': 'file:///Users/jonathandoenz/Dropbox/vim/plugin'}
+"" Plugin 'yankmatches.vim'
 
-" =====[ Smart completion via <TAB> and <S-TAB> ]=============
-Plugin 'smartcom.vim'
+"" =====[ Smart completion via <TAB> and <S-TAB> ]=============
+"Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/smartcom.vim'
 
-" =====[ Keep visual selection selected after a move ]=======
-Plugin 'persistentvisuals.vim'
+"" =====[ Keep visual selection selected after a move ]=======
+"Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/persistentvisuals.vim'
 
 " END plugins set up
 
+ " All of your Plugins must be added before the following line
+ call vundle#end()            " required
+ filetype plugin indent on    " required
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" " Shortcuts to quickly debug plugins
+" nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>:PluginInstall<CR> 
+
+" ================= If use VUNDLE, uncomment until here ===================
+
+
 
 " Allow to specify line numbers where split occurs using :sp (split command)
 set splitbelow
@@ -110,24 +138,30 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Enable folding
+" Navigate between tabs with tt and TT
+nnoremap tt gt
+nnoremap TT gT
+
+" Folding general files
 set foldmethod=indent
 set foldlevel=99
-" Enable folding/unfolding with the spacebar
-nnoremap <space> za
+
+" Folding .tex files (uncomment next line to enable it. I commented it because
+" it slows down the file with the foldmethod=expr setting)
+" let g:vimtex_fold_enabled=1
+" if you want to select the expressions on which to fold a tex file, :h g:vimtex_fold_types 
 
 " See the docstrings for folded code
 let g:SimpylFold_docstring_preview=1
 
-" Navigate between tabs with tt and TT
-nnoremap tt gt
-nnoremap TT gT
+" Enable folding/unfolding with the spacebar
+nnoremap <space> za
 
 
 " UltiSnips settings
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-b>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -157,11 +191,18 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " Specify UTF8 encoding (important for Python 3)
 set encoding=utf-8
 
-" Customization of YouCompleteMe (cannot use this plugin on OS 10.10)
+" Customization of YouCompleteMe (YCM; can finally use this plugin on OS 10.10)
 " closes the preview window
 let g:ycm_autoclose_preview_window_after_completion=1
+"
 " Allows for space-g (or leader key-g) to goto definition
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" " Invoke completion options from  YCM
+" let g:ycm_key_invoke_completion = '<S-Space>'
+
+" " Quick shortcut to ease testing
+" nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>
 
 " Python with virtualenv support
 py << EOF
@@ -264,10 +305,13 @@ set showbreak=>
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
-"==============[ Abbreviations ]================
+"==============[ Abbreviations and mappings ]================
 " Quick save in any documents
 	inoremap ,, <ESC>:w<CR>a
 	nnoremap ,, :w<CR>
+
+" Open .vimrc in new tab
+	nnoremap vv :tabedit<Space>~/.vimrc<CR> 
 
 " TeX abbreviations
 	autocmd FileType tex nmap ;; :w<CR><plug>(vimtex-compile)<plug>(vimtex-view)
@@ -282,7 +326,8 @@ call matchadd('ColorColumn', '\%81v', 100)
 	autocmd FileType tex inoremap ;bf \textbf{}<++><Esc>T{i
 	autocmd FileType tex vnoremap ; <ESC>`<i\{<ESC>`>2la}<ESC>?\\{<CR>a
 	autocmd FileType tex inoremap ;it \textit{}<++><Esc>T{i
-	autocmd FileType tex inoremap ;ct \textcite{}<++><Esc>T{i
+	autocmd FileType tex inoremap ;ci \cite{}<++><Esc>T{i
+	autocmd FileType tex inoremap ;tci \textcite{}<++><Esc>T{i
 	autocmd FileType tex inoremap ;cp \parencite{}<++><Esc>T{i
 	autocmd FileType tex inoremap ;glos {\gll<Space><++><Space>\\<CR><++><Space>\\<CR>\trans{``<++>''}}<Esc>2k2bcw
 	autocmd FileType tex inoremap ;x \begin{xlist}<CR>\ex<Space><CR>\end{xlist}<Esc>kA<Space>
@@ -511,14 +556,9 @@ vmap i <Plug>SchleppToggleReindent
 " REMOVE WHEN DONE UPDATING vimrc:
 " this command updates the vimrc by typing :sv<CR>
 ":cnoremap sv source ~/.vimrc
-"nnoremap ,, :w<CR>:source ~/.vimrc<CR>
+nnoremap ;sv :w<CR>:source ~/.vimrc<CR>
 "au BufNewFile,BufRead ~/.vimrc nnoremap ,, :w<CR>:source ~/.vimrc<CR>
 
 " show the commands for now
 set showcmd
 
-" Test: Commenting in local file
-" This is when I change the file in the local dotfile directory
-" ~/jon-dotfiles. Let's see whether it updates .vimrc once pushed...
-" Result: git status didn't update !
-" Adding some new stuff. Let's see whether it gets detected by git
