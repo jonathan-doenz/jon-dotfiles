@@ -1,0 +1,32 @@
+ defaults write com.apple.finder ShowPathbar -bool true
+ defaults write com.apple.finder ShowStatusBar -bool true
+ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+ defaults read com.apple.dock
+ defaults read com.apple.dock > outputOf_defaults_read_com.appledock
+ defaults read com.apple.dock >> outputOf_defaults_read_com.appledock
+ defaults read com.apple.dock tilesize
+ defaults read com.apple.dock mineffect
+ defaults read com.apple.dock minimize-to-application
+ defaults read com.apple.dock show-process-indicators
+ defaults read com.apple.dock launchanim
+ defaults write com.apple.dock launchanim -bool false
+ defaults read com.apple.dock launchanim
+ defaults read com.apple.dock mcx-disabled
+ defaults write com.apple.dock mouse-over-hilite-stack -bool true
+ defaults write com.apple.dock tilesize -int 36
+ defaults write com.apple.dock mineffect -string "scale"
+ defaults write com.apple.dock minimize-to-application -bool true
+ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+ # Show indicator lights for open applications in the Dock
+ defaults write com.apple.dock show-process-indicators -bool true
+ # Show only open applications in the Dock
+ #defaults write com.apple.dock static-only -bool true
+ defaults write com.apple.dock expose-animation-duration -float 0.1
+ # Remove the auto-hiding Dock delay
+ defaults write com.apple.dock autohide-delay -float 0
+ # Remove the animation when hiding/showing the Dock
+ defaults write com.apple.dock autohide-time-modifier -float 0
+ # Automatically hide and show the Dock
+ defaults write com.apple.dock autohide -bool true
+ # Make Dock icons of hidden applications translucent
+ defaults write com.apple.dock showhidden -bool true
