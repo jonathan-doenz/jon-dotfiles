@@ -6,6 +6,6 @@ dir="${HOME}/jon-dotfiles"
 
 # Link the files in dotfiles to be the effective dotfiles in home directory
 for dotfile in "${dotfiles[@]}";do
-	ln -sf "${HOME}/${dotfile}" "${dir}"
+	ln -sf "/Users/jonathandoenz/jon-dotfiles/${dotfile}" "${HOME}/${dotfile}" 
 	#ln -sf "${dotfile}" "${dir}"
 done
