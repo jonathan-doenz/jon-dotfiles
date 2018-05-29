@@ -146,9 +146,8 @@ nnoremap TT gT
 set foldmethod=indent
 set foldlevel=99
 
-" Folding .tex files (uncomment next line to enable it. I commented it because
-" it slows down the file with the foldmethod=expr setting)
-" let g:vimtex_fold_enabled=1
+" Folding .tex files
+let g:vimtex_fold_enabled=1
 " if you want to select the expressions on which to fold a tex file, :h g:vimtex_fold_types 
 
 " See the docstrings for folded code
@@ -309,6 +308,10 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Quick save in any documents
 	inoremap ,, <ESC>:w<CR>a
 	nnoremap ,, :w<CR>
+
+" Quick indent whole document
+	inoremap ;ia <ESC>mpgg=G`pla
+	nnoremap ;ia mpgg=G`pl
 
 " Open .vimrc in new tab
 	nnoremap vv :tabedit<Space>~/.vimrc<CR> 

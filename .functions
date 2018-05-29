@@ -5,7 +5,7 @@ function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
-# Create a new TeX article file and open it with vim
+# git stage and commit present repo
 function gitac() {
 	git add -A;
 	git commit;
