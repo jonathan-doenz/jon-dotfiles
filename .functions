@@ -6,6 +6,12 @@ function mkd() {
 }
 
 # Create a new TeX article file and open it with vim
+function gitac() {
+	git add -A;
+	git commit;
+}
+
+# Create a new TeX article file and open it with vim
 function TeXav() {
 	cp ~/Dropbox/TeX_stuff/templates/article_template.tex .; 
 	mv article_template.tex "$@"; 
