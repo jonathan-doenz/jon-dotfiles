@@ -200,8 +200,10 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " " Invoke completion options from  YCM
 " let g:ycm_key_invoke_completion = '<S-Space>'
 
-" " Quick shortcut to ease testing
+" " Quick shortcuts to ease testing
 " nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>
+" Execute the present file in the terminal
+" nnoremap <space><space> :w<CR>:!./%<CR>
 
 " Python with virtualenv support
 py << EOF
