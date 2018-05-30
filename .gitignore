@@ -1,2 +1,5 @@
 # ignore swap files
 *.swp
+linking.sh
+unlinking.sh
+unlink_rm.sh
