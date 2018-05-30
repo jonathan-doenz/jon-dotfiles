@@ -17,7 +17,7 @@ git clone https://github.com/jonathan-doenz/jon-dotfiles ~
 ./~/jon-dotfiles/dotfiles_syncker.sh 	# this replaces the dotfiles in home folder with a symlink to the files in ~/jon-dotfiles repository
 ```
 
-4) Source the fresh .bash_profile file
+4) Source the fresh .bash_profile file for the preferences to take place and you are good to go!
 ```
 source ~/.bash_profile
 ```
