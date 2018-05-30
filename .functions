@@ -8,7 +8,7 @@ function mkd() {
 # git stage and commit present repo
 function gitac() {
 	git add -A;
-	git commit;
+	git commit -m "$@";
 }
 
 # Create a new TeX article file and open it with vim
