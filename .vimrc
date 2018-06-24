@@ -93,6 +93,9 @@ Plugin 'godlygeek/tabular'
 " Use easy dragging in visual modes
 Bundle 'zirrostig/vim-schlepp'
 
+" Manage todo lists with vimwiki
+Plugin 'vimwiki/vimwiki'
+
 "" git repos on your local machine (i.e. when working on your own plugin)
 "" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
 "Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin'
@@ -120,8 +123,6 @@ Bundle 'zirrostig/vim-schlepp'
  call vundle#end()            " required
  filetype plugin indent on    " required
 
-" " Shortcuts to quickly debug plugins
-" nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>:PluginInstall<CR> 
 
 " ================= If use VUNDLE, uncomment until here ===================
 
@@ -131,20 +132,13 @@ Bundle 'zirrostig/vim-schlepp'
 set splitbelow
 set splitright
 
-" split navigations: Ctrl-j to move to the split below, Ctrl-k to split above,
-" Ctrl-l to split right, Ctrl-h to split left
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Navigate between tabs with tt and TT
-nnoremap tt gt
-nnoremap TT gT
-
 " Folding general files
 set foldmethod=indent
 set foldlevel=99
+
+" Fugitive settings
+" Add current branch and filename to status line
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Folding .tex files
 let g:vimtex_fold_enabled=1
@@ -152,9 +146,6 @@ let g:vimtex_fold_enabled=1
 
 " See the docstrings for folded code
 let g:SimpylFold_docstring_preview=1
-
-" Enable folding/unfolding with the spacebar
-nnoremap <space> za
 
 
 " UltiSnips settings
@@ -194,16 +185,9 @@ set encoding=utf-8
 " closes the preview window
 let g:ycm_autoclose_preview_window_after_completion=1
 "
-" Allows for space-g (or leader key-g) to goto definition
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " " Invoke completion options from  YCM
 " let g:ycm_key_invoke_completion = '<S-Space>'
 
-" " Quick shortcuts to ease testing
-" nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>
-" Execute the present file in the terminal
-" nnoremap <space><space> :w<CR>:!./%<CR>
 
 " Python with virtualenv support
 py << EOF
@@ -236,24 +220,6 @@ set nu
 " System clipboard
 set clipboard=unnamed
 
-" Nerdtree shown with Ctrl-n
-map <C-n> :NERDTreeToggle<CR>
-
-" Shortcut to run python script
-"filetype on "# is necessery if there was no other: filetype ... in the file
-"autocmd FileType python nnoremap <buffer> <C-T> :exec '!clear; python' shellescape(@%, 1)<cr>
-autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescape(@%, 1)<cr>
-
-" Shortcut to run selection of code
-"vnoremap <C-T> :exec '!python'<cr> 
-"xnoremap <C-T> <esc>:'<,'>:!python<CR>
-"vnoremap <F5> :!python<CR>
-"or
-xnoremap <F5> <esc>:'<,'>:!python<CR>
-
-" Shortcut to type :!python from vim command mode
-autocmd FileType python nnoremap <buffer> ;p :!python<Space>
-
 " Enable vimtex plugin in .tex files
 au BufNewFile,BufRead *.tex let g:vimtex_enabled=1
 " Use Skim as pdf viewer for vimtex
@@ -261,7 +227,7 @@ let g:vimtex_view_method='skim'
 " Prevent `latexmk` (or other build tools) from starting Skim and instead let vimtex start Skim through the callback feature (see :help vimtex_view_automatic)
 let g:vimtex_view_automatic=1
 " Enable forward searching in skim (it is buggy as of 24.05.2018)
-map ,r :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf<CR>
+"map ,r :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf<CR>
 
 " Damian Conway's inspired stuff from here
 
@@ -270,10 +236,6 @@ set incsearch
 
 " Highlight all the search matches
 set hlsearch
-" remove highlighting is normally done by :nohlsearch
-" let's use a shortcut to do it. Backspace is the choice here:
-nmap <silent> <BS>  :nohlsearch<CR>
-
 " Autosave after some vim commands such as :next 
 " type :help autowrite for more help)
 set autowrite
@@ -306,10 +268,114 @@ set showbreak=>
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
-"==============[ Abbreviations and mappings ]================
+
+" Get Help in full page instead of half-page
+augroup HelpInTabs
+	au!
+	au BufEnter *.txt call HelpInNewTab()
+
+	function! HelpInNewTab ()
+		if &buftype == 'help'
+			execute "normal \<C-W>T"
+		endif
+	endfunction
+augroup END
+
+"" Uncomment this if you want to save undo history
+"" Make a persistent undofile for every vim file
+"if has('persistent_undo')
+"	set undofile
+"endif
+"
+"" Overwrite the undo-files along different sessions
+"set undodir=$HOME/.VIM_UNDO_FILES
+
+" Completion stuff
+" Show list of possible completions and fill the longest common prefix,
+" and subsequent <TAB>s will cycle through the possibilities
+set wildmode=list:longest,full
+
+" Complete defined Perl subroutine
+:set define=^\\s*sub
+" example:
+"sub defenestrate_exception {...} " is defined somewhere in your file
+"$result = de<C-X><C-D>
+"and you get 
+"$result = defenestrate_exception {...}
+"because it searches for the string sub and suggests the completion based on
+"what follows the keyword, in this case defenestrate_exception {...}
+
+""" This is overwritten by Nerdtree
+""" File browsing with netrw standard plugin
+"":let g:loaded_netrw       = 1
+"":let g:loaded_netrwPlugin = 1
+""
+"""=====[ Make netrw more instantly useful ]============
+""let g:netrw_sort_by        = 'time'
+""let g:netrw_sort_direction = 'reverse'
+""let g:netrw_banner         = 0
+""let g:netrw_liststyle      = 3
+""let g:netrw_browse_split   = 3
+""let g:netrw_fastbrowse     = 1
+""let g:netrw_sort_by        = 'name'
+""let g:netrw_sort_direction = 'normal'
+""
+""" highlight syntax in netrw
+""augroup Autosyntax_actions
+""    autocmd!
+""    autocmd FileType netrw  syntax on
+""augroup END
+""" End overwritten by Nerdtree
+"==============[ Mappings ]================
+
+" Schlepp plugin settings
+" When moving text left, Schlepp by default does not allow you to move left 
+" if any text is all the way left. To allow the 'Squishing' of text 
+" add these lines to your vimrc
+let g:Schlepp#allowSquishingLines = 1
+let g:Schlepp#allowSquishingBlock = 1
+" Disable trailing whitespace removal on block move
+let g:Schlepp#trimWS = 0
+
+" Tabularize plugin settings
+" Press | (pipe) and a markdown table will automatically get aligned and
+" adjust itself dynamically as new entries are entered in the table
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+" show the commands for now
+set showcmd
+
+
+"==============[ Mappings and Abbreviations ]================
 " Quick save in any documents
 	inoremap ,, <ESC>:w<CR>a
 	nnoremap ,, :w<CR>
+
+" Use <BS> instead of typing :nohlsearch to remove highlighting 
+	nmap <silent> <BS>  :nohlsearch<CR>
+
+" Split navigations: Ctrl-j to move to the split below, Ctrl-k to split above,
+" Ctrl-l to split right, Ctrl-h to split left
+	nnoremap <C-J> <C-W><C-J>
+	nnoremap <C-K> <C-W><C-K>
+	nnoremap <C-L> <C-W><C-L>
+	nnoremap <C-H> <C-W><C-H>
+
+" Navigate between tabs with tt and TT
+	nnoremap tt gt
+	nnoremap TT gT
+
+" Enable folding/unfolding with the spacebar
+	nnoremap <space> za
 
 " Quick indent whole document
 	inoremap ;ia <ESC>mpgg=G`pla
@@ -318,7 +384,47 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Open .vimrc in new tab
 	nnoremap vv :tabedit<Space>~/.vimrc<CR> 
 
-" TeX abbreviations
+" Nerdtree toggle
+	map <C-n> :NERDTreeToggle<CR>
+
+" Run python file
+	autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescape(@%, 1)<cr>
+
+" Run visual selection with python
+	xnoremap <F5> <esc>:'<,'>:!python<CR>
+
+" Sources .vimrc from within a file
+	nnoremap ;sv :w<CR>:source ~/.vimrc<CR>
+
+" Allows for space-g (or leader key-g) to goto definition
+	map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Execute the present file in the terminal
+	nnoremap ;ex :w<CR>:!./%<CR>
+
+" Navigating with placeholders
+	inoremap ;gui <++>
+
+" Navigation to <++> placeholders with <space><Tab>
+	inoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+	vnoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+	map        <Space><Tab> <Esc>/<++><Enter>"_c4l
+
+" Arrow keys in normal mode
+" Right arrow mapped to go to the next place of edit
+	nnoremap <silent> <RIGHT> g,
+" Left arrow mapped to go to the previous place of edit
+	nnoremap <silent> <LEFT> g;
+" Double right arrow to step forward through matches
+	nmap <silent> <RIGHT><RIGHT>		:cnext<CR>
+" Double left arrow to step backward through matches
+	nmap <silent> <LEFT><LEFT>		:cprev<CR>
+" Triple right arrow to step to next match in next file
+	nmap <silent> <RIGHT><RIGHT><RIGHT>	:cnfile<CR><C-G>
+" Triple left arrow to step to previous match in next file
+	nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
+
+" TeX mappings
 	autocmd FileType tex nmap ;; :w<CR><plug>(vimtex-compile)<plug>(vimtex-view)
 	autocmd FileType tex imap ;; <ESC>:w<CR><plug>(vimtex-compile)<plug>(vimtex-view)a
 	"autocmd FileType tex inoremap ,, <ESC>:w<CR>a
@@ -408,104 +514,17 @@ call matchadd('ColorColumn', '\%81v', 100)
 autocmd FileType xml inoremap ;a <a href="<++>"><++></a><++><Esc>F"ci"
 
 
-" html abbreviations
-iab bqc <blockquote><cite><CR><CR></cite></blockquote><CR><++><UP><UP><TAB>
+" " Quick shortcut to debug plugins
+" nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>:PluginInstall<CR> 
 
-" Computed abbreviations
-" display current timestamp
-iab <expr> TS strftime("%c")
-" write last yanked text
-iab <expr> PPP getreg('')
-" insert content of preceding non-empty line
-iab <expr> ^^ getline(search('\S\_.*\n\_.*\%#','b'))
-
-	       "===========[ End of Abbreviations ]=============
-
-" Get Help in full page instead of half-page
-augroup HelpInTabs
-	au!
-	au BufEnter *.txt call HelpInNewTab()
-
-	function! HelpInNewTab ()
-		if &buftype == 'help'
-			execute "normal \<C-W>T"
-		endif
-	endfunction
-augroup END
-
-"" Uncomment this if you want to save undo history
-"" Make a persistent undofile for every vim file
-"if has('persistent_undo')
-"	set undofile
-"endif
-"
-"" Overwrite the undo-files along different sessions
-"set undodir=$HOME/.VIM_UNDO_FILES
-
-" Completion stuff
-" Show list of possible completions and fill the longest common prefix,
-" and subsequent <TAB>s will cycle through the possibilities
-set wildmode=list:longest,full
-
-" Complete defined Perl subroutine
-:set define=^\\s*sub
-" example:
-"sub defenestrate_exception {...} " is defined somewhere in your file
-inoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
-vnoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
-map        <Space><Tab> <Esc>/<++><Enter>"_c4l
-"$result = de<C-X><C-D>
-"and you get 
-"$result = defenestrate_exception {...}
-"because it searches for the string sub and suggests the completion based on
-"what follows the keyword, in this case defenestrate_exception {...}
-
-""" This is overwritten by Nerdtree
-""" File browsing with netrw standard plugin
-"":let g:loaded_netrw       = 1
-"":let g:loaded_netrwPlugin = 1
-""
-"""=====[ Make netrw more instantly useful ]============
-""let g:netrw_sort_by        = 'time'
-""let g:netrw_sort_direction = 'reverse'
-""let g:netrw_banner         = 0
-""let g:netrw_liststyle      = 3
-""let g:netrw_browse_split   = 3
-""let g:netrw_fastbrowse     = 1
-""let g:netrw_sort_by        = 'name'
-""let g:netrw_sort_direction = 'normal'
-""
-""" highlight syntax in netrw
-""augroup Autosyntax_actions
-""    autocmd!
-""    autocmd FileType netrw  syntax on
-""augroup END
-""" End overwritten by Nerdtree
-"==============[ Mappings ]================
-
-" Navigating with guides
-inoremap ;gui <++>
+" " Quick shortcuts to ease testing
+" nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>
 
 " Escape insert mode via 'jk' or 'kj'
 " Commented for now as it makes a visual lag when pressing a j or a k in
 " insert mode. Possible work-around: https://github.com/zhou13/vim-easyescape/
 "imap jk <ESC>
 "imap kj <ESC>
-
-" Map arrow keys to useful actions in normal mode
-" Right arrow to step forward through matches
-nmap <silent> <RIGHT>		:cnext<CR>
-" Left arrow to step backward through matches
-nmap <silent> <LEFT>		:cprev<CR>
-" Double right arrow to step to next match in next file
-nmap <silent> <RIGHT><RIGHT>	:cnfile<CR><C-G>
-" Double left arrow to step to previous match in next file
-nmap <silent> <LEFT><LEFT>	:cpfile<CR><C-G>
-
-" Triple right arrow mapped to go to the next place of edit
-nnoremap <silent> <RIGHT><RIGHT><RIGHT> g,
-" Triple right arrow mapped to go to the next place of edit
-nnoremap <silent> <LEFT><LEFT><LEFT> g;
 
 " Tabular mappings
 if exists(":Tabularize")
@@ -518,18 +537,6 @@ endif
 " Enable insert mode alignment when pressing <Bar>
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
-
-
 " EasyAlign mappings
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -537,33 +544,28 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-
+" Schlepp mappings
 " Easy dragging of blocks in visual modes using Schlepp's plugin
 vmap <UP>    <Plug>SchleppUp
 vmap <DOWN>  <Plug>SchleppDown
 vmap <LEFT>  <Plug>SchleppLeft
 vmap <RIGHT> <Plug>SchleppRight
-" Duplicate on the left
+
+" Duplicate selection on the left
 vmap D <Plug>SchleppDupLeft
-" When moving text left, Schlepp by default does not allow you to move left 
-" if any text is all the way left. To allow the 'Squishing' of text 
-" add these lines to your vimrc
-let g:Schlepp#allowSquishingLines = 1
-let g:Schlepp#allowSquishingBlock = 1
-" Disable trailing whitespace removal on block move
-let g:Schlepp#trimWS = 0
 " Reindent code as it moves
 vmap i <Plug>SchleppToggleReindent
 
-" Command line mappings
-":cnoremap gitc git<Space>c<Space>-m<Space>"
-:cmap gitc git c -m "
-" REMOVE WHEN DONE UPDATING vimrc:
-" this command updates the vimrc by typing :sv<CR>
-":cnoremap sv source ~/.vimrc
-nnoremap ;sv :w<CR>:source ~/.vimrc<CR>
-"au BufNewFile,BufRead ~/.vimrc nnoremap ,, :w<CR>:source ~/.vimrc<CR>
 
-" show the commands for now
-set showcmd
+" html abbreviations
+iab bqc <blockquote><cite><CR><CR></cite></blockquote><CR><++><UP><UP><TAB>
 
+" Computed abbreviations
+" display current timestamp
+iab <expr> TS strftime("%c")
+" write last yanked text
+iab <expr> PPP getreg('')
+" insert content of preceding non-empty line
+iab <expr> ^^ getline(search('\S\_.*\n\_.*\%#','b'))
+
+	       "===========[ End of Mappings and Abbreviations ]=============

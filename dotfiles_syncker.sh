@@ -3,7 +3,7 @@
 # Get the directory in which the present file is
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Uncomment this line if you want to manually name the dotfiles you want to link
+# Uncomment this line if you want to manually select the dotfiles you want to link
 #dotfiles=(".aliases" ".bash_profile" ".bash_prompt" ".bashrc" ".exports" ".functions" ".path" ".vimrc") 
 
 # Uncomment this line if you want all the dotfiles in the present directory to be linked except the .git files

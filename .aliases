@@ -31,6 +31,8 @@ alias v="vim \"+normal\\\`\\\"" # (does not work for now) open in vim at last mo
 alias vimv="vim ~/.vimrc"
 alias vima="vim ~/.aliases"
 alias vimf="vim ~/.functions"
+alias vimw="vim ~/vimwiki/index.wiki"
+alias vimwt="vim ~/vimwiki/Tasks.wiki"
 
 # TeX shortcuts
 alias TeXa="cp ~/Dropbox/TeX_stuff/templates/article_template.tex"
