@@ -75,6 +75,9 @@ Plugin 'tpope/vim-surround'
 " Use surrounding operations (hopefully doesn't conflict vimtex)
 Plugin 'tpope/vim-commentary'
 
+" Automatic and smart addition of closing braces, brackets, etc...
+Plugin 'Raimondi/delimitMate'
+
 " Use vim as TeX editor
 Plugin 'lervag/vimtex'
 
@@ -158,6 +161,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" Work around enabling use of custom local snippets
+" https://github.com/SirVer/ultisnips/issues/711
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+
 
 " Python indentation stuff
 au BufNewFile,BufRead *.py
@@ -184,9 +191,15 @@ set encoding=utf-8
 " Customization of YouCompleteMe (YCM; can finally use this plugin on OS 10.10)
 " closes the preview window
 let g:ycm_autoclose_preview_window_after_completion=1
-"
-" " Invoke completion options from  YCM
+
+" " automatically shows suggestions
+" let g:ycm_auto_trigger = 1
+" " after a minimum of n characters
+" let g:ycm_min_num_of_chars_for_completion = 3
+
+" Invoke completion options from  YCM
 " let g:ycm_key_invoke_completion = '<S-Space>'
+" let g:ycm_key_invoke_completion = '<C-A>'
 
 
 " Python with virtualenv support
@@ -214,8 +227,17 @@ endif
 " Hyde .pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-" Turn line number on
-set nu
+" " Turn line number on
+" set nu
+
+" Set absolute line number while in insert mode, and relative in normal mode
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
 
 " System clipboard
 set clipboard=unnamed
@@ -568,4 +590,8 @@ iab <expr> PPP getreg('')
 " insert content of preceding non-empty line
 iab <expr> ^^ getline(search('\S\_.*\n\_.*\%#','b'))
 
+" " Temporary workarounds for json snippets
+" autocmd FileType json inoremap nd1 {<CR><Tab>"name": "",<CR>"description": "<++>",<CR>"website": "<++>",<CR>"keywords": ["<++>"]<CR>}<CR><CR><++><ESC>6kf,hi
+" " name, description (list by default), website (list by default)
+" autocmd FileType json inoremap ndw {<CR><Tab>"name": "",<CR>"description": ["<++>"],<CR>"website": ["<++>"]<CR>}<CR><CR><++><ESC>5kf,hi
 	       "===========[ End of Mappings and Abbreviations ]=============
