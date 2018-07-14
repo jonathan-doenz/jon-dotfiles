@@ -165,6 +165,10 @@ let g:UltiSnipsEditSplit="vertical"
 " https://github.com/SirVer/ultisnips/issues/711
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
+" Customize snippets' variables for docstrings
+let g:snips_author="Jonathan Doenz"
+let g:snips_email="jonathan.doenz@gmail.com"
+let g:snips_github="jonathan-doenz"
 
 " Python indentation stuff
 au BufNewFile,BufRead *.py
@@ -411,6 +415,7 @@ set showcmd
 
 " Run python file
 	autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescape(@%, 1)<cr>
+	autocmd FileType python inoremap <buffer> <F5> <ESC>:exec '!clear; python' shellescape(@%, 1)<cr>
 
 " Run visual selection with python
 	xnoremap <F5> <esc>:'<,'>:!python<CR>
