@@ -4,7 +4,7 @@
 1) Make a backup of your dotfiles, e.g.
 ```
 mkdir ~/dotfiles_backup
-cp -d ~/.?* ~/dotfiles_backup 	# copy all dotfiles to the new directory
+cp ~/.?* ~/dotfiles_backup 	# copy all dotfiles to the new directory
 ```
 
 2) If some of the dotfolders included in the present repo (`.jupyter`, `.R`) already exist in your home folder, you need to delete them
@@ -20,7 +20,7 @@ git clone https://github.com/jonathan-doenz/jon-dotfiles ~
 
 4) Run the dotfiles_syncker.sh script
 ```
-~/jon-dotfiles/dotfiles_syncker.sh 	# this replaces the dotfiles in home folder 
+~/jon-dotfiles/dotfiles_syncker.sh 	# this replaces the dotfiles in home folder  
 with a symlink to the files in ~/jon-dotfiles repository
 ```
 
