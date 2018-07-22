@@ -1,0 +1,19 @@
+{
+  "load_extensions": {
+    "notify/notify": true,
+    "snippets/main": true,
+    "codefolding/main": true,
+    "snippets_menu/main": true,
+    "comment-uncomment/main": true,
+    "select_keymap/main": true,
+    "varInspector/main": true,
+    "collapsible_headings/main": true,
+    "scratchpad/main": true
+  },
+  "comment_uncomment_indent": true,
+  "Cell": {
+    "cm_config": {
+      "lineNumbers": true
+    }
+  }
+}

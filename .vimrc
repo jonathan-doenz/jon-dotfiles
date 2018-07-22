@@ -47,6 +47,13 @@ Plugin 'vim-syntastic/syntastic'
 " Color schemes
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+" Plugin 'mhartington/oceanic-next'
+" Plugin 'romainl/flattened'
+
+" Customize status line
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'edkolev/tmuxline.vim'
 
 " Directories tree plugin
 Plugin 'scrooloose/nerdtree'
@@ -63,8 +70,8 @@ Plugin 'kien/ctrlp.vim'
 " Powerline displaying current file, git branch, virtualenv
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-" Command-T plugin to open files and buffers, jump to tags, run commands...
-Plugin 'wincent/command-t'
+" " Command-T plugin to open files and buffers, jump to tags, run commands...
+" Plugin 'wincent/command-t'
 
 " Enable . to repeat a plugin operation
 Plugin 'tpope/vim-repeat'
@@ -98,6 +105,16 @@ Bundle 'zirrostig/vim-schlepp'
 
 " Manage todo lists with vimwiki
 Plugin 'vimwiki/vimwiki'
+
+" Display run code in new pane
+Plugin 'tpope/vim-dispatch'
+
+" Homogenize shortcuts between vim and tmux splits
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Allow to run scripts from vim to other tmux panes
+" Plugin 'sjl/tslime.vim'
+Plugin 'benmills/vimux'
 
 "" git repos on your local machine (i.e. when working on your own plugin)
 "" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
@@ -134,6 +151,15 @@ Plugin 'vimwiki/vimwiki'
 " Allow to specify line numbers where split occurs using :sp (split command)
 set splitbelow
 set splitright
+
+" " Allow mouse scrolling in iTerm2
+" " set mouse=nicr
+" set mouse=a
+" if has("mouse_sgr")
+"     set ttymouse=sgr
+" else
+"     set ttymouse=xterm2
+" end
 
 " Folding general files
 set foldmethod=indent
@@ -220,13 +246,87 @@ EOF
 let python_highlight_all=1
 syntax on
 
-" Color schemes based on vim mode
+" " start oceanicnext uncomment
+" " OceanicNext color scheme start
+" " Color scheme
+"  if (has("termguicolors"))
+"   set termguicolors
+"  endif
+
+" " Enable italic and bold face (keep it commented, it looks super bad with it)
+" " let g:oceanic_next_terminal_bold = 1
+" " let g:oceanic_next_terminal_italic = 1
+
+" colorscheme OceanicNext
+" " end oceanicnext uncomment
+
+" " Status line matching the general color scheme
+" let g:airline_theme='oceanicnext'
+" " OceanicNext color scheme end
+let g:tmuxline_preset='tmux'
+let g:airline#extensions#tmuxline#enabled=0
+let g:tmuxline_theme='zenburn'
+
+" " flattened_dark start uncomment
+" syntax enable
+" set background=dark
+" let g:solarized_termcolors=256
+" colorscheme flattened_dark
+" " flattened_dark end uncomment
+
+" " start solarized scheme uncomment
+" " Color schemes based on vim mode
+" syntax enable
+" set background=dark
+" let g:solarized_termcolors=256
+" colorscheme solarized
+" " end solarized scheme uncomment
+
+" Old time version start uncomment
 if has('gui_running')
   set background=dark
   colorscheme solarized
 else
   colorscheme zenburn
 endif
+" Old time version start uncomment
+
+" " from mhartington:
+" set background=dark
+
+" " Theme, Colorscheme, & Font
+" if has("gui_running")
+"   " colorscheme Tomorrow-Night
+"   " set guifont=Monaco:h14
+"   " set linespace=2
+"   " set noantialias
+" else
+"   try
+"     colorscheme OceanicNext
+"   catch
+"   endtry
+" endif
+
+" function! ReverseBackground()
+"   if &background=="light"
+"     set background=dark
+"     colorscheme OceanicNext
+"   else
+"     set background=light
+"     colorscheme solarized
+"     execute 'AirlineTheme solarized'
+"   endif
+" endfunction
+" command! Invbg call ReverseBackground()
+
+" " Set extra options when running in GUI mode
+" if has("gui_running")
+"   set guioptions-=T
+"   set guioptions-=e
+"   set t_Co=256
+"   set guitablabel=%M\ %t
+" endif
+" " end from mhartington
 
 " Hyde .pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -352,7 +452,6 @@ set wildmode=list:longest,full
 ""    autocmd FileType netrw  syntax on
 ""augroup END
 """ End overwritten by Nerdtree
-"==============[ Mappings ]================
 
 " Schlepp plugin settings
 " When moving text left, Schlepp by default does not allow you to move left 
@@ -377,9 +476,21 @@ function! s:align()
   endif
 endfunction
 
+" Dispatch plugin settings
+autocmd FileType python let b:dispatch = 'python3 %'
+autocmd FileType java let b:dispatch = 'javac %'
+
 " show the commands for now
 set showcmd
 
+" Return to the same line you left off at
+augroup line_return
+	au!
+	au BufReadPost *
+				\ if line("'\"") > 0 && line("'\"") <= line("$") |
+				\	execute 'normal! g`"zvzz' |
+				\ endif
+augroup END
 
 "==============[ Mappings and Abbreviations ]================
 " Quick save in any documents
@@ -407,14 +518,31 @@ set showcmd
 	inoremap ;ia <ESC>mpgg=G`pla
 	nnoremap ;ia mpgg=G`pl
 
+" Refresh file
+	nnoremap ;re :edit<Space><C-R>%<CR>
+
 " Open .vimrc in new tab
 	nnoremap vv :tabedit<Space>~/.vimrc<CR> 
+
+" Open snippets file from current filetype
+	nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
+" Special case for json filetype where snippets are located in different folder
+	autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%:e.snippets<CR>
 
 " Nerdtree toggle
 	map <C-n> :NERDTreeToggle<CR>
 
 " Run python file
 	autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescape(@%, 1)<cr>
+	" " None of the following work:
+	" autocmd FileType python nnoremap <buffer> <F6> :exec '!bash python test.py'<cr>
+	" autocmd FileType python nnoremap <buffer> <F6> :exec '!clear; tmux python' shellescape(@%, 1)<cr>
+	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("ls")
+	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; echo " bufname("%"))<cr>
+	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; python " . bufname("%"))<cr>
+	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; python " . bufname("%"))<cr>
+	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommandInDir("clear; python " shellescape(@%, 1))<cr>
+	" autocmd FileType python nnoremap <buffer> <F6> :w<CR>:!/usr/bin/env node % <CR>
 	autocmd FileType python inoremap <buffer> <F5> <ESC>:exec '!clear; python' shellescape(@%, 1)<cr>
 
 " Run visual selection with python
@@ -450,6 +578,10 @@ set showcmd
 	nmap <silent> <RIGHT><RIGHT><RIGHT>	:cnfile<CR><C-G>
 " Triple left arrow to step to previous match in next file
 	nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
+
+" Indentation in visual mode
+	xnoremap < <gv
+	xnoremap > >gv
 
 " TeX mappings
 	autocmd FileType tex nmap ;; :w<CR><plug>(vimtex-compile)<plug>(vimtex-view)
@@ -583,6 +715,16 @@ vmap D <Plug>SchleppDupLeft
 " Reindent code as it moves
 vmap i <Plug>SchleppToggleReindent
 
+" Quick print variable selected in visual mode
+autocmd FileType python vnoremap ;pr yoprint("<ESC>pA:" + <ESC>pA)<ESC>F:
+autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA:" + <ESC>pA);<ESC>F:
+
+" Dispatch plugin mappings
+nnoremap <F6> :Dispatch<CR>
+
+" " Refresh other tmux pane with the code run from present pane (doesn't work
+" " for now
+" nnoremap <Leader>W :w<Bar>execute 'silent !tmux send-keys -t 1 C-r'<Bar>redraw!<CR>
 
 " html abbreviations
 iab bqc <blockquote><cite><CR><CR></cite></blockquote><CR><++><UP><UP><TAB>
@@ -594,6 +736,17 @@ iab <expr> TS strftime("%c")
 iab <expr> PPP getreg('')
 " insert content of preceding non-empty line
 iab <expr> ^^ getline(search('\S\_.*\n\_.*\%#','b'))
+
+" Tmux mappings
+
+" " t-slice plugin mappings
+" let g:tslime_always_current_session = 1
+" let g:tslime_always_current_window = 1
+" let g:tslime_normal_mapping = '<leader>t'
+" let g:tslime_visual_mapping = '<leader>t'
+" let g:tslime_vars_mapping = '<leader>T'
+" vnoremap <F6> <Plug>SendSelectionToTmux
+" nnoremap <F6> <Plug>NormalModeSendToTmux
 
 " " Temporary workarounds for json snippets
 " autocmd FileType json inoremap nd1 {<CR><Tab>"name": "",<CR>"description": "<++>",<CR>"website": "<++>",<CR>"keywords": ["<++>"]<CR>}<CR><CR><++><ESC>6kf,hi

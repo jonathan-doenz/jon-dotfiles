@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# display folder content when cd to a directory
+function cd {
+	builtin cd "$@" && ls -F
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";

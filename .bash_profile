@@ -18,25 +18,8 @@ shopt -s histappend;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-# # enable aliases
-# shopt -s expand_aliases
-
-# # enable pathname expansions
-# shopt -s extglob
-
 # activate vi mode when pressing <esc> or <C-ü> (<C-[> on a US-keyboard)
 # set -o vi
-
-# display folder content when cd to a directory
-function cd {
-	builtin cd "$@" && ls -F
-}
-
-# visit a series of directories one after the other in a circular way
-#alias cd="eval `cdring !* ' '`"
-
-# enable go to parent directory with command "cdd"
-alias cdd='cd -'
 
 # # Enable some Bash 4 features when possible:
 # # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`

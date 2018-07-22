@@ -7,6 +7,15 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+# # enable go to parent directory with command "cdd"
+# alias cdd='cd -'
+# visit a series of directories one after the other in a circular way
+#alias cd="eval `cdring !* ' '`"
+# # enable aliases
+# shopt -s expand_aliases
+# # enable pathname expansions
+# shopt -s extglob
+
 
 # Shortcuts
 # Navigation shortcuts
@@ -33,10 +42,16 @@ alias vima="vim ~/.aliases"
 alias vimf="vim ~/.functions"
 alias vimw="vim ~/vimwiki/index.wiki"
 alias vimwt="vim ~/vimwiki/Tasks.wiki"
+alias vimt="vim ~/.tmux.conf"
+# temporary alias
+alias vime="vim ~/Dropbox/python_stuff/test.py"
 
 # TeX shortcuts
 alias TeXa="cp ~/Dropbox/TeX_stuff/templates/article_template.tex"
 alias TeXb="cp ~/Dropbox/TeX_stuff/templates/beamer_template.tex"
+
+# Launch jupyter notebook
+alias jn="jupyter notebook"
 
 # Miscellaneous shortcuts
 alias sb="source ~/.bash_profile"
