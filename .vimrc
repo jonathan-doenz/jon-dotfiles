@@ -114,7 +114,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " Allow to run scripts from vim to other tmux panes
 " Plugin 'sjl/tslime.vim'
-Plugin 'benmills/vimux'
+" Plugin 'benmills/vimux'
 
 "" git repos on your local machine (i.e. when working on your own plugin)
 "" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
