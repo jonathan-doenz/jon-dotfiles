@@ -12,10 +12,10 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
 				'%matplotlib inline', 
 				'import seaborn as sns',],
 			},
-			{
-				'name' : 'Another menu item',
-				'snippet' : ['another_new_command(2.78)',],
-			},
+			// {
+			// 	'name' : 'Another menu item',
+			// 	'snippet' : ['another_new_command(2.78)',],
+			// },
 		],
 	};
 	snippets_menu.options['menus'] = snippets_menu.default_menus;
