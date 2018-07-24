@@ -26,3 +26,5 @@
  defaults write com.apple.dock minimize-to-application -bool true
  # Remove stuff outside the window of interest when using screencapture (cmd+shift+4, space)
  defaults write com.apple.screencapture disable-shadow -bool FALSE; killall SystemUIServer
+ # Disable the sound effects on boot
+ sudo nvram SystemAudioVolume=" "
