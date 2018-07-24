@@ -15,5 +15,21 @@
     "cm_config": {
       "lineNumbers": true
     }
+  },
+  "keys": {
+    "command": {
+      "bind": {
+        "`": "jupyter-notebook:change-cell-to-code",
+        "y,y": "jupyter-notebook:copy-cell",
+        "shift-m": "jupyter-notebook:scroll-cell-center",
+        "alt-v": "varInspector:toggle-variable-inspector",
+        "m": "jupyter-notebook:merge-cells"
+      },
+      "unbind": [
+        "y",
+        "c",
+        "m"
+      ]
+    }
   }
 }
