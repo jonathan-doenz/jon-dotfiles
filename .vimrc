@@ -37,9 +37,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 
-" Auto complete plugin (only works on vim 8.0 and I cannot install it on OS
-" 10.10
-Bundle 'Valloric/YouCompleteMe'
+" Auto complete plugin. Now makes vim from brew to crash!
+" Plugin 'Valloric/YouCompleteMe'
 
 " Checking syntax of document on each save
 Plugin 'vim-syntastic/syntastic'
@@ -68,7 +67,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'kien/ctrlp.vim'
 
 " Powerline displaying current file, git branch, virtualenv
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " " Command-T plugin to open files and buffers, jump to tags, run commands...
 " Plugin 'wincent/command-t'
@@ -232,15 +231,15 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " let g:ycm_key_invoke_completion = '<C-A>'
 
 
-" Python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" " Python with virtualenv support
+" py3 << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
 
 " Makes things look pretty in python files
 let python_highlight_all=1
@@ -586,8 +585,6 @@ augroup END
 " TeX mappings
 	autocmd FileType tex nmap ;; :w<CR><plug>(vimtex-compile)<plug>(vimtex-view)
 	autocmd FileType tex imap ;; <ESC>:w<CR><plug>(vimtex-compile)<plug>(vimtex-view)a
-	"autocmd FileType tex inoremap ,, <ESC>:w<CR>a
-	"autocmd FileType tex nnoremap ,, :w<CR>
 	autocmd FileType tex inoremap ;fr
 				\begin{frame}{}<CR><CR><++><CR><CR>\end{frame}<CR><CR><++><Esc>6kf}la
 	autocmd FileType tex inoremap ;fi \begin{fitch}<CR><CR>\end{fitch}<CR><CR><++><Esc>3kA
@@ -721,6 +718,9 @@ autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA:" + <ESC>pA);<E
 
 " Dispatch plugin mappings
 nnoremap <F6> :Dispatch<CR>
+
+" Reverse order of class-attributes: class.attr -> attr.class
+nnoremap ;rev vf.dea.<ESC>px
 
 " " Refresh other tmux pane with the code run from present pane (doesn't work
 " " for now

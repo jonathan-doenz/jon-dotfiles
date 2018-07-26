@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# mvim as terminal macvim and not launching the GUI macvim app
+# alias mvim="mvim -v"
+alias mvim="vim"
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
