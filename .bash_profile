@@ -9,9 +9,9 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,inputrc,extra}; do
 done;
 unset file;
 
-# Add iTerm2 shell integration requires the following command
-# see: https://www.iterm2.com/documentation-shell-integration.html
-source ~/.iterm2_shell_integration.bash
+# # Add iTerm2 shell integration requires the following command
+# # see: https://www.iterm2.com/documentation-shell-integration.html
+# source ~/.iterm2_shell_integration.bash
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
