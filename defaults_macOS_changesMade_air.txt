@@ -4,3 +4,5 @@
  defaults write com.apple.dock autohide-time-modifier -float 0
  # Automatically hide and show the Dock
  defaults write com.apple.dock autohide -bool true
+ # Set the icon size of Dock items to 36 pixels
+ defaults write com.apple.dock tilesize -int 36
