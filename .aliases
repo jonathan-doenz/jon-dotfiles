@@ -36,8 +36,10 @@ alias cdvb="cd ~/.vim/bundle"
 
 # Github shortcuts
 alias g="git"
-alias gitc="git commit -m"
+alias gits="git status"
 alias gita="git add"
+alias gitc="git commit -m"
+alias gitd="git diff"
 
 # Vim shortcuts
 alias lvim="vim -c \"normal '0\"" # open last modified file in vim

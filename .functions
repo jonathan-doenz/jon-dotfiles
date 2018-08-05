@@ -12,7 +12,7 @@ function mkd() {
 
 # git stage and commit present repo
 function gitac() {
-	git add "$1";
+	git add $1;
 	git commit -m "$2";
 }
 
@@ -20,6 +20,13 @@ function gitac() {
 function gitAllc() {
 	git add -A;
 	git commit -m "$@";
+}
+
+# git stage and commit present repo
+function gitAllcpush() {
+	git add -A;
+	git commit -m "$@";
+	git push;
 }
 
 # Create a new TeX article file and open it with vim
