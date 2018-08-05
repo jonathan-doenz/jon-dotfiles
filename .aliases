@@ -37,6 +37,7 @@ alias cdvb="cd ~/.vim/bundle"
 # Github shortcuts
 alias g="git"
 alias gitc="git commit -m"
+alias gita="git add"
 
 # Vim shortcuts
 alias lvim="vim -c \"normal '0\"" # open last modified file in vim
@@ -56,6 +57,9 @@ alias TeXb="cp ~/Dropbox/TeX_stuff/templates/beamer_template.tex"
 
 # Launch jupyter notebook
 alias jn="jupyter notebook"
+
+# Launch python3 in terminal
+alias p3="python3"
 
 # Miscellaneous shortcuts
 alias sb="source ~/.bash_profile"

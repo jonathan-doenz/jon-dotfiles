@@ -28,3 +28,5 @@
  defaults write com.apple.screencapture disable-shadow -bool FALSE; killall SystemUIServer
  # Disable the sound effects on boot
  sudo nvram SystemAudioVolume=" "
+ # Enable key repeat everywhere
+ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false

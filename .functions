@@ -12,6 +12,12 @@ function mkd() {
 
 # git stage and commit present repo
 function gitac() {
+	git add "$1";
+	git commit -m "$2";
+}
+
+# git stage and commit present repo
+function gitAllc() {
 	git add -A;
 	git commit -m "$@";
 }
