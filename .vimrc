@@ -26,7 +26,7 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/.vim/bundle')
 
-" Much inspired from:
+" Some stuff inspired from:
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 
 
@@ -116,8 +116,12 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'benmills/vimux'
 
 "" git repos on your local machine (i.e. when working on your own plugin)
+"" To do: make a symlink in ~/.vim/bundle/my-vim-plugins to the plugins in my
+"" git repo located at ~/Dropbox/vim/plugin
 "" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
 "Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin'
+" set runtimepath^=~/.vim/bundle/my-vim-plugins/smartcom
+" set runtimepath^=~/.vim/bundle/my-vim-plugins/yankmatches
 
 "" From Damian Conway's vimrc
 ""====[ Ensure autodoc'd plugins are supported ]===========
@@ -138,9 +142,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " END plugins set up
 
- " All of your Plugins must be added before the following line
- call vundle#end()            " required
- filetype plugin indent on    " required
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 
 " ================= If use VUNDLE, uncomment until here ===================
@@ -197,19 +201,19 @@ let g:snips_github="jonathan-doenz"
 
 " Python indentation stuff
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+			\ set tabstop=4 |
+			\ set softtabstop=4 |
+			\ set shiftwidth=4 |
+			\ set textwidth=79 |
+			\ set expandtab |
+			\ set autoindent |
+			\ set fileformat=unix
 
 " Standardization of indentation of other file types 
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
+			\ set tabstop=2 |
+			\ set softtabstop=2 |
+			\ set shiftwidth=2
 
 " Flag unnecessary whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
@@ -283,10 +287,10 @@ let g:tmuxline_theme='zenburn'
 
 " Old time version start uncomment
 if has('gui_running')
-  set background=dark
-  colorscheme solarized
+	set background=dark
+	colorscheme solarized
 else
-  colorscheme zenburn
+	colorscheme zenburn
 endif
 " Old time version start uncomment
 
@@ -401,6 +405,7 @@ augroup HelpInTabs
 
 	function! HelpInNewTab ()
 		if &buftype == 'help'
+			"Convert the help window to a tab...
 			execute "normal \<C-W>T"
 		endif
 	endfunction
@@ -465,21 +470,21 @@ let g:Schlepp#trimWS = 0
 " Press | (pipe) and a markdown table will automatically get aligned and
 " adjust itself dynamically as new entries are entered in the table
 function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
+	let p = '^\s*|\s.*\s|\s*$'
+	if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+		let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+		let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+		Tabularize/|/l1
+		normal! 0
+		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+	endif
 endfunction
 
 " Dispatch plugin settings
 autocmd FileType python let b:dispatch = 'python3 %'
 autocmd FileType java let b:dispatch = 'javac %'
 
-" show the commands for now
+" Show the keys entered in normal mode
 set showcmd
 
 " Return to the same line you left off at
@@ -493,180 +498,208 @@ augroup END
 
 "==============[ Mappings and Abbreviations ]================
 " Quick save in any documents
-	inoremap ,, <ESC>:w<CR>a
-	nnoremap ,, :w<CR>
+inoremap ,, <ESC>:w<CR>a
+nnoremap ,, :w<CR>
 
 " Use <BS> instead of typing :nohlsearch to remove highlighting 
-	nmap <silent> <BS>  :nohlsearch<CR>
+nmap <silent> <BS>  :nohlsearch<CR>
 
 " Split navigations: Ctrl-j to move to the split below, Ctrl-k to split above,
 " Ctrl-l to split right, Ctrl-h to split left
-	nnoremap <C-J> <C-W><C-J>
-	nnoremap <C-K> <C-W><C-K>
-	nnoremap <C-L> <C-W><C-L>
-	nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Navigate between tabs with tt and TT
-	nnoremap tt gt
-	nnoremap TT gT
+nnoremap tt gt
+nnoremap TT gT
 
 " Enable folding/unfolding with the spacebar
-	nnoremap <space> za
+nnoremap <space> za
 
 " Quick indent whole document
-	inoremap ;ia <ESC>mpgg=G`pla
-	nnoremap ;ia mpgg=G`pl
+inoremap ;ia <ESC>mpgg=G`pla
+nnoremap ;ia mpgg=G`pl
 
 " Refresh file
-	nnoremap ;re :edit<Space><C-R>%<CR>
+nnoremap ;re :edit<Space><C-R>%<CR>
 
 " Open .vimrc in new tab
-	nnoremap vv :tabedit<Space>~/.vimrc<CR> 
+nnoremap vv :tabedit<Space>~/.vimrc<CR> 
 
 " Open snippets file from current filetype
-	nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
+nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
 " Special case for json filetype where snippets are located in different folder
-	autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%:e.snippets<CR>
+autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%:e.snippets<CR>
 
 " Nerdtree toggle
-	map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 " Run python file
-	autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescape(@%, 1)<cr>
-	" " None of the following work:
-	" autocmd FileType python nnoremap <buffer> <F6> :exec '!bash python test.py'<cr>
-	" autocmd FileType python nnoremap <buffer> <F6> :exec '!clear; tmux python' shellescape(@%, 1)<cr>
-	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("ls")
-	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; echo " bufname("%"))<cr>
-	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; python " . bufname("%"))<cr>
-	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; python " . bufname("%"))<cr>
-	" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommandInDir("clear; python " shellescape(@%, 1))<cr>
-	" autocmd FileType python nnoremap <buffer> <F6> :w<CR>:!/usr/bin/env node % <CR>
-	autocmd FileType python inoremap <buffer> <F5> <ESC>:exec '!clear; python' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescape(@%, 1)<cr>
+" " None of the following work:
+" autocmd FileType python nnoremap <buffer> <F6> :exec '!bash python test.py'<cr>
+" autocmd FileType python nnoremap <buffer> <F6> :exec '!clear; tmux python' shellescape(@%, 1)<cr>
+" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("ls")
+" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; echo " bufname("%"))<cr>
+" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; python " . bufname("%"))<cr>
+" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; python " . bufname("%"))<cr>
+" autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommandInDir("clear; python " shellescape(@%, 1))<cr>
+" autocmd FileType python nnoremap <buffer> <F6> :w<CR>:!/usr/bin/env node % <CR>
+autocmd FileType python inoremap <buffer> <F5> <ESC>:exec '!clear; python' shellescape(@%, 1)<cr>
 
 " Run visual selection with python
-	xnoremap <F5> <esc>:'<,'>:!python<CR>
+xnoremap <F5> <esc>:'<,'>:!python<CR>
 
 " Sources .vimrc from within a file
-	nnoremap ;sv :w<CR>:source ~/.vimrc<CR>
+nnoremap ;sv :w<CR>:source ~/.vimrc<CR>
 
 " Allows for space-g (or leader key-g) to goto definition
-	map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Execute the present file in the terminal
-	nnoremap ;ex :w<CR>:!./%<CR>
+nnoremap ;ex :w<CR>:!./%<CR>
 
 " Navigating with placeholders
-	inoremap ;gui <++>
+inoremap ;gui <++>
 
 " Navigation to <++> placeholders with <space><Tab>
-	inoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
-	vnoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
-	map        <Space><Tab> <Esc>/<++><Enter>"_c4l
+inoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+vnoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+map        <Space><Tab> <Esc>/<++><Enter>"_c4l
 
 " Arrow keys in normal mode
 " Right arrow mapped to go to the next place of edit
-	nnoremap <silent> <RIGHT> g,
+nnoremap <silent> <RIGHT> g,
 " Left arrow mapped to go to the previous place of edit
-	nnoremap <silent> <LEFT> g;
+nnoremap <silent> <LEFT> g;
 " Double right arrow to step forward through matches
-	nmap <silent> <RIGHT><RIGHT>		:cnext<CR>
+nmap <silent> <RIGHT><RIGHT>		:cnext<CR>
 " Double left arrow to step backward through matches
-	nmap <silent> <LEFT><LEFT>		:cprev<CR>
+nmap <silent> <LEFT><LEFT>		:cprev<CR>
 " Triple right arrow to step to next match in next file
-	nmap <silent> <RIGHT><RIGHT><RIGHT>	:cnfile<CR><C-G>
+nmap <silent> <RIGHT><RIGHT><RIGHT>	:cnfile<CR><C-G>
 " Triple left arrow to step to previous match in next file
-	nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
+nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
 
-" Indentation in visual mode
-	xnoremap < <gv
-	xnoremap > >gv
+" Indentation in visual mode keeps the visual selection
+xnoremap < <gv
+xnoremap > >gv
 
 " TeX mappings
-	autocmd FileType tex nmap ;; :w<CR><plug>(vimtex-compile)<plug>(vimtex-view)
-	autocmd FileType tex imap ;; <ESC>:w<CR><plug>(vimtex-compile)<plug>(vimtex-view)a
-	autocmd FileType tex inoremap ;fr
-				\begin{frame}{}<CR><CR><++><CR><CR>\end{frame}<CR><CR><++><Esc>6kf}la
-	autocmd FileType tex inoremap ;fi \begin{fitch}<CR><CR>\end{fitch}<CR><CR><++><Esc>3kA
-	autocmd FileType tex inoremap ;exe \begin{exe}<CR>\ex<Space><CR>\end{exe}<CR><CR><++><Esc>3kA
-	autocmd FileType tex inoremap ;em \emph{}<++><Esc>T{i
-	autocmd FileType tex inoremap ;bf \textbf{}<++><Esc>T{i
-	autocmd FileType tex vnoremap ; <ESC>`<i\{<ESC>`>2la}<ESC>?\\{<CR>a
-	autocmd FileType tex inoremap ;it \textit{}<++><Esc>T{i
-	autocmd FileType tex inoremap ;ci \cite{}<++><Esc>T{i
-	autocmd FileType tex inoremap ;tci \textcite{}<++><Esc>T{i
-	autocmd FileType tex inoremap ;cp \parencite{}<++><Esc>T{i
-	autocmd FileType tex inoremap ;glos {\gll<Space><++><Space>\\<CR><++><Space>\\<CR>\trans{``<++>''}}<Esc>2k2bcw
-	autocmd FileType tex inoremap ;x \begin{xlist}<CR>\ex<Space><CR>\end{xlist}<Esc>kA<Space>
-	autocmd FileType tex inoremap ;ol \begin{enumerate}<CR><CR>\end{enumerate}<CR><CR><++><Esc>3kA\item<Space>
-	autocmd FileType tex inoremap ;ul \begin{itemize}<CR><CR>\end{itemize}<CR><CR><++><Esc>3kA\item<Space>
-	autocmd FileType tex inoremap ;li <CR>\item<Space>
-	autocmd FileType tex inoremap ;ref \ref{}<Space><++><Esc>T{i
-	autocmd FileType tex inoremap ;tab \begin{tabular}<CR><++><CR>\end{tabular}<CR><CR><++><Esc>4kA{}<Esc>i
-	autocmd FileType tex inoremap ;ot \begin{tableau}<CR>\inp{<++>}<Tab>\const{<++>}<Tab><++><CR><++><CR>\end{tableau}<CR><CR><++><Esc>5kA{}<Esc>i
-	autocmd FileType tex inoremap ;can \cand{}<Tab><++><Esc>T{i
-	autocmd FileType tex inoremap ;con \const{}<Tab><++><Esc>T{i
-	autocmd FileType tex inoremap ;v \vio{}<Tab><++><Esc>T{i
-	autocmd FileType tex inoremap ;a \href{}{<++>}<Space><++><Esc>2T{i
-	autocmd FileType tex inoremap ;sc \textsc{}<Space><++><Esc>T{i
-	autocmd FileType tex inoremap ;chap \chapter{}<CR><CR><++><Esc>2kf}i
-	autocmd FileType tex inoremap ;sec \section{}<CR><CR><++><Esc>2kf}i
-	autocmd FileType tex inoremap ;ssec \subsection{}<CR><CR><++><Esc>2kf}i
-	autocmd FileType tex inoremap ;sssec \subsubsection{}<CR><CR><++><Esc>2kf}i
-	autocmd FileType tex inoremap ;st <Esc>F{i*<Esc>f}i
-	autocmd FileType tex inoremap ;beg \begin{DELRN}<CR><++><CR>\end{DELRN}<CR><CR><++><Esc>4k0fR:MultipleCursorsFind<Space>DELRN<CR>c
-	autocmd FileType tex inoremap ;up <Esc>/usepackage<CR>o\usepackage{}<Esc>i
-	autocmd FileType tex nnoremap ;up /usepackage<CR>o\usepackage{}<Esc>i
-	autocmd FileType tex inoremap ;tt \texttt{}<Space><++><Esc>T{i
-	autocmd FileType tex inoremap ;bt {\blindtext}
-	autocmd FileType tex inoremap ;nu $\varnothing$
-	autocmd FileType tex inoremap ;col \begin{columns}[T]<CR>\begin{column}{.5\textwidth}<CR><CR>\end{column}<CR>\begin{column}{.5\textwidth}<CR><++><CR>\end{column}<CR>\end{columns}<Esc>5kA
-	autocmd FileType tex inoremap ;rn (\ref{})<++><Esc>F}i
+autocmd FileType tex nmap ;; :w<CR><plug>(vimtex-compile)<plug>(vimtex-view)
+autocmd FileType tex imap ;; <ESC>:w<CR><plug>(vimtex-compile)<plug>(vimtex-view)a
+autocmd FileType tex inoremap ;fr
+			\begin{frame}{}<CR><CR><++><CR><CR>\end{frame}<CR><CR><++><Esc>6kf}la
+autocmd FileType tex inoremap ;fi \begin{fitch}<CR><CR>\end{fitch}<CR><CR><++><Esc>3kA
+autocmd FileType tex inoremap ;exe \begin{exe}<CR>\ex<Space><CR>\end{exe}<CR><CR><++><Esc>3kA
+autocmd FileType tex inoremap ;em \emph{}<++><Esc>T{i
+autocmd FileType tex inoremap ;bf \textbf{}<++><Esc>T{i
+autocmd FileType tex vnoremap ; <ESC>`<i\{<ESC>`>2la}<ESC>?\\{<CR>a
+autocmd FileType tex inoremap ;it \textit{}<++><Esc>T{i
+autocmd FileType tex inoremap ;ci \cite{}<++><Esc>T{i
+autocmd FileType tex inoremap ;tci \textcite{}<++><Esc>T{i
+autocmd FileType tex inoremap ;cp \parencite{}<++><Esc>T{i
+autocmd FileType tex inoremap ;glos {\gll<Space><++><Space>\\<CR><++><Space>\\<CR>\trans{``<++>''}}<Esc>2k2bcw
+autocmd FileType tex inoremap ;x \begin{xlist}<CR>\ex<Space><CR>\end{xlist}<Esc>kA<Space>
+autocmd FileType tex inoremap ;ol \begin{enumerate}<CR><CR>\end{enumerate}<CR><CR><++><Esc>3kA\item<Space>
+autocmd FileType tex inoremap ;ul \begin{itemize}<CR><CR>\end{itemize}<CR><CR><++><Esc>3kA\item<Space>
+autocmd FileType tex inoremap ;li <CR>\item<Space>
+autocmd FileType tex inoremap ;ref \ref{}<Space><++><Esc>T{i
+autocmd FileType tex inoremap ;tab \begin{tabular}<CR><++><CR>\end{tabular}<CR><CR><++><Esc>4kA{}<Esc>i
+autocmd FileType tex inoremap ;ot \begin{tableau}<CR>\inp{<++>}<Tab>\const{<++>}<Tab><++><CR><++><CR>\end{tableau}<CR><CR><++><Esc>5kA{}<Esc>i
+autocmd FileType tex inoremap ;can \cand{}<Tab><++><Esc>T{i
+autocmd FileType tex inoremap ;con \const{}<Tab><++><Esc>T{i
+autocmd FileType tex inoremap ;v \vio{}<Tab><++><Esc>T{i
+autocmd FileType tex inoremap ;a \href{}{<++>}<Space><++><Esc>2T{i
+autocmd FileType tex inoremap ;sc \textsc{}<Space><++><Esc>T{i
+autocmd FileType tex inoremap ;chap \chapter{}<CR><CR><++><Esc>2kf}i
+autocmd FileType tex inoremap ;sec \section{}<CR><CR><++><Esc>2kf}i
+autocmd FileType tex inoremap ;ssec \subsection{}<CR><CR><++><Esc>2kf}i
+autocmd FileType tex inoremap ;sssec \subsubsection{}<CR><CR><++><Esc>2kf}i
+autocmd FileType tex inoremap ;st <Esc>F{i*<Esc>f}i
+autocmd FileType tex inoremap ;beg \begin{DELRN}<CR><++><CR>\end{DELRN}<CR><CR><++><Esc>4k0fR:MultipleCursorsFind<Space>DELRN<CR>c
+autocmd FileType tex inoremap ;up <Esc>/usepackage<CR>o\usepackage{}<Esc>i
+autocmd FileType tex nnoremap ;up /usepackage<CR>o\usepackage{}<Esc>i
+autocmd FileType tex inoremap ;tt \texttt{}<Space><++><Esc>T{i
+autocmd FileType tex inoremap ;bt {\blindtext}
+autocmd FileType tex inoremap ;nu $\varnothing$
+autocmd FileType tex inoremap ;col \begin{columns}[T]<CR>\begin{column}{.5\textwidth}<CR><CR>\end{column}<CR>\begin{column}{.5\textwidth}<CR><++><CR>\end{column}<CR>\end{columns}<Esc>5kA
+autocmd FileType tex inoremap ;rn (\ref{})<++><Esc>F}i
 
 """LATEX Logical symbols
-	autocmd FileType tex inoremap ;m $$<Space><++><Esc>2T$i
-	autocmd FileType tex inoremap ;M $$$$<CR><CR><++><Esc>2k$hi
-	autocmd FileType tex inoremap ;neg {\neg}
-	autocmd FileType tex inoremap ;V {\vee}
-	autocmd FileType tex inoremap ;or {\vee}
-	autocmd FileType tex inoremap ;L {\wedge}
-	autocmd FileType tex inoremap ;and {\wedge}
-	autocmd FileType tex inoremap ;ra {\rightarrow}
-	autocmd FileType tex inoremap ;la {\leftarrow}
-	autocmd FileType tex inoremap ;lra {\leftrightarrow}
-	autocmd FileType tex inoremap ;fa {\forall}
-	autocmd FileType tex inoremap ;ex {\exists}
-	autocmd FileType tex inoremap ;dia	{\Diamond}
-	autocmd FileType tex inoremap ;box	{\Box}
-	autocmd FileType tex inoremap ;gt	{\textgreater}
-	autocmd FileType tex inoremap ;lt	{\textless}
+autocmd FileType tex inoremap ;m $$<Space><++><Esc>2T$i
+autocmd FileType tex inoremap ;M $$$$<CR><CR><++><Esc>2k$hi
+autocmd FileType tex inoremap ;neg {\neg}
+autocmd FileType tex inoremap ;V {\vee}
+autocmd FileType tex inoremap ;or {\vee}
+autocmd FileType tex inoremap ;L {\wedge}
+autocmd FileType tex inoremap ;and {\wedge}
+autocmd FileType tex inoremap ;ra {\rightarrow}
+autocmd FileType tex inoremap ;la {\leftarrow}
+autocmd FileType tex inoremap ;lra {\leftrightarrow}
+autocmd FileType tex inoremap ;fa {\forall}
+autocmd FileType tex inoremap ;ex {\exists}
+autocmd FileType tex inoremap ;dia	{\Diamond}
+autocmd FileType tex inoremap ;box	{\Box}
+autocmd FileType tex inoremap ;gt	{\textgreater}
+autocmd FileType tex inoremap ;lt	{\textless}
 
-	""".bib
-	autocmd FileType bib inoremap ;a @article{<Enter><tab>author<Space>=<Space>"<++>",<Enter><tab>year<Space>=<Space>"<++>",<Enter><tab>title<Space>=<Space>"<++>",<Enter><tab>journal<Space>=<Space>"<++>",<Enter><tab>volume<Space>=<Space>"<++>",<Enter><tab>pages<Space>=<Space>"<++>",<Enter><tab>}<Enter><++><Esc>8kA,<Esc>i
-	autocmd FileType bib inoremap ;b @book{<Enter><tab>author<Space>=<Space>"<++>",<Enter><tab>year<Space>=<Space>"<++>",<Enter><tab>title<Space>=<Space>"<++>",<Enter><tab>publisher<Space>=<Space>"<++>",<Enter><tab>}<Enter><++><Esc>6kA,<Esc>i
-	autocmd FileType bib inoremap ;c @incollection{<Enter><tab>author<Space>=<Space>"<++>",<Enter><tab>title<Space>=<Space>"<++>",<Enter><tab>booktitle<Space>=<Space>"<++>",<Enter><tab>editor<Space>=<Space>"<++>",<Enter><tab>year<Space>=<Space>"<++>",<Enter><tab>publisher<Space>=<Space>"<++>",<Enter><tab>}<Enter><++><Esc>8kA,<Esc>i
+" Convert special characters into compatible form
+" Accented characters
+autocmd FileType tex inoremap á \'{a}
+autocmd FileType tex inoremap à \`{a}
+autocmd FileType tex inoremap â \^{a}
+autocmd FileType tex inoremap ä \"{a}
+autocmd FileType tex inoremap ã \~{a}
+autocmd FileType tex inoremap é \'{e}
+autocmd FileType tex inoremap è \`{e}
+autocmd FileType tex inoremap ê \^{e}
+autocmd FileType tex inoremap ë \"{e}
+autocmd FileType tex inoremap í \'{i}
+autocmd FileType tex inoremap ì \`{i}
+autocmd FileType tex inoremap î \^{\i}
+autocmd FileType tex inoremap ï \"{\i}
+autocmd FileType tex inoremap ó \'{o}
+autocmd FileType tex inoremap ò \`{o}
+autocmd FileType tex inoremap ô \^{o}
+autocmd FileType tex inoremap ö \"{o}
+autocmd FileType tex inoremap õ \~{o}
+autocmd FileType tex inoremap ú \'{u}
+autocmd FileType tex inoremap ù \`{u}
+autocmd FileType tex inoremap û \^{u}
+autocmd FileType tex inoremap ü \"{u}
+autocmd FileType tex inoremap ñ \~{n}
+" Other special characters
+autocmd FileType tex inoremap ç \c{c}
+
+""".bib
+autocmd FileType bib inoremap ;a @article{<Enter><tab>author<Space>=<Space>"<++>",<Enter><tab>year<Space>=<Space>"<++>",<Enter><tab>title<Space>=<Space>"<++>",<Enter><tab>journal<Space>=<Space>"<++>",<Enter><tab>volume<Space>=<Space>"<++>",<Enter><tab>pages<Space>=<Space>"<++>",<Enter><tab>}<Enter><++><Esc>8kA,<Esc>i
+autocmd FileType bib inoremap ;b @book{<Enter><tab>author<Space>=<Space>"<++>",<Enter><tab>year<Space>=<Space>"<++>",<Enter><tab>title<Space>=<Space>"<++>",<Enter><tab>publisher<Space>=<Space>"<++>",<Enter><tab>}<Enter><++><Esc>6kA,<Esc>i
+autocmd FileType bib inoremap ;c @incollection{<Enter><tab>author<Space>=<Space>"<++>",<Enter><tab>title<Space>=<Space>"<++>",<Enter><tab>booktitle<Space>=<Space>"<++>",<Enter><tab>editor<Space>=<Space>"<++>",<Enter><tab>year<Space>=<Space>"<++>",<Enter><tab>publisher<Space>=<Space>"<++>",<Enter><tab>}<Enter><++><Esc>8kA,<Esc>i
 
 "MARKDOWN
-	autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
-	autocmd Filetype markdown,rmd inoremap ;n ---<Enter><Enter>
-	autocmd Filetype markdown,rmd inoremap ;b ****<++><Esc>F*hi
-	autocmd Filetype markdown,rmd inoremap ;s ~~~~<++><Esc>F~hi
-	autocmd Filetype markdown,rmd inoremap ;e **<++><Esc>F*i
-	autocmd Filetype markdown,rmd inoremap ;h ====<Space><++><Esc>F=hi
-	autocmd Filetype markdown,rmd inoremap ;i ![](<++>)<++><Esc>F[a
-	autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
-	autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ;l --------<Enter>
-	autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>--pdf-engine=xelatex<space>-o<space><C-r>%.pdf<Enter><Enter>
-	autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
-	autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
-	autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
+autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
+autocmd Filetype markdown,rmd inoremap ;n ---<Enter><Enter>
+autocmd Filetype markdown,rmd inoremap ;b ****<++><Esc>F*hi
+autocmd Filetype markdown,rmd inoremap ;s ~~~~<++><Esc>F~hi
+autocmd Filetype markdown,rmd inoremap ;e **<++><Esc>F*i
+autocmd Filetype markdown,rmd inoremap ;h ====<Space><++><Esc>F=hi
+autocmd Filetype markdown,rmd inoremap ;i ![](<++>)<++><Esc>F[a
+autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
+autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown,rmd inoremap ;l --------<Enter>
+autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>--pdf-engine=xelatex<space>-o<space><C-r>%.pdf<Enter><Enter>
+autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
+autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
 
 """.xml
-	"autocmd FileType xml inoremap ;e <item><Enter><title><++></title><Enter><pubDate><Esc>:put<Space>=strftime('%c')<Enter>A</pubDate><Enter><link><++></link><Enter><description><++></description><Enter></item>
-	autocmd FileType xml inoremap ;e <item><Enter><title><++></title><Enter><guid<space>isPermaLink="false"><++></guid><Enter><pubDate><Esc>:put<Space>=strftime('%a, %d %b %Y %H:%M:%S %z')<Enter>kJA</pubDate><Enter><link><++></link><Enter><description><![CDATA[<++>]]></description><Enter></item><Esc>?<title><enter>cit
+"autocmd FileType xml inoremap ;e <item><Enter><title><++></title><Enter><pubDate><Esc>:put<Space>=strftime('%c')<Enter>A</pubDate><Enter><link><++></link><Enter><description><++></description><Enter></item>
+autocmd FileType xml inoremap ;e <item><Enter><title><++></title><Enter><guid<space>isPermaLink="false"><++></guid><Enter><pubDate><Esc>:put<Space>=strftime('%a, %d %b %Y %H:%M:%S %z')<Enter>kJA</pubDate><Enter><link><++></link><Enter><description><![CDATA[<++>]]></description><Enter></item><Esc>?<title><enter>cit
 autocmd FileType xml inoremap ;a <a href="<++>"><++></a><++><Esc>F"ci"
 
 
@@ -684,10 +717,10 @@ autocmd FileType xml inoremap ;a <a href="<++>"><++></a><++><Esc>F"ci"
 
 " Tabular mappings
 if exists(":Tabularize")
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+	nmap <Leader>a= :Tabularize /=<CR>
+	vmap <Leader>a= :Tabularize /=<CR>
+	nmap <Leader>a: :Tabularize /:\zs<CR>
+	vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
 " Enable insert mode alignment when pressing <Bar>
@@ -752,4 +785,4 @@ iab <expr> ^^ getline(search('\S\_.*\n\_.*\%#','b'))
 " autocmd FileType json inoremap nd1 {<CR><Tab>"name": "",<CR>"description": "<++>",<CR>"website": "<++>",<CR>"keywords": ["<++>"]<CR>}<CR><CR><++><ESC>6kf,hi
 " " name, description (list by default), website (list by default)
 " autocmd FileType json inoremap ndw {<CR><Tab>"name": "",<CR>"description": ["<++>"],<CR>"website": ["<++>"]<CR>}<CR><CR><++><ESC>5kf,hi
-	       "===========[ End of Mappings and Abbreviations ]=============
+"===========[ End of Mappings and Abbreviations ]=============
