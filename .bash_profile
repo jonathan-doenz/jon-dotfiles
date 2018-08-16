@@ -13,6 +13,18 @@ unset file;
 # # see: https://www.iterm2.com/documentation-shell-integration.html
 # source ~/.iterm2_shell_integration.bash
 
+# Bash completion needs the following line
+# from http://davidalger.com/development/bash-completion-on-os-x-with-brew/
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
+
+# Enable pathname expansion
+shopt -s extglob;
+
+# Enable aliases expansion
+shopt -s expand_aliases
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
