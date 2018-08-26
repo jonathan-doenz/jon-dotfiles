@@ -108,6 +108,16 @@ Plugin 'vimwiki/vimwiki'
 " Display run code in new pane
 Plugin 'tpope/vim-dispatch'
 
+" Execute files or visual selection with chosen mapping
+Plugin 'fboender/bexec'
+
+" " Ease to run python code interactively
+" Plugin 'ivanov/vim-ipython'
+
+" Ease to run python code interactively, more minimal method
+Plugin 'benmills/vimux'
+Plugin 'julienr/vim-cellmode'
+
 " Homogenize shortcuts between vim and tmux splits
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -245,6 +255,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 "   execfile(activate_this, dict(__file__=activate_this))
 " EOF
 
+" vim-cellmode plugin settings
+let g:cellmode_default_mappings='0'
+let g:cellmode_use_tmux=1
 " Makes things look pretty in python files
 let python_highlight_all=1
 syntax on
@@ -519,11 +532,17 @@ nnoremap TT gT
 nnoremap <space> za
 
 " Quick indent whole document
-inoremap ;ia <ESC>mpgg=G`pla
-nnoremap ;ia mpgg=G`pl
+inoremap ;ia <ESC>m`gg=G``a
+nnoremap ;ia m`gg=G``
 
 " Refresh file
 nnoremap ;re :edit<Space><C-R>%<CR>
+
+" Add empty line above
+nnoremap oo m`o<ESC>d$``
+
+" Add empty line below
+nnoremap OO m`O<ESC>d$``
 
 " Open .vimrc in new tab
 nnoremap vv :tabedit<Space>~/.vimrc<CR> 
@@ -536,8 +555,12 @@ autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%
 " Nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
 
+" " Run any file with bexec plugin
+" nmap <silent> <unique> <F5> :Bexec()<CR>
+" vmap <silent> <unique> <F5> :BexecVisual()<CR>
+
 " Run python file
-autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <buffer> <F6> :exec '!clear; python' shellescape(@%, 1)<cr>
 " " None of the following work:
 " autocmd FileType python nnoremap <buffer> <F6> :exec '!bash python test.py'<cr>
 " autocmd FileType python nnoremap <buffer> <F6> :exec '!clear; tmux python' shellescape(@%, 1)<cr>
@@ -547,10 +570,20 @@ autocmd FileType python nnoremap <buffer> <F5> :exec '!clear; python' shellescap
 " autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommand("clear; python " . bufname("%"))<cr>
 " autocmd FileType python nnoremap <buffer> <F6> :call VimuxRunCommandInDir("clear; python " shellescape(@%, 1))<cr>
 " autocmd FileType python nnoremap <buffer> <F6> :w<CR>:!/usr/bin/env node % <CR>
-autocmd FileType python inoremap <buffer> <F5> <ESC>:exec '!clear; python' shellescape(@%, 1)<cr>
+autocmd FileType python inoremap <buffer> <F6> <ESC>:exec '!clear; python' shellescape(@%, 1)<cr>
 
 " Run visual selection with python
-xnoremap <F5> <esc>:'<,'>:!python<CR>
+xnoremap <F6> <esc>:'<,'>:!python<CR>
+
+" vim-cellmode mappings
+noremap <silent> <C-m>k :call RunTmuxPythonAllCellsAbove()<CR>
+noremap <silent> <C-m>j :call RunTmuxPythonCell(0)<CR>
+noremap <silent> <C-m><C-m> :call RunTmuxPythonCell(1)<CR>
+noremap <silent> <C-m>r m`Go##<CR>##<ESC>:call RunTmuxPythonAllCellsAbove()<CR><CR>dk``
+vnoremap <silent> <C-m> :call RunTmuxPythonChunk()<CR>
+
+" Run python script and show result in horizontal split
+" Run :Dispatch should work
 
 " Sources .vimrc from within a file
 nnoremap ;sv :w<CR>:source ~/.vimrc<CR>
@@ -741,16 +774,26 @@ vmap <LEFT>  <Plug>SchleppLeft
 vmap <RIGHT> <Plug>SchleppRight
 
 " Duplicate selection on the left
-vmap D <Plug>SchleppDupLeft
+vmap Dk <Plug>SchleppDupUp
+vmap Dj <Plug>SchleppDupDown
+vmap Dh <Plug>SchleppDupLeft
+vmap Dl <Plug>SchleppDupRight
+" " The following mappings are suggested by Schlepp plugin creator raise an
+" error because of the <unique> option
+" vmap <unique> Dk <Plug>SchleppDupUp
+" vmap <unique> Dj <Plug>SchleppDupDown
+" vmap <unique> Dh <Plug>SchleppDupLeft
+" vmap <unique> Dl <Plug>SchleppDupRight
 " Reindent code as it moves
 vmap i <Plug>SchleppToggleReindent
 
 " Quick print variable selected in visual mode
-autocmd FileType python vnoremap ;pr yoprint("<ESC>pA:" + <ESC>pA)<ESC>F:
-autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA:" + <ESC>pA);<ESC>F:
+autocmd FileType python nnoremap ;pr yiwoprint("<ESC>pA: " + <ESC>pA)<ESC>F:
+autocmd FileType python vnoremap ;pr yoprint("<ESC>pA: " + <ESC>pA)<ESC>F:
+autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA: " + <ESC>pA);<ESC>F:
 
 " Dispatch plugin mappings
-nnoremap <F6> :Dispatch<CR>
+nnoremap <F5> :Dispatch<CR>
 
 " Reverse order of class-attributes: class.attr -> attr.class
 nnoremap ;rev vf.dea.<ESC>px
