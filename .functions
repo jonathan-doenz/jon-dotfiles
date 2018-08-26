@@ -36,6 +36,51 @@ function TeXav() {
 	vim "$_";
 }
 
+# Countdown the number of seconds passed as argument
+countdown(){
+	# Convert input in seconds
+	if [ "$2" == "" ] || [ "$2" == "s" ] || [ "$2" == "sec" ] || [ "$2" == "second" ] || [ "$2" == "seconds" ]; then
+		let seconds=$1
+	elif [ "$2" == "m" ] || [ "$2" == "min" ] || [ "$2" == "minute" ] || [ "$2" == "minutes" ]; then
+		let seconds=$(($1*60))
+	elif [ "$2" == "h" ] || [ "$2" == "hr" ] || [ "$2" == "hour" ] || [ "$2" == "hours" ]; then
+		let seconds=$(($1*3600))
+	fi
+	# Countdown part
+	echo -e "Countdown started at:\t\t$(date)"
+	date1=$((`date +%s` + $seconds));
+	while [ "$date1" -ge `date +%s` ]; do 
+		## Is this more than 24h away?
+		days=$(($(($(( $date1 - $(date +%s))) * 1 ))/86400))
+		echo -ne "$days day(s) and $(date -ju -f %s $(($date1 - `date +%s`)) +%H:%M:%S)\r"
+		sleep 0.1
+	done
+	echo -e "Countdown terminated at:\t$(date)";
+	# If the sound file Glass.aiff exists, play the sound to notify countdown termination
+	if [ /System/Library/Sounds/Glass.aiff ]; then
+		afplay /System/Library/Sounds/Glass.aiff
+	fi
+}
+medic(){
+	countdown 20 min
+}
+# Stopwatch counting the number of seconds passed since execution. Terminate it with <C-c>
+stopwatch(){
+	echo -e "Stopwatch started at:\t$(date)"
+	date1=`date +%s`; 
+	while true; do 
+		days=$(( $(($(date +%s) - date1)) / 86400 ))
+		echo -ne "$days day(s) and $(date -ju -f %s $((`date +%s` - $date1)) +%H:%M:%S)\r"
+		sleep 0.1
+	done
+	echo -e "Stopwatch terminated at:\t$(date)"
+}
+
+# Scale recipe n times
+scale_recipe(){
+	~/Dropbox/python_stuff/scale_numbers.py $1 $2
+	printf "%s has been successfully scaled %.1f times!\nYou can have a look to the new file in the same directory as the original" $1 $2
+}
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
@@ -47,8 +92,8 @@ function targz() {
 	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
 
 	size=$(
-		stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
-		stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
+	stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
+	stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
 	);
 
 	local cmd="";
@@ -68,8 +113,8 @@ function targz() {
 	[ -f "${tmpFile}" ] && rm "${tmpFile}";
 
 	zippedSize=$(
-		stat -f"%z" "${tmpFile}.gz" 2> /dev/null; # macOS `stat`
-		stat -c"%s" "${tmpFile}.gz" 2> /dev/null; # GNU `stat`
+	stat -f"%z" "${tmpFile}.gz" 2> /dev/null; # macOS `stat`
+	stat -c"%s" "${tmpFile}.gz" 2> /dev/null; # GNU `stat`
 	);
 
 	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
@@ -176,20 +221,20 @@ function getcertnames() {
 		local certText=$(echo "${tmp}" \
 			| openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
 			no_serial, no_sigdump, no_signame, no_validity, no_version");
-		echo "Common Name:";
-		echo ""; # newline
-		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
-		echo ""; # newline
-		echo "Subject Alternative Name(s):";
-		echo ""; # newline
-		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
-		return 0;
-	else
-		echo "ERROR: Certificate not found.";
-		return 1;
-	fi;
-}
+					echo "Common Name:";
+					echo ""; # newline
+					echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
+					echo ""; # newline
+					echo "Subject Alternative Name(s):";
+					echo ""; # newline
+					echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+						| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
+											return 0;
+										else
+											echo "ERROR: Certificate not found.";
+											return 1;
+										fi;
+									}
 
 # `s` with no arguments opens the current directory in Sublime Text, otherwise
 # opens the given location
