@@ -19,6 +19,10 @@ snippet begin \begin{} ... \end{} block
 	\\begin{${1:env}}
 		${0:${VISUAL}}
 	\\end{$1}
+snippet env \begin{} ... \end{} block
+	\\begin{${1:env}}
+		${0:${VISUAL}}
+	\\end{$1}
 # Tabular
 snippet tab tabular (or arbitrary) environment
 	\\begin{${1:tabular}}{${2:c}}
@@ -69,6 +73,11 @@ snippet eqnarray eqnarray environment
 	\\begin{eqnarray}
 		${0:${VISUAL}}
 	\\end{eqnarray}
+# IEEE Equation array
+snippet IEEEeqnarray eqnarray environment
+	\\begin{IEEEeqnarray}{${1:rCl}}
+		${0:${VISUAL}}
+	\\end{IEEEeqnarray}
 # Label
 snippet lab \label
 	\\label{${1:eq:}${2:fig:}${3:tab:}${0}}
@@ -305,6 +314,8 @@ snippet sum \sum^{}_{}
 	\\sum^{${1:n}}_{${2:i=1}} ${0}
 snippet lim \lim_{}
 	\\lim_{${1:n \\to \\infty}} ${0}
+snippet int \int_{}^{}
+	\\int_{${1:-\\infty}}^{${2:+\\infty}} ${3:${VISUAL:v}} d${0:x}
 snippet frame frame environment
 	\\begin{frame}[${1:t}]{${2:title}}
 		${0:${VISUAL}}
@@ -377,3 +388,72 @@ snippet hrefc
 # enquote from package csquotes
 snippet enq enquote
 	\\enquote{${1:${VISUAL:text}}} ${0}
+# The following snippets need the definitions of the called functions
+# I have this in /Dropbox/TeX_stuff/templates/mathCommands.tex file
+snippet vec \v{}
+	\\v{${1:${VISUAL:v}}}${0}
+snippet uv unit vector \uv{}
+	\\uv{${1:${VISUAL:v}}}${0}
+# Math operators
+snippet abs absolute value operator \abs{}
+	\\abs{${1:${VISUAL:v}}} ${0}
+snippet norm norm operator \norm{}
+	\\norm{${1:${VISUAL:v}}} ${0}
+# \renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+snippet =^ equal sign with above notation
+	\\={${1:${VISUAL:v}}}${0}
+snippet grad grad operator \grad{}
+	\\grad{${1:${VISUAL:v}}}${0}
+# \renewcommand{\div}[1]{\gv{\nabla} \cdot #1}
+snippet div divergence operator \div{}
+	\\div{${1:${VISUAL:v}}}${0}
+# \newcommand{\curl}[1]{\gv{\nabla} \times #1}
+snippet curl curl operator \curl{}
+	\\curl{${1:${VISUAL:v}}}${0}
+# \newcommand{\avg}[1]{\left< #1 \right>} % for average
+snippet avg average operator \avg{}
+	\\avg{${1:${VISUAL:v}}}${0}
+# \renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+snippet d derivative \d{}{}
+	\\d{${1:${VISUAL:function}}}{${2:variable}}${0}
+# \newcommand{\dd}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+snippet dd double derivative \dd{}{}
+	\\dd{${1:${VISUAL:function}}}{${2:variable}}${0}
+# \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} 
+snippet pd partial derivative \pd{}{}
+	\\pd{${1:${VISUAL:function}}}{${2:variable}}${0}
+# \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}} 
+snippet pdd partial double derivative \pdd{}{}
+	\\pdd{${1:${VISUAL:function}}}{${2:variable}}${0}
+# \newcommand{\pdc}[3]{\left( \frac{\partial #1}{\partial #2} \right)_{#3}} % for thermodynamic partial derivatives
+snippet pdc partial derivative with constants \pdc{}{}{}
+	\\pdc{${1:${VISUAL:function}}}{${2:variable}}{${3:constant vars}}${0}
+# \newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+snippet ket ket operator \ket{}
+	\\ket{${1:${VISUAL:v}}}${0}
+# \newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+snippet bra bra operator \bra{}
+	\\bra{${1:${VISUAL:v}}}${0}
+# \newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|\left. #2 \vphantom{#1} \right>} % for Dirac brackets
+snippet braket braket operator \braket{}{}
+	\\braket{${1:${VISUAL:bra}}}{${2:ket}}${0} 
+# \newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right| % for Dirac matrix elements
+snippet matrixel matrixel operator \matrixel{}{}{}
+	\\matrixel{${1:${VISUAL:v}}}{${2:2nd argument}}{${3:3rd argument}}${0}
+# Some environments
+snippet lem lem (or arbitrary) environment with optional argument
+	\\begin[${1:thm}]{${2:lem}}
+		${0:${VISUAL}}
+	\\end{$2}
+snippet dfn dfn (or arbitrary) environment
+	\\begin{${1:dfn}}
+		${0:${VISUAL}}
+	\\end{$1}
+snippet prop prop (or arbitrary) environment
+	\\begin{${1:prop}}
+		${0:${VISUAL}}
+	\\end{$1}
+snippet rmk rmk (or arbitrary) environment
+	\\begin{${1:rmk}}
+		${0:${VISUAL}}
+	\\end{$1}
