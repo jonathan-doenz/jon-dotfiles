@@ -31,6 +31,7 @@ alias cdmp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/projects"
 alias cdvb="cd ~/.vim/bundle"
 alias cdcui="cd ~/Dropbox/cuisine"
 alias cdpy="cd ~/Dropbox/python_stuff"
+alias cdana="cd ~/Dropbox/courses/Physics_courses_material/Analyse\ I\ et\ II/"
 
 # Github shortcuts
 alias g="git"

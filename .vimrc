@@ -623,6 +623,7 @@ xnoremap > >gv
 " TeX mappings
 autocmd FileType tex nmap ;; :w<CR><plug>(vimtex-compile)<plug>(vimtex-view)
 autocmd FileType tex imap ;; <ESC>:w<CR><plug>(vimtex-compile)<plug>(vimtex-view)a
+" autocmd FileType tex inoremap $ $  $ <++><ESC>F$hi
 autocmd FileType tex inoremap ;fr
 			\begin{frame}{}<CR><CR><++><CR><CR>\end{frame}<CR><CR><++><Esc>6kf}la
 autocmd FileType tex inoremap ;fi \begin{fitch}<CR><CR>\end{fitch}<CR><CR><++><Esc>3kA
@@ -796,7 +797,7 @@ autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA: " + <ESC>pA);<
 nnoremap <F5> :Dispatch<CR>
 
 " Reverse order of class-attributes: class.attr -> attr.class
-nnoremap ;rev vf.dea.<ESC>px
+" nnoremap ;rev vf.dea.<ESC>px
 
 " " Refresh other tmux pane with the code run from present pane (doesn't work
 " " for now
