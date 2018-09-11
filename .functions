@@ -32,8 +32,15 @@ function gitAllcpush() {
 # Create a new TeX article file and open it with vim
 function TeXav() {
 	cp ~/Dropbox/TeX_stuff/templates/article_template.tex .; 
-	mv article_template.tex "$@"; 
-	vim "$_";
+	# Replace the tilde with the name of the home directory of the present 
+	# machine
+	sed s-{~-{$HOME- ./article_template.tex > "$1"; 
+	# Remove the copied template file if we are not in the source directory
+	# the file otherwise the template file would be permanently wiped out
+	if ! [ "$(pwd)" == $HOME"/Dropbox/TeX_stuff/templates" ]; then
+		rm ./article_template.tex; 
+	fi
+	vim "$1";
 }
 
 # Countdown the number of seconds passed as argument
