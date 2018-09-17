@@ -27,11 +27,12 @@ alias cdt="cd ~/Dropbox/TeX_stuff"
 alias cdtt="cd ~/Dropbox/TeX_stuff/templates"
 alias cda="cd ~/Dropbox/courses/EPFL-IC_1/BA3/Algorithms/2017-2018/Drive"
 alias cdm="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning"
-alias cdmp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/projects"
+alias cdmp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/project1"
 alias cdvb="cd ~/.vim/bundle"
 alias cdcui="cd ~/Dropbox/cuisine"
 alias cdpy="cd ~/Dropbox/python_stuff"
 alias cdana="cd ~/Dropbox/courses/Physics_courses_material/Analyse\ I\ et\ II/"
+alias cdep="cd ~/Dropbox/EPFL_2018-2019/"
 
 # Github shortcuts
 alias g="git"
