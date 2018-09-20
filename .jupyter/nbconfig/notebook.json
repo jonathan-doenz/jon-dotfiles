@@ -8,7 +8,9 @@
     "select_keymap/main": true,
     "varInspector/main": true,
     "collapsible_headings/main": true,
-    "scratchpad/main": true
+    "scratchpad/main": true,
+    "nbextensions_configurator/config_menu/main": true,
+    "contrib_nbextensions_help_item/main": true
   },
   "comment_uncomment_indent": true,
   "Cell": {

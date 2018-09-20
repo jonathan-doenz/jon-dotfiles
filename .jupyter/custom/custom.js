@@ -12,6 +12,11 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
 				'%matplotlib inline', 
 				'import seaborn as sns',],
 			},
+			{
+				'name' : 'Automatically reload modules',
+				'snippet' : ['%load_ext autoreload',
+					'%autoreload 2',],
+			},
 			// {
 			// 	'name' : 'Another menu item',
 			// 	'snippet' : ['another_new_command(2.78)',],
