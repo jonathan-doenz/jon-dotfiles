@@ -6,3 +6,5 @@
  defaults write com.apple.dock autohide -bool true
  # Set the icon size of Dock items to 36 pixels
  defaults write com.apple.dock tilesize -int 36
+ # Allow key repeat in browser for example
+ defaults write -g ApplePressAndHoldEnabled -bool false
