@@ -31,3 +31,9 @@
  sudo nvram SystemAudioVolume=" "
  # Enable key repeat everywhere
  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+ # For visual studio code
+ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+ # For visual studio code insider
+ defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
+ # If necessary, reset global default
+ defaults delete -g ApplePressAndHoldEnabled
