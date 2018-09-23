@@ -84,6 +84,11 @@ Plugin 'tpope/vim-commentary'
 " Automatic and smart addition of closing braces, brackets, etc...
 Plugin 'Raimondi/delimitMate'
 
+" Fast motion in document
+" Plugin 'easymotion/vim-easymotion'
+" vim-sneak remaps 's' in normal mode
+Plugin 'justinmk/vim-sneak'
+
 " Use vim as TeX editor
 Plugin 'lervag/vimtex'
 
@@ -120,6 +125,10 @@ Plugin 'julienr/vim-cellmode'
 
 " Homogenize shortcuts between vim and tmux splits
 Plugin 'christoomey/vim-tmux-navigator'
+
+" Handle tags to have an IDE-like `go to` functionality
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 " Allow to run scripts from vim to other tmux panes
 " Plugin 'sjl/tslime.vim'
@@ -497,6 +506,9 @@ endfunction
 autocmd FileType python let b:dispatch = 'python3 %'
 autocmd FileType java let b:dispatch = 'javac %'
 
+" sneak plugin settings
+let g:sneak#label = 1
+
 " Show the keys entered in normal mode
 set showcmd
 
@@ -795,6 +807,11 @@ autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA: " + <ESC>pA);<
 
 " Dispatch plugin mappings
 nnoremap <F5> :Dispatch<CR>
+
+" easymotion plugin mappings
+" nmap s <Plug>(easymotion-overwin-f2)
+" Turn on case insensitive feature
+" let g:EasyMotion_smartcase = 1
 
 " Reverse order of class-attributes: class.attr -> attr.class
 " nnoremap ;rev vf.dea.<ESC>px
