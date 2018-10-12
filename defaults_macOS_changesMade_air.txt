@@ -12,3 +12,5 @@
  defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
  # For visual studio code insider
  defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
+ # Decrease size of dock so that it does not show up when approaching the cursor to the bottom 2 cm of the screen
+ defaults write com.apple.dock tilesize -int 36
