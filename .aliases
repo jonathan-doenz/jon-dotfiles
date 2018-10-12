@@ -32,7 +32,7 @@ alias cdana="cd ~/Dropbox/courses/Physics_courses_material/Analyse\ I\ et\ II/"
 alias cdep="cd ~/Dropbox/EPFL_2018-2019/"
 # Courses
 alias cds="cd ~/Dropbox/EPFL_2018-2019/Semester_1"
-alias cdm="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning"
+alias cdm="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/ML_course"
 alias cdmp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/project1"
 alias cdnlp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/NLP"
 alias cda="cd ~/Dropbox/EPFL_2018-2019/Semester_1/algorithms"
@@ -49,6 +49,7 @@ alias gita="git add"
 alias gitc="git commit -m"
 alias gitb="git branch"
 alias gitd="git diff"
+alias gitu="git reset HEAD --"
 
 # Vim shortcuts
 alias lvim="vim -c \"normal '0\"" # open last modified file in vim
