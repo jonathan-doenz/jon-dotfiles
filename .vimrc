@@ -550,6 +550,9 @@ nnoremap ;ia m`gg=G``
 " Refresh file
 nnoremap ;re :edit<Space><C-R>%<CR>
 
+" Display file path
+nnoremap ;pat :echo expand('%:p')<CR>
+
 " Add empty line above
 nnoremap oo m`o<ESC>d$``
 
@@ -627,6 +630,10 @@ nmap <silent> <LEFT><LEFT>		:cprev<CR>
 nmap <silent> <RIGHT><RIGHT><RIGHT>	:cnfile<CR><C-G>
 " Triple left arrow to step to previous match in next file
 nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
+
+" Scrolling with <C-arrow>
+nnoremap <C-DOWN> <C-E>
+nnoremap <C-UP> <C-Y>
 
 " Indentation in visual mode keeps the visual selection
 xnoremap < <gv
