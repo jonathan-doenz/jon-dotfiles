@@ -25,7 +25,11 @@
         "y,y": "jupyter-notebook:copy-cell",
         "shift-m": "jupyter-notebook:scroll-cell-center",
         "alt-v": "varInspector:toggle-variable-inspector",
-        "m": "jupyter-notebook:merge-cells"
+        "m": "jupyter-notebook:merge-cells",
+        "m,m": "jupyter-notebook:merge-selected-cells",
+        "cmd-alt-b": "jupyter-notebook:run-all-cells-above",
+        "cmd-alt-e": "jupyter-notebook:run-all-cells-below",
+        "cmd-alt-r": "jupyter-notebook:run-all-cells"
       },
       "unbind": [
         "y",

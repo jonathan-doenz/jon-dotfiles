@@ -17,6 +17,16 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
 				'snippet' : ['%load_ext autoreload',
 					'%autoreload 2',],
 			},
+			{
+				'name' : 'Import my modules',
+				'snippet' : ['import sys',
+					sys.path.append('/Users/jonathandoenz/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/personal_modules')',
+					'',
+					'from costs import error_vec, compute_loss',
+					'from gradient_descent import MAE_subgradient, compute_gradient, gradient_descent',
+					'from stochastic_gradient_descent import compute_stoch_gradient, stochastic_gradient_descent',
+					'from grid_search import get_best_parameters, generate_w, grid_search',],
+			},
 			// {
 			// 	'name' : 'Another menu item',
 			// 	'snippet' : ['another_new_command(2.78)',],
