@@ -321,6 +321,14 @@ snippet test
 	test("${1:description}") {
 		${0}
 	}
+#Test
+snippet Test
+	@Test def \`${1:description}\`: Unit = {
+		new ${2:New TestTrees} {
+			assertEquals(${3:thisis}, ${4:equaltothat})
+		}
+	}
+	${0}
 #suite
 snippet suite
 	class ${0:name} extends Suite {
