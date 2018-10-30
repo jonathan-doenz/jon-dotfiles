@@ -24,6 +24,17 @@ snippet docs
 	Description: ${0}
 	"""
 
+# Write header and docstring
+snippet initpy
+	#!/usr/bin/env python3
+	# -*- coding: utf-8 -*-
+	"""
+	File: ${1:`vim_snippets#Filename('$1.py', 'foo.py')`}
+	Author: `g:snips_author`
+	Email: `g:snips_email`
+	Github: `g:snips_github`
+	Description: ${0}
+	"""
 snippet wh
 	while ${1:condition}:
 		${0:${VISUAL}}
