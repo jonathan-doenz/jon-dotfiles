@@ -253,6 +253,37 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " let g:ycm_key_invoke_completion = '<S-Space>'
 " let g:ycm_key_invoke_completion = '<C-A>'
 
+" This snippet allows you to use the command :Pyhelp <string> to preview Python
+" documentation in the preview window. It also opens the documentation by
+" pressing K when cursor is on the keyword
+if has("python3")
+  " let python3 figure out the path to pydoc
+  python3 << EOF
+import sys
+import vim
+vim.command("let s:pydoc_path=\'" + sys.prefix + "/lib/python3.6/pydoc.py\'")
+EOF
+else
+  " manually set the path to pydoc
+  let s:pydoc_path = "/path/to/python/lib/pydoc.py"
+endif
+
+nnoremap <buffer> K :<C-u>let save_isk = &iskeyword \|
+    \ set iskeyword+=. \|
+    \ execute "Pyhelp " . expand("<cword>") \|
+    \ let &iskeyword = save_isk<CR>
+command! -nargs=1 -bar Pyhelp :call ShowPydoc(<f-args>)
+function! ShowPydoc(what)
+  " compose a tempfile path using the argument to the function
+  let path = $TEMP . '/' . a:what . '.pydoc'
+  let epath = shellescape(path)
+  let epydoc_path = shellescape(s:pydoc_path)
+  let ewhat = shellescape(a:what)
+  " run pydoc on the argument, and redirect the output to the tempfile
+  call system(epydoc_path . " " . ewhat . (stridx(&shellredir, '%s') == -1 ? (&shellredir.epath) : (substitute(&shellredir, '\V\C%s', '\=epath', ''))))
+  " open the tempfile in the preview window
+  execute "pedit" fnameescape(path)
+endfunction
 
 " " Python with virtualenv support
 " py3 << EOF
@@ -541,7 +572,9 @@ nnoremap tt gt
 nnoremap TT gT
 
 " Enable folding/unfolding with the spacebar
-nnoremap <space> za
+" nnoremap <space> <C-D>
+" nnoremap <S-space> <C-U>
+" nnoremap <space> za
 
 " Quick indent whole document
 inoremap ;ia <ESC>m`gg=G``a
@@ -566,6 +599,9 @@ nnoremap vv :tabedit<Space>~/.vimrc<CR>
 nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
 " Special case for json filetype where snippets are located in different folder
 autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%:e.snippets<CR>
+
+" Make current file executable
+nnoremap ;+x :!chmod +x %<CR>
 
 " Nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
