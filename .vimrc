@@ -81,6 +81,9 @@ Plugin 'tpope/vim-surround'
 " Use surrounding operations (hopefully doesn't conflict vimtex)
 Plugin 'tpope/vim-commentary'
 
+" Use many mappings starting with [ and ] symbols
+Plugin 'tpope/vim-unimpaired'
+
 " Automatic and smart addition of closing braces, brackets, etc...
 Plugin 'Raimondi/delimitMate'
 
@@ -112,6 +115,9 @@ Plugin 'vimwiki/vimwiki'
 
 " Display run code in new pane
 Plugin 'tpope/vim-dispatch'
+
+" Run C code in quickfix window
+" Plugin 'skywind3000/asyncrun.vim'
 
 " Execute files or visual selection with chosen mapping
 Plugin 'fboender/bexec'
@@ -384,6 +390,15 @@ endif
 " endif
 " " end from mhartington
 
+" Tabline settings (removed for now because 
+" it doesn't display all tabs if there are many)
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#show_tabs = 0
+" let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+" let g:airline#extensions#tabline#show_tab_nr = 1
+" or use tmux tabline:
+" let g:airline#extensions#tmuxline#enabled = 0
+
 " Hyde .pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
@@ -440,11 +455,11 @@ set breakindentopt=shift:2,sbr
 set showbreak=>
 
 " Highlight current line
-:set cursorline
+set cursorline
 
 " Fix deletion in insert and replace modes (important not to have space around
 " equal sign)
-:set backspace=indent,eol,start
+set backspace=indent,eol,start
 
 " Highlight the characters on the 81st line to suggest to go back to line
 highlight ColorColumn ctermbg=magenta
@@ -536,6 +551,7 @@ endfunction
 " Dispatch plugin settings
 autocmd FileType python let b:dispatch = 'python3 %'
 autocmd FileType java let b:dispatch = 'javac %'
+autocmd FileType c let b:dispatch = 'gcc %'
 
 " sneak plugin settings
 let g:sneak#label = 1
@@ -579,6 +595,9 @@ nnoremap TT gT
 " Quick indent whole document
 inoremap ;ia <ESC>m`gg=G``a
 nnoremap ;ia m`gg=G``
+
+" Copy whole document
+nnoremap ;ca m`ggyG``
 
 " Refresh file
 nnoremap ;re :edit<Space><C-R>%<CR>
@@ -636,6 +655,10 @@ vnoremap <silent> <C-m> :call RunTmuxPythonChunk()<CR>
 " Run python script and show result in horizontal split
 " Run :Dispatch should work
 
+" Run C script
+autocmd FileType c nnoremap <F5> :make %<<CR>:!clear; ./%<<CR>
+autocmd FileType c nnoremap <F6> :Dispatch<CR>
+
 " Sources .vimrc from within a file
 nnoremap ;sv :w<CR>:source ~/.vimrc<CR>
 
@@ -658,14 +681,14 @@ map        <Space><Tab> <Esc>/<++><Enter>"_c4l
 nnoremap <silent> <RIGHT> g,
 " Left arrow mapped to go to the previous place of edit
 nnoremap <silent> <LEFT> g;
-" Double right arrow to step forward through matches
-nmap <silent> <RIGHT><RIGHT>		:cnext<CR>
-" Double left arrow to step backward through matches
-nmap <silent> <LEFT><LEFT>		:cprev<CR>
-" Triple right arrow to step to next match in next file
-nmap <silent> <RIGHT><RIGHT><RIGHT>	:cnfile<CR><C-G>
-" Triple left arrow to step to previous match in next file
-nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
+" " Double right arrow to step forward through matches
+" nmap <silent> <RIGHT><RIGHT>		:cnext<CR>
+" " Double left arrow to step backward through matches
+" nmap <silent> <LEFT><LEFT>		:cprev<CR>
+" " Triple right arrow to step to next match in next file
+" nmap <silent> <RIGHT><RIGHT><RIGHT>	:cnfile<CR><C-G>
+" " Triple left arrow to step to previous match in next file
+" nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
 
 " Scrolling with <C-arrow>
 nnoremap <C-DOWN> <C-E>
@@ -847,6 +870,8 @@ vmap i <Plug>SchleppToggleReindent
 autocmd FileType python nnoremap ;pr yiwoprint("<ESC>pA: " + <ESC>pA)<ESC>F:
 autocmd FileType python vnoremap ;pr yoprint("<ESC>pA: " + <ESC>pA)<ESC>F:
 autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA: " + <ESC>pA);<ESC>F:
+autocmd FileType c nnoremap ;pr yiwoprintf("%.2f: \n", <ESC>pA);<ESC>F.
+autocmd FileType c vnoremap ;pr yoprintf("%.2f: \n", <ESC>pA);<ESC>F.
 
 " Dispatch plugin mappings
 nnoremap <F5> :Dispatch<CR>
