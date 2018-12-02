@@ -18,6 +18,14 @@ snippet mainn
 # #include <...>
 snippet inc
 	#include <${1:stdio}.h>
+snippet initc
+	#include <${1:stdio}.h>
+
+	int main(int argc, const char *argv[])
+	{
+		${0}
+		return 0;
+	}
 # #include "..."
 snippet Inc
 	#include "${1:`vim_snippets#Filename("$1.h")`}"
