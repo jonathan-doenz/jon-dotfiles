@@ -324,11 +324,16 @@ snippet test
 #Test
 snippet Test
 	@Test def \`${1:description}\`: Unit = {
-		new ${2:New TestTrees} {
+		new ${2:Level1} {
 			assertEquals(${3:thisis}, ${4:equaltothat})
 		}
 	}
 	${0}
+#property
+snippet prop
+	property("${1:property_name}") = forAll { (${2:h: H}) =>
+		${0:body_to_assert}
+	}
 #suite
 snippet suite
 	class ${0:name} extends Suite {
