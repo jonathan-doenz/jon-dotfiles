@@ -28,8 +28,10 @@ alias cdtt="cd ~/Dropbox/TeX_stuff/templates"
 alias cdvb="cd ~/.vim/bundle"
 alias cdcui="cd ~/Dropbox/cuisine"
 alias cdpy="cd ~/Dropbox/python_stuff"
+alias cdcourses="cd ~/Dropbox/courses"
 alias cdana="cd ~/Dropbox/courses/Physics_courses_material/Analyse\ I\ et\ II/"
 alias cdep="cd ~/Dropbox/EPFL_2018-2019/"
+alias cdpic="cd ~/Pictures/Bibliothèque\ Photos.photoslibrary/Masters"
 # Courses
 alias cds="cd ~/Dropbox/EPFL_2018-2019/Semester_1"
 alias cdm="cd ~/Dropbox/EPFL_2018-2019/Semester_1/machineLearning/ML_course"
@@ -51,6 +53,8 @@ alias opfp="open https://courseware.epfl.ch/dashboard"
 alias ops4ds="open http://smat.epfl.ch/courses/datasci.php"
 alias opana="open https://moodle.epfl.ch/course/view.php?id=15716"
 alias opshs="open https://moodle.epfl.ch/course/view.php?id=14245"
+aliaas tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
+# alias tt="open ~/Dropbox/EPFL_2018-2019/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 
 # Github shortcuts
 alias g="git"
@@ -82,6 +86,10 @@ alias jn="jupyter notebook"
 
 # Launch python3 in terminal
 alias p3="python3"
+
+# Launch quickview from terminal
+alias qlf="qlmanage -p "$@""
+# alias ql="qlmanage -p "$@" &gt;& /dev/null"
 
 # Scrape pdf files using my script ~/Dropbox/python_stuff/scraping_pdf.py
 alias scrape_pdfs="~/Dropbox/python_stuff/scraping_script.py"
