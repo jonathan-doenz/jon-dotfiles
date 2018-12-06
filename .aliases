@@ -53,7 +53,7 @@ alias opfp="open https://courseware.epfl.ch/dashboard"
 alias ops4ds="open http://smat.epfl.ch/courses/datasci.php"
 alias opana="open https://moodle.epfl.ch/course/view.php?id=15716"
 alias opshs="open https://moodle.epfl.ch/course/view.php?id=14245"
-aliaas tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
+alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 # alias tt="open ~/Dropbox/EPFL_2018-2019/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 
 # Github shortcuts
