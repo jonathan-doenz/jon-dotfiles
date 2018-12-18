@@ -873,6 +873,12 @@ autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA: " + <ESC>pA);<
 autocmd FileType c nnoremap ;pr yiwoprintf("%.2f: \n", <ESC>pA);<ESC>F.
 autocmd FileType c vnoremap ;pr yoprintf("%.2f: \n", <ESC>pA);<ESC>F.
 
+" Put a standard flag-comment to run a g command then to comment what is below
+nnoremap ;tbc m`Onext line to be commented<ESC>:Commentary<ESC>``
+
+" Comment below every line with the to be commented flag-comment
+nnoremap ;com :g/\W next line to be commented/+1Commentary<CR>
+
 " Dispatch plugin mappings
 nnoremap <F5> :Dispatch<CR>
 
