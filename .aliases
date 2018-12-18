@@ -28,6 +28,7 @@ alias cdtt="cd ~/Dropbox/TeX_stuff/templates"
 alias cdvb="cd ~/.vim/bundle"
 alias cdcui="cd ~/Dropbox/cuisine"
 alias cdpy="cd ~/Dropbox/python_stuff"
+alias cdc="cd ~/Dropbox/c_stuff"
 alias cdcourses="cd ~/Dropbox/courses"
 alias cdana="cd ~/Dropbox/courses/Physics_courses_material/Analyse\ I\ et\ II/"
 alias cdep="cd ~/Dropbox/EPFL_2018-2019/"
@@ -55,6 +56,8 @@ alias opana="open https://moodle.epfl.ch/course/view.php?id=15716"
 alias opshs="open https://moodle.epfl.ch/course/view.php?id=14245"
 alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 # alias tt="open ~/Dropbox/EPFL_2018-2019/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
+# Temporary cd alias
+alias cdphysio="cd ~/Dropbox/physio"
 
 # Github shortcuts
 alias g="git"
