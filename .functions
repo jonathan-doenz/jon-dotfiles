@@ -43,6 +43,29 @@ function TeXav() {
 	vim "$1";
 }
 
+# Open new firefox window
+function firefox-window() {
+/usr/bin/env osascript <<-EOF
+tell application "System Events"
+    if (name of processes) contains "Firefox" then
+        tell application "Firefox" to activate
+        keystroke "n" using command down
+    else
+        tell application "Firefox" to activate
+    end if
+end tell
+EOF
+}
+
+# Open new window and launch google maps, translate, drive and calendar
+function opga() {
+	firefox-window;
+	open https://maps.google.com;
+	open https://translate.google.com;
+	open https://drive.google.com;
+	open https://calendar.google.com
+}
+
 # Countdown the number of seconds passed as argument
 countdown(){
 	# Convert input in seconds
