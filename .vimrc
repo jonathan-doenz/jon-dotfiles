@@ -38,7 +38,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 
 " Auto complete plugin. Now makes vim from brew to crash!
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " Checking syntax of document on each save
 Plugin 'vim-syntastic/syntastic'
@@ -241,23 +241,29 @@ au BufNewFile,BufRead *.js, *.html, *.css
 			\ set shiftwidth=2
 
 " Flag unnecessary whitespace
+highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Specify UTF8 encoding (important for Python 3)
 set encoding=utf-8
 
-" Customization of YouCompleteMe (YCM; can finally use this plugin on OS 10.10)
-" closes the preview window
-let g:ycm_autoclose_preview_window_after_completion=1
+" " Customization of YouCompleteMe (YCM)
+" " need this to be able to compile
+" let g:ycm_path_to_python_interpreter = 'python3'
+
+" " closes the preview window
+" let g:ycm_autoclose_preview_window_after_completion=1
 
 " " automatically shows suggestions
 " let g:ycm_auto_trigger = 1
 " " after a minimum of n characters
 " let g:ycm_min_num_of_chars_for_completion = 3
 
+" manually close preview window
+" let g:ycm_key_list_stop_completion = ['<C-y>']
+
 " Invoke completion options from  YCM
-" let g:ycm_key_invoke_completion = '<S-Space>'
-" let g:ycm_key_invoke_completion = '<C-A>'
+let g:ycm_key_invoke_completion = '<C-.>'
 
 " This snippet allows you to use the command :Pyhelp <string> to preview Python
 " documentation in the preview window. It also opens the documentation by
@@ -327,6 +333,7 @@ syntax on
 " " OceanicNext color scheme end
 let g:tmuxline_preset='tmux'
 let g:airline#extensions#tmuxline#enabled=0
+let g:airline#extensions#tabline#enabled=1
 let g:tmuxline_theme='zenburn'
 
 " " flattened_dark start uncomment
@@ -605,6 +612,9 @@ nnoremap ;re :edit<Space><C-R>%<CR>
 " Display file path
 nnoremap ;pat :echo expand('%:p')<CR>
 
+" Copy file path
+nnoremap ;cfp :let @*=expand("%:p")<CR>
+
 " Add empty line above
 nnoremap oo m`o<ESC>d$``
 
@@ -628,6 +638,9 @@ map <C-n> :NERDTreeToggle<CR>
 " " Run any file with bexec plugin
 " nmap <silent> <unique> <F5> :Bexec()<CR>
 " vmap <silent> <unique> <F5> :BexecVisual()<CR>
+
+" Go to definition (works with python and maybe C languages)
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " Run python file
 autocmd FileType python nnoremap <buffer> <F6> :exec '!clear; python' shellescape(@%, 1)<cr>
@@ -667,6 +680,9 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Execute the present file in the terminal
 nnoremap ;ex :w<CR>:!./%<CR>
+
+" List all buffers and wait for entering the buffer number to jump to it
+nnoremap gb :ls<CR>:b
 
 " Navigating with placeholders
 inoremap ;gui <++>
@@ -878,6 +894,9 @@ nnoremap ;tbc m`Onext line to be commented<ESC>:Commentary<ESC>``
 
 " Comment below every line with the to be commented flag-comment
 nnoremap ;com :g/\W next line to be commented/+1Commentary<CR>
+
+" Increment all following lines matching a certain pattern (e.g. here: Exercice \d, \d a digit)
+nnoremap ;incr :.,$g/^Exercice \d/exe "normal! \<C-A>"
 
 " Dispatch plugin mappings
 nnoremap <F5> :Dispatch<CR>
