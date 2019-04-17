@@ -136,7 +136,11 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 
+" Allow emojis insertion
+Plugin 'junegunn/vim-emoji'
+
 " Allow to run scripts from vim to other tmux panes
+
 " Plugin 'sjl/tslime.vim'
 " Plugin 'benmills/vimux'
 
@@ -575,6 +579,10 @@ augroup line_return
 				\ endif
 augroup END
 
+" vim-emoji plugin settings
+" complete emojis
+set completefunc=emoji#complete
+
 "==============[ Mappings and Abbreviations ]================
 " Quick save in any documents
 inoremap ,, <ESC>:w<CR>a
@@ -597,7 +605,7 @@ nnoremap TT gT
 " Enable folding/unfolding with the spacebar
 " nnoremap <space> <C-D>
 " nnoremap <S-space> <C-U>
-" nnoremap <space> za
+nnoremap <space> za
 
 " Quick indent whole document
 inoremap ;ia <ESC>m`gg=G``a
@@ -923,6 +931,14 @@ iab <expr> TS strftime("%c")
 iab <expr> PPP getreg('')
 " insert content of preceding non-empty line
 iab <expr> ^^ getline(search('\S\_.*\n\_.*\%#','b'))
+
+" vim-emoji mappings
+nnoremap ;cemo :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
+
+" make visual selection a numbered list (Importnat: only works for single
+" paragraphs, and only if the end of file is not right after last element in
+" the list) -> much room for improvement on this one!
+vnoremap ;tnl :%!nl<CR>h<C-V>}kdl<C-V>}kwhc)<SPACE><ESC>
 
 " Tmux mappings
 
