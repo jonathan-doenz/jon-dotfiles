@@ -116,6 +116,9 @@ Plugin 'vimwiki/vimwiki'
 " Display run code in new pane
 Plugin 'tpope/vim-dispatch'
 
+" Save and restore vim-sessions better than :mksession
+Plugin 'tpope/vim-obsession'
+
 " Run C code in quickfix window
 " Plugin 'skywind3000/asyncrun.vim'
 
