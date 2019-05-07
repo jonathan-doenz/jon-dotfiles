@@ -41,7 +41,9 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
 
 " Checking syntax of document on each save
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
+" ALE is more lightweight than syntastic
+Plugin 'w0rp/ale'
 
 " Color schemes
 Plugin 'jnurmine/Zenburn'
@@ -115,6 +117,9 @@ Plugin 'vimwiki/vimwiki'
 
 " Display run code in new pane
 Plugin 'tpope/vim-dispatch'
+
+" Save and restore vim-sessions better than :mksession
+Plugin 'tpope/vim-obsession'
 
 " Run C code in quickfix window
 " Plugin 'skywind3000/asyncrun.vim'
@@ -272,34 +277,34 @@ let g:ycm_key_invoke_completion = '<C-.>'
 " This snippet allows you to use the command :Pyhelp <string> to preview Python
 " documentation in the preview window. It also opens the documentation by
 " pressing K when cursor is on the keyword
-if has("python3")
-  " let python3 figure out the path to pydoc
-  python3 << EOF
-import sys
-import vim
-vim.command("let s:pydoc_path=\'" + sys.prefix + "/lib/python3.6/pydoc.py\'")
-EOF
-else
-  " manually set the path to pydoc
-  let s:pydoc_path = "/path/to/python/lib/pydoc.py"
-endif
+" if has("python3")
+"   " let python3 figure out the path to pydoc
+"   python3 << EOF
+" import sys
+" import vim
+" vim.command("let s:pydoc_path=\'" + sys.prefix + "/lib/python3.6/pydoc.py\'")
+" EOF
+" else
+"   " manually set the path to pydoc
+"   let s:pydoc_path = "/path/to/python/lib/pydoc.py"
+" endif
 
-nnoremap <buffer> K :<C-u>let save_isk = &iskeyword \|
-    \ set iskeyword+=. \|
-    \ execute "Pyhelp " . expand("<cword>") \|
-    \ let &iskeyword = save_isk<CR>
-command! -nargs=1 -bar Pyhelp :call ShowPydoc(<f-args>)
-function! ShowPydoc(what)
-  " compose a tempfile path using the argument to the function
-  let path = $TEMP . '/' . a:what . '.pydoc'
-  let epath = shellescape(path)
-  let epydoc_path = shellescape(s:pydoc_path)
-  let ewhat = shellescape(a:what)
-  " run pydoc on the argument, and redirect the output to the tempfile
-  call system(epydoc_path . " " . ewhat . (stridx(&shellredir, '%s') == -1 ? (&shellredir.epath) : (substitute(&shellredir, '\V\C%s', '\=epath', ''))))
-  " open the tempfile in the preview window
-  execute "pedit" fnameescape(path)
-endfunction
+" nnoremap <buffer> K :<C-u>let save_isk = &iskeyword \|
+"     \ set iskeyword+=. \|
+"     \ execute "Pyhelp " . expand("<cword>") \|
+"     \ let &iskeyword = save_isk<CR>
+" command! -nargs=1 -bar Pyhelp :call ShowPydoc(<f-args>)
+" function! ShowPydoc(what)
+"   " compose a tempfile path using the argument to the function
+"   let path = $TEMP . '/' . a:what . '.pydoc'
+"   let epath = shellescape(path)
+"   let epydoc_path = shellescape(s:pydoc_path)
+"   let ewhat = shellescape(a:what)
+"   " run pydoc on the argument, and redirect the output to the tempfile
+"   call system(epydoc_path . " " . ewhat . (stridx(&shellredir, '%s') == -1 ? (&shellredir.epath) : (substitute(&shellredir, '\V\C%s', '\=epath', ''))))
+"   " open the tempfile in the preview window
+"   execute "pedit" fnameescape(path)
+" endfunction
 
 " " Python with virtualenv support
 " py3 << EOF
@@ -605,6 +610,7 @@ nnoremap TT gT
 " Enable folding/unfolding with the spacebar
 " nnoremap <space> <C-D>
 " nnoremap <S-space> <C-U>
+" nnoremap <CR> za
 nnoremap <space> za
 
 " Quick indent whole document
@@ -939,6 +945,23 @@ nnoremap ;cemo :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 " paragraphs, and only if the end of file is not right after last element in
 " the list) -> much room for improvement on this one!
 vnoremap ;tnl :%!nl<CR>h<C-V>}kdl<C-V>}kwhc)<SPACE><ESC>
+
+" Temporary mapping to remove comma at end of my DDL tables
+nnoremap ;db }kkV:s/.*\zs,//<CR>jjj0
+" Save the macro under register d
+" nnoremap ;da |}kkV:s/\kb.(kb*\zs,//jjj0
+
+" Terminal mode mappings
+" tnoremap <C-ESC> <C-\><C-n>
+" tnoremap <M-[> <Esc>
+tnoremap <C-h> <c-\><c-n><c-w>h
+tnoremap <C-j> <c-\><c-n><c-w>j
+tnoremap <C-k> <c-\><c-n><c-w>k
+tnoremap <C-l> <c-\><c-n><c-w>l
+
+" Use <A-r> to paste register in terminal mode
+tnoremap <expr> <C-S-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+" tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 " Tmux mappings
 
