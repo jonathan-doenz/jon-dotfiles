@@ -1,0 +1,4 @@
+pane	0	0	:bash	1	:*	0	:/Users/jonathandoenz/Dropbox/EPFL_2018-2019/Semester_2/introduction_to_database_systems/Project/milestone_3	0	vim	:vim
+pane	0	0	:bash	1	:*	1	:/Users/jonathandoenz/.tmux/plugins/tpm	1	bash	:
+window	0	0	1	:*	1fd4,125x57,0,0[125x28,0,0,0,125x28,0,29,1]
+state	0	
