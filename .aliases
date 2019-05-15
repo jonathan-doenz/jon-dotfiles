@@ -133,6 +133,9 @@ alias p3="python3"
 alias qlf="qlmanage -p "$@""
 # alias ql="qlmanage -p "$@" &gt;& /dev/null"
 
+# Look at local weather forecast
+alias opwf="open https://darksky.net/forecast/46.5093,6.4983/ca24/en"
+
 # Scrape pdf files using my script ~/Dropbox/python_stuff/scraping_pdf.py
 alias scrape_pdfs="~/Dropbox/python_stuff/scraping_script.py"
 
