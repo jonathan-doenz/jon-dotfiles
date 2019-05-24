@@ -134,6 +134,9 @@ Plugin 'fboender/bexec'
 Plugin 'benmills/vimux'
 Plugin 'julienr/vim-cellmode'
 
+" Preview markdown file in safari
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
 " Homogenize shortcuts between vim and tmux splits
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -315,6 +318,16 @@ let g:ycm_key_invoke_completion = '<C-.>'
 "   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
 "   execfile(activate_this, dict(__file__=activate_this))
 " EOF
+
+" vim markdown preview settings
+" if using `grip`:
+" Note that this makes a request to GitHub's API (causing latencies) and may
+" require authentication. This option also requires a network connection. See
+" at https://github.com/JamshedVesuna/vim-markdown-preview
+let vim_markdown_preview_github=1
+" render image only when pressing the corresponding mapping, i.e. <C-M>
+" choose =2, or =3, to respectively render images on write, and never
+let vim_markdown_preview_toggle=1
 
 " vim-cellmode plugin settings
 let g:cellmode_default_mappings='0'
@@ -608,10 +621,10 @@ nnoremap tt gt
 nnoremap TT gT
 
 " Enable folding/unfolding with the spacebar
-" nnoremap <space> <C-D>
-" nnoremap <S-space> <C-U>
+nnoremap <space> <C-D>
+nnoremap <S-space> <C-U>
 " nnoremap <CR> za
-nnoremap <space> za
+" nnoremap <space> za
 
 " Quick indent whole document
 inoremap ;ia <ESC>m`gg=G``a
@@ -702,9 +715,9 @@ nnoremap gb :ls<CR>:b
 inoremap ;gui <++>
 
 " Navigation to <++> placeholders with <space><Tab>
-inoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
-vnoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
-map        <Space><Tab> <Esc>/<++><Enter>"_c4l
+" inoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+" vnoremap   <Space><Tab> <Esc>/<++><Enter>"_c4l
+" map        <Space><Tab> <Esc>/<++><Enter>"_c4l
 
 " Arrow keys in normal mode
 " Right arrow mapped to go to the next place of edit
@@ -915,6 +928,18 @@ nnoremap ;incr :.,$g/^Exercice \d/exe "normal! \<C-A>"
 " Dispatch plugin mappings
 nnoremap <F5> :Dispatch<CR>
 
+" " To compile and make pdf preview of markdown files, the following works but
+" " take a  long time
+" "" pandoc , markdown
+" command! -nargs=* RunSilent
+"       \ | execute ':silent !'.'<args>'
+"       \ | execute ':redraw!'
+" nmap ;pc :RunSilent pandoc -o /tmp/vim-pandoc-out.pdf %<CR>
+" nmap ;pp :RunSilent open /tmp/vim-pandoc-out.pdf<CR>
+
+" vim markdown preview mappings
+let vim_markdown_preview_hotkey='<C-m>'
+
 " easymotion plugin mappings
 " nmap s <Plug>(easymotion-overwin-f2)
 " Turn on case insensitive feature
@@ -947,7 +972,9 @@ nnoremap ;cemo :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 vnoremap ;tnl :%!nl<CR>h<C-V>}kdl<C-V>}kwhc)<SPACE><ESC>
 
 " Temporary mapping to remove comma at end of my DDL tables
-nnoremap ;db }kkV:s/.*\zs,//<CR>jjj0
+" nnoremap ;db }kkV:s/.*\zs,//<CR>jjj0
+nnoremap ;db :g /^)/-1 s/,$//<CR>
+
 " Save the macro under register d
 " nnoremap ;da |}kkV:s/\kb.(kb*\zs,//jjj0
 
