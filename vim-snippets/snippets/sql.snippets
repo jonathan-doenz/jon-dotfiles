@@ -24,3 +24,11 @@ snippet seq
 	create sequence ${1:name} start with ${2:1} increment by ${3:1} minvalue ${0:1};
 snippet s*
 	select * from ${0:table}
+snippet sfw
+	SELECT ${0:attributes} 
+	FROM ${1:table}
+	WHERE ${2:conditions}
+snippet gb
+	GROUP BY ${0:Table.attribute} 
+snippet ob
+	ORDER BY ${0:Table.attribute} 
