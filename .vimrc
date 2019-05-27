@@ -642,11 +642,12 @@ nnoremap ;pat :echo expand('%:p')<CR>
 " Copy file path
 nnoremap ;cfp :let @*=expand("%:p")<CR>
 
+" Remove these two mappings and use tpope [<space> and ]<space> instead
 " Add empty line above
-nnoremap oo m`o<ESC>d$``
+" nnoremap oo m`o<ESC>d$``
 
 " Add empty line below
-nnoremap OO m`O<ESC>d$``
+" nnoremap OO m`O<ESC>d$``
 
 " Open .vimrc in new tab
 nnoremap vv :tabedit<Space>~/.vimrc<CR> 
