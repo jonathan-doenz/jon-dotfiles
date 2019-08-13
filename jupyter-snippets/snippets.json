@@ -1,0 +1,54 @@
+{
+    "snippets" : [
+        {
+            "name" : "example",
+            "code" : [
+                "# This is an example snippet!",
+                "# To create your own, add a new snippet block to the",
+                "# snippets.json file in your jupyter data directory under nbextensions:",
+                "# $(jupyter --data-dir)/nbextensions/snippets/snippets.json",
+                "import this"
+            ]
+        },
+        {
+            "name" : "Import Python libraries",
+            "code" : [
+                "import numpy as np",
+                "import pandas as pd",
+                "import matplotlib.pyplot as plt",
+                "%matplotlib inline"
+            ]
+        },
+        {
+            "name" : "Automatically reload modules",
+            "code" : [
+                "%load_ext autoreload",
+                "%autoreload 2"
+            ]
+        },
+        {
+            "name" : "Import my tidy modules",
+            "code" : [
+                "# import my own tidy module",
+                "import sys",
+                "sys.path.append('/Users/jonathandoenz/Dropbox/python_stuff/my_python_modules/tidy')",
+                "",
+                "import features_extraction as fe",
+                "import tidy"
+            ]
+        },
+        {
+            "name" : "Import my modules from ML course",
+            "code" : [
+                "import sys",
+                "sys.path.append('/Users/jonathandoenz/Dropbox/EPFL_2018-2019/admission_year/Semester_1/machineLearning/personal_modules')",
+                "",
+                "from costs import error_vec, compute_loss",
+                "from gradient_descent import MAE_subgradient, compute_gradient, gradient_descent",
+                "from stochastic_gradient_descent import compute_stoch_gradient, stochastic_gradient_descent",
+                "from grid_search import get_best_parameters, generate_w, grid_search"
+            ]
+        }
+        ]
+}
+
