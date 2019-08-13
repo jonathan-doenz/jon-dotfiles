@@ -32,3 +32,85 @@ snippet gb
 	GROUP BY ${0:Table.attribute} 
 snippet ob
 	ORDER BY ${0:Table.attribute} 
+snippet cm
+	-- ${0}
+snippet L_neighbourhood_id
+	-- Create index:
+	CREATE INDEX index_L_neighbourhood_id on Listings (neighbourhood_id);
+	-- Drop index:
+	DROP INDEX index_L_neighbourhood_id;
+snippet HN_neighbourhood
+	-- Create index:
+	CREATE INDEX index_HN_neighbourhood on Has_Neighbourhoods (neighbourhood);
+	-- Drop index:
+	DROP INDEX index_HN_neighbourhood;
+snippet HN_city_id
+	-- create index:
+	CREATE INDEX index_HN_city_id on Has_Neighbourhoods (city_id);
+	-- drop index:
+	DROP INDEX index_HN_city_id;
+snippet HC_city
+	-- create index:
+	CREATE INDEX index_HC_city on Has_Cities (city);
+	-- drop index:
+	DROP INDEX index_HC_city;
+snippet HS_review_scores_location
+	-- create index:
+	CREATE INDEX index_HS_review_scores_location ON Has_Scores (review_scores_location);
+	-- drop index:
+	DROP INDEX index_HS_review_scores_location;
+snippet L_property_type_id
+	-- create index:
+	CREATE INDEX index_L_property_type_id ON Listings (property_type_id);
+	-- drop index:
+	DROP INDEX index_L_property_type_id;
+snippet RT_property_type
+	-- create index:
+	CREATE INDEX index_RT_property_type ON property_Types (property_type);
+	-- drop index:
+	DROP INDEX index_RT_property_type;
+snippet L_beds
+	-- create index:
+	CREATE INDEX index_L_beds ON Listings (beds);
+	-- drop index:
+	DROP INDEX index_L_beds;
+snippet R_cancellation_policy_id
+	-- create index:
+	CREATE INDEX index_R_cancellation_policy_id ON Rules (cancellation_policy_id);
+	-- drop index:
+	DROP INDEX index_R_cancellation_policy_id;
+snippet CP_cancellation_policy
+	-- create index:
+	CREATE INDEX index_CP_cancellation_policy ON Cancellation_Policies (cancellation_policy);
+	-- drop index:
+	DROP INDEX index_CP_cancellation_policy;
+snippet D_cal_date
+	-- create index:
+	CREATE INDEX index_D_cal_date ON Dates (cal_date);
+	-- drop index:
+	DROP INDEX index_D_cal_date;
+snippet D_price
+	-- create index:
+	CREATE INDEX index_D_price ON Dates (price);
+	-- drop index:
+	DROP INDEX index_D_price;
+snippet D_available
+	-- create index:
+	CREATE INDEX index_D_available ON Dates (available);
+	-- drop index:
+	DROP INDEX index_D_available;
+snippet H_verifications
+	-- create index:
+	CREATE INDEX index_H_verifications ON Hosts (verifications);
+	-- drop index:
+	DROP INDEX index_H_verifications;
+snippet V_verification
+	-- create index:
+	CREATE INDEX index_V_verification ON Verifications (verification);
+	-- drop index:
+	DROP INDEX index_V_verification;
+snippet C_country
+	-- create index:
+	CREATE INDEX index_C_country ON Countries (country);
+	-- drop index:
+	DROP INDEX index_C_country;
