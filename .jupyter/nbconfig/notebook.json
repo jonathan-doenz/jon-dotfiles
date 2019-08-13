@@ -10,7 +10,8 @@
     "collapsible_headings/main": true,
     "scratchpad/main": false,
     "nbextensions_configurator/config_menu/main": true,
-    "contrib_nbextensions_help_item/main": true
+    "contrib_nbextensions_help_item/main": true,
+    "jupyter_boilerplate/main": true
   },
   "comment_uncomment_indent": true,
   "Cell": {
