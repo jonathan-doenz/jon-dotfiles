@@ -353,11 +353,11 @@ syntax on
 " " Status line matching the general color scheme
 " let g:airline_theme='oceanicnext'
 " " OceanicNext color scheme end
-let g:tmuxline_preset='tmux'
-let g:airline#extensions#tmuxline#enabled=1
-" let g:airline#extensions#tabline#enabled=1
-" let g:airline#extensions#tabline#show_tab_nr = 1
-" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:tmuxline_preset='tmux'
+let g:airline#extensions#tmuxline#enabled=0
+let g:airline#extensions#tabline#enabled=0
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#buffer_idx_mode = 0
 " nmap <leader>1 <Plug>AirlineSelectTab1
 " nmap <leader>2 <Plug>AirlineSelectTab2
 " nmap <leader>3 <Plug>AirlineSelectTab3
@@ -682,6 +682,12 @@ nnoremap TT gT
 " Enable folding/unfolding with the spacebar
 nnoremap <space> <C-D>
 nnoremap <S-space> <C-U>
+" For some reason the above normal mode mapping was also enabled in insert
+" mode and was deleting the previous words, so I have to assign the following
+" The problem is still there even with the inoremap mapping
+inoremap <S-space> <space>
+nnoremap ;do IDONE<ESC>
+
 " nnoremap <CR> za
 " nnoremap <space> za
 
@@ -923,12 +929,6 @@ autocmd FileType xml inoremap ;a <a href="<++>"><++></a><++><Esc>F"ci"
 
 " " Quick shortcuts to ease testing
 " nnoremap <space><space> :w<CR>:source<space>~/.vimrc<CR>
-
-" Escape insert mode via 'jk' or 'kj'
-" Commented for now as it makes a visual lag when pressing a j or a k in
-" insert mode. Possible work-around: https://github.com/zhou13/vim-easyescape/
-"imap jk <ESC>
-"imap kj <ESC>
 
 " Tabular mappings
 if exists(":Tabularize")
