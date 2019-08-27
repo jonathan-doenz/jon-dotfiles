@@ -459,3 +459,8 @@ snippet beautifulsoup "import beautiful soup libraries"
 	from bs4 import BeautifulSoup
 	import re
 	${0}
+snippet mymodules "Import my modules"
+	# import my own modules
+	import sys
+	sys.path.append('/Users/jonathandoenz/Dropbox/python_stuff/my_python_modules/${1:module_folder}')
+	import $1 as ${0}
