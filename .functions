@@ -71,6 +71,12 @@ function opga() {
 	open https://calendar.google.com
 }
 
+# Open new window and launch google maps, translate, drive and calendar
+function opft() {
+	firefox-window;
+	open file:///Users/jonathandoenz/Dropbox/EPFL_2018-2019/Semester_1/timetable/timetable_Master_DS_semester_1.png
+}
+
 # Countdown the number of seconds passed as argument
 countdown(){
 	# Convert input in seconds
