@@ -127,6 +127,7 @@ alias gitc="git commit -m"
 alias gitb="git branch"
 alias gitd="git diff"
 alias gitu="git reset HEAD --"
+alias gitco="git checkout"
 
 # Vim shortcuts
 alias lvim="vim -c \"normal '0\"" # open last modified file in vim
