@@ -266,6 +266,19 @@ snippet epydoc
 
 	@raise e: ${0: Description}
 	"""
+snippet numpydoc
+	"""${1:Description}
+
+	Parameters
+	----------
+	${2:param}: ${3: Type}
+		${4: Description}
+
+	Returns
+	-------
+	${5:returned param}: ${6: Type}
+		${0: Description}
+	"""
 snippet dol
 	def ${1:__init__}(self, *args, **kwargs):
 	    super(${0:ClassName}, self).$1(*args, **kwargs)
