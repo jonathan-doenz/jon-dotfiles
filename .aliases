@@ -143,6 +143,7 @@ alias vimwt="vim ~/vimwiki/Tasks.wiki"
 alias vimt="vim ~/.tmux.conf"
 alias vimread="vim ~/Dropbox/org/gtd/reading.org"
 alias vimju="vim ~/Library/Jupyter/nbextensions/snippets/snippets.json"
+alias vimrm="vim README.md"
 # temporary alias
 alias vime="vim ~/Dropbox/python_stuff/test.py"
 alias stm="tmux source ~/.tmux.conf"
@@ -163,6 +164,8 @@ alias qlf="qlmanage -p "$@""
 
 # Quickview present semester's timetable
 alias qlft="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/timetable/timetable_Master_DS_semester_1.png"
+# Quickview NTDS course's shedule
+alias qlfntdss="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/network_tour_of_ds/ntds2019_schedule_v4.pdf"
 
 # Look at local weather forecast
 alias opwf="open https://darksky.net/forecast/46.5093,6.4983/ca24/en"
