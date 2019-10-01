@@ -707,6 +707,9 @@ nnoremap ;pat :echo expand('%:p')<CR>
 " Copy file path
 nnoremap ;cfp :let @*=expand("%:p")<CR>
 
+" Open fugitive's :Gstatus quickfix window
+nnoremap ;gs :Gstatus<CR>
+
 " Remove these two mappings and use tpope [<space> and ]<space> instead
 " Add empty line above
 " nnoremap oo m`o<ESC>d$``
