@@ -121,6 +121,9 @@ Plugin 'tpope/vim-dispatch'
 " Save and restore vim-sessions better than :mksession
 Plugin 'tpope/vim-obsession'
 
+" Search patterns in all files of current directory
+Plugin 'mileszs/ack.vim'
+
 " Run C code in quickfix window
 " Plugin 'skywind3000/asyncrun.vim'
 
@@ -258,6 +261,11 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Specify UTF8 encoding (important for Python 3)
 set encoding=utf-8
+
+" Use silver searcher (Ag) in ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+" same effect but will report every match on the line:
+" let g:ackprg = 'ag --vimgrep'
 
 " " Customization of YouCompleteMe (YCM)
 " " need this to be able to compile
