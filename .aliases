@@ -147,6 +147,7 @@ alias vimrm="vim README.md"
 # temporary alias
 alias vime="vim ~/Dropbox/python_stuff/test.py"
 alias stm="tmux source ~/.tmux.conf"
+alias vip="vim *.py"
 
 # TeX shortcuts
 alias TeXa="cp ~/Dropbox/TeX_stuff/templates/article_template.tex"
