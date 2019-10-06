@@ -145,6 +145,7 @@ alias vimt="vim ~/.tmux.conf"
 alias vimread="vim ~/Dropbox/org/gtd/reading.org"
 alias vimju="vim ~/Library/Jupyter/nbextensions/snippets/snippets.json"
 alias vimrm="vim README.md"
+alias vimtd="vim ~/Dropbox/EPFL_2018-2019/Semester_1/study_todos.md"
 # temporary alias
 alias vime="vim ~/Dropbox/python_stuff/test.py"
 alias stm="tmux source ~/.tmux.conf"
