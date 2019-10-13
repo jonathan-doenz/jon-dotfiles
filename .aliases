@@ -155,8 +155,9 @@ alias vip="vim *.py"
 alias TeXa="cp ~/Dropbox/TeX_stuff/templates/article_template.tex"
 alias TeXb="cp ~/Dropbox/TeX_stuff/templates/beamer_template.tex"
 
-# Launch jupyter notebook
+# Launch jupyter notebook/lab
 alias jn="jupyter notebook"
+alias jl="jupyter lab"
 
 # Launch python3 in terminal
 alias p3="python3"
