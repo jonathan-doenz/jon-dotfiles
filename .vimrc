@@ -197,7 +197,7 @@ set splitright
 
 " " Allow mouse scrolling in iTerm2
 " " set mouse=nicr
-" set mouse=a
+set mouse=a
 " if has("mouse_sgr")
 "     set ttymouse=sgr
 " else
@@ -206,7 +206,10 @@ set splitright
 
 " Folding general files
 set foldmethod=indent
-set foldlevel=99
+" set foldlevel=99
+" set foldlevel to highest value of current buffer
+" from: https://superuser.com/questions/567352/how-can-i-set-foldlevelstart-in-vim-to-just-fold-nothing-initially-still-allowi
+:autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
 
 " Fugitive settings
 " Add current branch and filename to status line
@@ -912,27 +915,27 @@ autocmd FileType bib inoremap ;b @book{<Enter><tab>author<Space>=<Space>"<++>",<
 autocmd FileType bib inoremap ;c @incollection{<Enter><tab>author<Space>=<Space>"<++>",<Enter><tab>title<Space>=<Space>"<++>",<Enter><tab>booktitle<Space>=<Space>"<++>",<Enter><tab>editor<Space>=<Space>"<++>",<Enter><tab>year<Space>=<Space>"<++>",<Enter><tab>publisher<Space>=<Space>"<++>",<Enter><tab>}<Enter><++><Esc>8kA,<Esc>i
 
 "MARKDOWN
-autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
-autocmd Filetype markdown,rmd inoremap ;n ---<Enter><Enter>
-autocmd Filetype markdown,rmd inoremap ;b ****<++><Esc>F*hi
-autocmd Filetype markdown,rmd inoremap ;s ~~~~<++><Esc>F~hi
-autocmd Filetype markdown,rmd inoremap ;e **<++><Esc>F*i
-autocmd Filetype markdown,rmd inoremap ;h ====<Space><++><Esc>F=hi
-autocmd Filetype markdown,rmd inoremap ;i ![](<++>)<++><Esc>F[a
-autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
-autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown,rmd inoremap ;l --------<Enter>
-autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>--pdf-engine=xelatex<space>-o<space><C-r>%.pdf<Enter><Enter>
-autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
-autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
-autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
+" autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
+" autocmd Filetype markdown,rmd inoremap ;n ---<Enter><Enter>
+" autocmd Filetype markdown,rmd inoremap ;b ****<++><Esc>F*hi
+" autocmd Filetype markdown,rmd inoremap ;s ~~~~<++><Esc>F~hi
+" autocmd Filetype markdown,rmd inoremap ;e **<++><Esc>F*i
+" autocmd Filetype markdown,rmd inoremap ;h ====<Space><++><Esc>F=hi
+" autocmd Filetype markdown,rmd inoremap ;i ![](<++>)<++><Esc>F[a
+" autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
+" autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
+" autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
+" autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
+" autocmd Filetype markdown,rmd inoremap ;l --------<Enter>
+" autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>--pdf-engine=xelatex<space>-o<space><C-r>%.pdf<Enter><Enter>
+" autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+" autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
+" autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
 
 """.xml
 "autocmd FileType xml inoremap ;e <item><Enter><title><++></title><Enter><pubDate><Esc>:put<Space>=strftime('%c')<Enter>A</pubDate><Enter><link><++></link><Enter><description><++></description><Enter></item>
-autocmd FileType xml inoremap ;e <item><Enter><title><++></title><Enter><guid<space>isPermaLink="false"><++></guid><Enter><pubDate><Esc>:put<Space>=strftime('%a, %d %b %Y %H:%M:%S %z')<Enter>kJA</pubDate><Enter><link><++></link><Enter><description><![CDATA[<++>]]></description><Enter></item><Esc>?<title><enter>cit
-autocmd FileType xml inoremap ;a <a href="<++>"><++></a><++><Esc>F"ci"
+" autocmd FileType xml inoremap ;e <item><Enter><title><++></title><Enter><guid<space>isPermaLink="false"><++></guid><Enter><pubDate><Esc>:put<Space>=strftime('%a, %d %b %Y %H:%M:%S %z')<Enter>kJA</pubDate><Enter><link><++></link><Enter><description><![CDATA[<++>]]></description><Enter></item><Esc>?<title><enter>cit
+" autocmd FileType xml inoremap ;a <a href="<++>"><++></a><++><Esc>F"ci"
 
 
 " " Quick shortcut to debug plugins
@@ -998,6 +1001,10 @@ nnoremap ;incr :.,$g/^Exercice \d/exe "normal! \<C-A>"
 
 " Dispatch plugin mappings
 nnoremap <F5> :Dispatch<CR>
+
+" Copy ambient python method
+autocmd FileType python nmap yam mz[my]m`z
+" autocmd FileType python nmap yam m`[my]m``
 
 " " To compile and make pdf preview of markdown files, the following works but
 " " take a  long time
