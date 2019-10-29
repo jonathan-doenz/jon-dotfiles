@@ -22,11 +22,9 @@ alias -- -="cd -"
 
 # Shortcuts
 # Navigation shortcuts
-alias d="cd ~/Dropbox"
-alias dl="cd ~/Downloads"
+alias cddr="cd ~/Dropbox"
 alias cddl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
 alias cdjd="cd ~/jon-dotfiles"
 alias cdt="cd ~/Dropbox/TeX_stuff"
 alias cdtt="cd ~/Dropbox/TeX_stuff/templates"
@@ -41,6 +39,8 @@ alias cdep="cd ~/Dropbox/EPFL_2018-2019/"
 alias cdka="cd ~/Dropbox/kaggle/"
 alias cdproj="cd ~/Dropbox/kaggle/India/"
 alias cdpic="cd ~/Pictures/Bibliothèque\ Photos.photoslibrary/Masters"
+alias cdcv="cd ~/Dropbox/Curriculum_Vitae"
+
 # Courses
 alias cdml="cd ~/Dropbox/EPFL_2018-2019/Semester_1/ML"
 alias cdnlp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/NLP"
