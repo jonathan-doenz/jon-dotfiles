@@ -179,6 +179,9 @@ alias qlfntdss="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/network_tour_of_
 # Look at local weather forecast
 alias opwf="open https://darksky.net/forecast/46.5093,6.4983/ca24/en"
 
+# Look at gym schedule
+alias opfit="open https://www.activfitness.ch/Studio_Morges___Oeffnungszeiten_fr.page?ActiveID=11838"
+
 # Scrape pdf files using my script ~/Dropbox/python_stuff/scraping_pdf.py
 alias scrape_pdfs="~/Dropbox/python_stuff/scraping_script.py"
 
