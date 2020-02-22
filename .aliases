@@ -44,6 +44,7 @@ alias cdcv="cd ~/Dropbox/Curriculum_Vitae"
 # Courses
 # MA semester 2
 alias cdse="cd ~/Dropbox/EPFL_2018-2019/Semester_2"
+alias cdproj="cd ~/Dropbox/EPFL_2018-2019/semester_project"
 alias cddis="cd ~/Dropbox/EPFL_2018-2019/Semester_2/distributed_information_systems"
 alias cdaa="cd ~/Dropbox/EPFL_2018-2019/Semester_2/advanced_algorithms"
 alias cddeep="cd ~/Dropbox/EPFL_2018-2019/Semester_2/deep_learning"
@@ -99,6 +100,7 @@ alias opomlgh="https://github.com/epfml/OptML_course"
 alias opdvmo="open https://moodle.epfl.ch/course/view.php?id=15487"
 alias oplds="open https://epfl-dslab2020.github.io"
 alias opldsgh="open https://github.com/epfl-dslab2020/epfl-dslab2020.github.io"
+alias opldsr="open http://renku.iccluster.epfl.ch"
 alias opsp="open http://com303.learndsp.org/view/main/"
 alias opdb="open https://moodle.epfl.ch/course/view.php?id=198"
 alias opdb="open https://moodle.epfl.ch/course/view.php?id=198"
@@ -134,6 +136,11 @@ alias opmbce="open https://gm-sittr-prod.s3.amazonaws.com/timetables/mbc/2019/6_
 alias oplatexsymbols="open https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols"
 alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 # alias tt="open ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
+
+# Miscellaneous
+# web dev docs
+alias opweb="open https://developer.mozilla.org/en-US/docs/Web"
+
 # Temporary cd alias
 alias cdphysio="cd ~/Dropbox/physio"
 
