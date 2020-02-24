@@ -81,7 +81,7 @@ alias cdorg="cd ~/Dropbox/org"
 
 # Open frequently used things
 # present semester's timetable
-alias opt="open ~/Dropbox/EPFL_2018-2019/Semester_1/timetable/timetable_Master_DS_semester_1.png"
+alias opt="open ~/Dropbox/EPFL_2018-2019/Semester_2/timetable_semestre_2.pdf"
 alias opgma="open https://maps.google.com"
 alias opgtr="open https://translate.google.com"
 alias opgdr="open https://drive.google.com"
@@ -192,7 +192,7 @@ alias qlf="qlmanage -p "$@""
 # alias ql="qlmanage -p "$@" &gt;& /dev/null"
 
 # Quickview present semester's timetable
-alias qlft="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/timetable/timetable_Master_DS_semester_1.png"
+alias qlft="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_2/timetable_semestre_2.pdf"
 # Quickview NTDS course's shedule
 alias qlfntdss="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/network_tour_of_ds/ntds2019_schedule_v4.pdf"
 
