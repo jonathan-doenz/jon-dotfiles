@@ -140,6 +140,7 @@ alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimet
 # Miscellaneous
 # web dev docs
 alias opweb="open https://developer.mozilla.org/en-US/docs/Web"
+alias optor="open https://pytorch.org/docs/stable/index.html"
 
 # Temporary cd alias
 alias cdphysio="cd ~/Dropbox/physio"
