@@ -43,7 +43,7 @@ Plugin 'Valloric/YouCompleteMe'
 " Checking syntax of document on each save
 " Plugin 'vim-syntastic/syntastic'
 " ALE is more lightweight than syntastic
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 
 " Color schemes
 Plugin 'jnurmine/Zenburn'
@@ -118,6 +118,9 @@ Plugin 'vimwiki/vimwiki'
 " Display run code in new pane
 Plugin 'tpope/vim-dispatch'
 
+" Javascript syntax highlighting
+Plugin 'pangloss/vim-javascript'
+
 " Save and restore vim-sessions better than :mksession
 Plugin 'tpope/vim-obsession'
 
@@ -137,8 +140,13 @@ Plugin 'fboender/bexec'
 Plugin 'benmills/vimux'
 Plugin 'julienr/vim-cellmode'
 
+" Color the color code in CSS files
+Plugin 'ap/vim-css-color'
+
 " Preview markdown file in safari
 Plugin 'JamshedVesuna/vim-markdown-preview'
+" " Instant markdown preview (does not work)
+" Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 
 " Homogenize shortcuts between vim and tmux splits
 Plugin 'christoomey/vim-tmux-navigator'
@@ -190,6 +198,8 @@ filetype plugin indent on    " required
 " ================= If use VUNDLE, uncomment until here ===================
 
 
+" Add built-in matchit plugin to allow % to jump to matching html tags, if/else clauses, ...
+packadd! matchit
 
 " Allow to specify line numbers where split occurs using :sp (split command)
 set splitbelow
@@ -253,10 +263,12 @@ au BufNewFile,BufRead *.py
 			\ set fileformat=unix
 
 " Standardization of indentation of other file types 
-au BufNewFile,BufRead *.js, *.html, *.css
-			\ set tabstop=2 |
-			\ set softtabstop=2 |
-			\ set shiftwidth=2
+au FileType javascript,html,css
+			\ setlocal tabstop=2 softtabstop=2 shiftwidth=2
+" au BufNewFile,BufRead *.js, *.html, *.css
+" 			\ set tabstop=2 |
+" 			\ set softtabstop=2 |
+" 			\ set shiftwidth=2
 
 " Flag unnecessary whitespace
 highlight BadWhitespace ctermbg=red guibg=red
@@ -264,6 +276,12 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Specify UTF8 encoding (important for Python 3)
 set encoding=utf-8
+
+" Set thesaurus file
+set thesaurus+=/Users/jonathandoenz/.vim/thesaurus_files/words.txt
+" set thesaurus+=~/.vim/thesaurus_files/words.txt
+" set thesaurus+=/~/.vim/thesaurus_files/words.txt
+" set thesaurus+=/jonathandoenz/.vim/thesaurus_files/words.txt
 
 " Use silver searcher (Ag) in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -330,6 +348,10 @@ let g:ycm_key_invoke_completion = '<C-.>'
 "   execfile(activate_this, dict(__file__=activate_this))
 " EOF
 
+" " Ale (Asychronous lint engine) configs
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 0
+
 " vim markdown preview settings
 " if using `grip`:
 " Note that this makes a request to GitHub's API (causing latencies) and may
@@ -339,6 +361,14 @@ let vim_markdown_preview_github=1
 " render image only when pressing the corresponding mapping, i.e. <C-M>
 " choose =2, or =3, to respectively render images on write, and never
 let vim_markdown_preview_toggle=1
+
+" " Instant markdown settings (does not work)
+" " update markdown preview only when saving or when inactive for a while
+" let g:instant_markdown_slow = 1
+" " avoid automatic trigger of a web browser page
+" " let g:instant_markdown_autostart = 0
+" " specify browser to use for markdown preview
+" let g:instant_markdown_browser = "firefox --new-window"
 
 " vim-cellmode plugin settings
 let g:cellmode_default_mappings='0'
@@ -718,6 +748,9 @@ nnoremap ;pat :echo expand('%:p')<CR>
 " Copy file path
 nnoremap ;cfp :let @*=expand("%:p")<CR>
 
+" Set spell-checker 
+nnoremap ;sp :setlocal spell! spelllang=en_us<CR>
+
 " Open fugitive's :Gstatus quickfix window
 nnoremap ;gs :Gstatus<CR>
 
@@ -735,6 +768,9 @@ nnoremap vv :tabedit<Space>~/.vimrc<CR>
 nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
 " Special case for json filetype where snippets are located in different folder
 autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%:e.snippets<CR>
+
+" Open (python) docstrings in quickfix window using YouCompleteMe
+nnoremap ;gd :YcmCompleter GetDoc<CR>
 
 " Make current file executable
 nnoremap ;+x :!chmod +x %<CR>
@@ -814,8 +850,8 @@ nnoremap <silent> <LEFT> g;
 " nmap <silent> <LEFT><LEFT><LEFT>	:cpfile<CR><C-G>
 
 " Scrolling with <C-arrow>
-nnoremap <C-DOWN> <C-E>
-nnoremap <C-UP> <C-Y>
+nnoremap <C-DOWN> 12<C-E>
+nnoremap <C-UP> 12<C-Y>
 
 " Indentation in visual mode keeps the visual selection
 xnoremap < <gv
@@ -831,7 +867,7 @@ autocmd FileType tex inoremap ;fi \begin{fitch}<CR><CR>\end{fitch}<CR><CR><++><E
 autocmd FileType tex inoremap ;exe \begin{exe}<CR>\ex<Space><CR>\end{exe}<CR><CR><++><Esc>3kA
 autocmd FileType tex inoremap ;em \emph{}<++><Esc>T{i
 autocmd FileType tex inoremap ;bf \textbf{}<++><Esc>T{i
-autocmd FileType tex vnoremap ; <ESC>`<i\{<ESC>`>2la}<ESC>?\\{<CR>a
+" autocmd FileType tex vnoremap ; <ESC>`<i\{<ESC>`>2la}<ESC>?\\{<CR>a
 autocmd FileType tex inoremap ;it \textit{}<++><Esc>T{i
 autocmd FileType tex inoremap ;ci \cite{}<++><Esc>T{i
 autocmd FileType tex inoremap ;tci \textcite{}<++><Esc>T{i
@@ -981,12 +1017,14 @@ vmap Dl <Plug>SchleppDupRight
 " vmap <unique> Dh <Plug>SchleppDupLeft
 " vmap <unique> Dl <Plug>SchleppDupRight
 " Reindent code as it moves
-vmap i <Plug>SchleppToggleReindent
+" vmap i <Plug>SchleppToggleReindent
 
 " Quick print variable selected in visual mode
 autocmd FileType python nnoremap ;pr yiwoprint("<ESC>pA: " + <ESC>pA)<ESC>F:
 autocmd FileType python vnoremap ;pr yoprint("<ESC>pA: " + <ESC>pA)<ESC>F:
 autocmd FileType java vnoremap ;pr yoSystem.out.println("<ESC>pA: " + <ESC>pA);<ESC>F:
+" autocmd FileType javascript nnoremap ;pr Iconsole.log('<ESC>ly$A = ', <ESC>pA);
+" autocmd FileType javascript vnoremap ;pr yIconsole.log('<ESC>lA = ', <ESC>pA);
 autocmd FileType c nnoremap ;pr yiwoprintf("%.2f: \n", <ESC>pA);<ESC>F.
 autocmd FileType c vnoremap ;pr yoprintf("%.2f: \n", <ESC>pA);<ESC>F.
 
