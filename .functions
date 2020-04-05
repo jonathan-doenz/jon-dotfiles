@@ -83,6 +83,11 @@ function opft() {
 	open file:///Users/jonathandoenz/Dropbox/EPFL_2018-2019/Semester_1/timetable/timetable_Master_DS_semester_1.png
 }
 
+# Open qutebrowser
+function qb() {
+	open /Applications/qutebrowser.app;
+}
+
 # Countdown the number of seconds passed as argument
 countdown(){
 	# Convert input in seconds
