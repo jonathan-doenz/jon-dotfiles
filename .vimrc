@@ -228,6 +228,11 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " Folding .tex files
 let g:vimtex_fold_enabled=1
 " if you want to select the expressions on which to fold a tex file, :h g:vimtex_fold_types 
+" from: https://castel.dev/post/lecture-notes-1/
+let g:tex_flavor='latex'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " See the docstrings for folded code
 let g:SimpylFold_docstring_preview=1
@@ -765,7 +770,8 @@ nnoremap ;gs :Gstatus<CR>
 nnoremap vv :tabedit<Space>~/.vimrc<CR> 
 
 " Open snippets file from current filetype
-nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
+nnoremap ;sni :tabe ~/jon-dotfiles/vim-snippets/%:e.snippets<CR>
+" nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
 " Special case for json filetype where snippets are located in different folder
 autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%:e.snippets<CR>
 
