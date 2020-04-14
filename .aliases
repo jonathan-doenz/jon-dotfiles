@@ -128,7 +128,8 @@ alias opnlpmo="open https://moodle.epfl.ch/course/view.php?id=14940"
 alias opmodmo="open https://moodle.epfl.ch/course/view.php?id=14220"
 alias oplmmo="open https://moodle.epfl.ch/course/view.php?id=15444"
 alias oplshsmo="open https://moodle.epfl.ch/course/view.php?id=15937"
-alias opshsr="open https://fr.overleaf.com/5929248872hpmjdmsghrgm"
+alias opshsr="open https://fr.overleaf.com/project/5e89a38ce7e96f00017a6783"
+alias opshsr2="open https://fr.overleaf.com/5929248872hpmjdmsghrgm"
 alias opal="open https://theory.epfl.ch/courses/algorithms/"
 alias opfp="open https://courseware.epfl.ch/dashboard"
 alias ops4ds="open http://smat.epfl.ch/courses/datasci.php"
@@ -188,6 +189,9 @@ alias TeXb="cp ~/Dropbox/TeX_stuff/templates/beamer_template.tex"
 # Launch jupyter notebook/lab
 alias jn="jupyter notebook"
 alias jl="jupyter lab"
+
+# Start ranger
+alias ra="ranger"
 
 # Launch python3 in terminal
 alias p3="python3"
