@@ -98,10 +98,14 @@ alias opdric="open https://drive.google.com/drive/u/0/folders/0B1V4guVusMb3VnJFL
 alias opdlmo="open https://moodle.epfl.ch/course/view.php?id=15422"
 alias opdismo="open https://moodle.epfl.ch/course/view.php?id=4051"
 alias opdisgh="open https://github.com/LSIR/DIS"
-alias opomlgh="https://github.com/epfml/OptML_course"
+alias opomlgh="open https://github.com/epfml/OptML_course"
+alias opomlr="open https://www.overleaf.com/project/5e997ae25f97730001101ec9"
 alias opdvmo="open https://moodle.epfl.ch/course/view.php?id=15487"
+alias opdvmi="open https://com-480-data-visualization.github.io/2020-project-guidelines"
 alias opdvgh="open https://github.com/com-480-data-visualization/com-480-project-vizkhalifa"
-alias opdvr="open https://www.overleaf.com/project/5e7ba78112534f0001cfc67c"
+alias opdvr="open https://www.overleaf.com/project/5ea1938437cf8a00013ce0be"
+alias opdvws="open https://com-480-data-visualization.github.io/com-480-project-vizkhalifa/"
+alias opdvr1="open https://www.overleaf.com/project/5e7ba78112534f0001cfc67c"
 alias oplds="open https://epfl-dslab2020.github.io"
 alias opldsgh="open https://github.com/epfl-dslab2020/epfl-dslab2020.github.io"
 alias opldsr="open http://renku.iccluster.epfl.ch"
@@ -141,6 +145,9 @@ alias opmbce="open https://gm-sittr-prod.s3.amazonaws.com/timetables/mbc/2019/6_
 alias oplatexsymbols="open https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols"
 alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 # alias tt="open ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
+
+# MLO lab related aliases
+alias opmlovos="open https://whereby.com/iglobalhealth(mlo)"
 
 # Miscellaneous
 # web dev docs
