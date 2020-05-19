@@ -770,6 +770,12 @@ nnoremap ;sp :setlocal spell! spelllang=en_us<CR>
 " Open fugitive's :Gstatus quickfix window
 nnoremap ;gs :Gstatus<CR>
 
+" Open fugitive's :Glog
+nnoremap ;gl :Glog<CR>
+
+" Open fugitive's :Gedit
+nnoremap ;ge :Gedit<CR>
+
 " Go back to parent tree of current 
 " (fugitive) git object (hence the mapping keys ;gpt)
 autocmd User fugitive
