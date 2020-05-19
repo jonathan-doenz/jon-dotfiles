@@ -61,6 +61,7 @@ Plugin 'scrooloose/nerdtree'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 
 " PEP8 checking 
 Plugin 'nvie/vim-flake8'
@@ -224,6 +225,8 @@ set foldmethod=indent
 " Fugitive settings
 " Add current branch and filename to status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+" Keep only current fugitive buffer in buffer list as it can grow crazy
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Folding .tex files
 let g:vimtex_fold_enabled=1
@@ -381,6 +384,14 @@ let g:cellmode_use_tmux=1
 " Makes things look pretty in python files
 let python_highlight_all=1
 syntax on
+
+" vimwiki plugin settings
+let g:vimwiki_autowriteall = 1
+" let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/vimwiki/',
+" 			\ 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/my_site/',
+" 			\ 'syntax': 'markdown', 'ext': '.md'}]
 
 " " start oceanicnext uncomment
 " " OceanicNext color scheme start
@@ -759,6 +770,13 @@ nnoremap ;sp :setlocal spell! spelllang=en_us<CR>
 " Open fugitive's :Gstatus quickfix window
 nnoremap ;gs :Gstatus<CR>
 
+" Go back to parent tree of current 
+" (fugitive) git object (hence the mapping keys ;gpt)
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> ;gpt :edit %:h<CR> |
+  \ endif
+
 " Remove these two mappings and use tpope [<space> and ]<space> instead
 " Add empty line above
 " nnoremap oo m`o<ESC>d$``
@@ -770,7 +788,7 @@ nnoremap ;gs :Gstatus<CR>
 nnoremap vv :tabedit<Space>~/.vimrc<CR> 
 
 " Open snippets file from current filetype
-nnoremap ;sni :tabe ~/jon-dotfiles/vim-snippets/%:e.snippets<CR>
+nnoremap ;sni :tabe ~/jon-dotfiles/vim-snippets/snippets/%:e.snippets<CR>
 " nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/snippets/%:e.snippets<CR>
 " Special case for json filetype where snippets are located in different folder
 autocmd FileType json nnoremap ;sni :tabe ~/.vim/bundle/vim-snippets/UltiSnips/%:e.snippets<CR>
@@ -813,6 +831,10 @@ noremap <silent> <C-m>j :call RunTmuxPythonCell(0)<CR>
 noremap <silent> <C-m><C-m> :call RunTmuxPythonCell(1)<CR>
 noremap <silent> <C-m>r m`Go##<CR>##<ESC>:call RunTmuxPythonAllCellsAbove()<CR><CR>dk``
 vnoremap <silent> <C-m> :call RunTmuxPythonChunk()<CR>
+
+" vimwiki mappings
+" check/uncheck item from vimwiki's todo list
+map <Leader>tt <Plug>VimwikiToggleListItem
 
 " Run python script and show result in horizontal split
 " Run :Dispatch should work
