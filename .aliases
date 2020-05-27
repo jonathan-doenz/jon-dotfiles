@@ -188,6 +188,7 @@ alias vime="vim ~/Dropbox/python_stuff/test.py"
 alias stm="tmux source ~/.tmux.conf"
 alias vip="vim !(__init__).py"
 # alias vip="vim *.py"
+alias visc="vim index.html scripts/* css/style.css"
 
 # TeX shortcuts
 alias TeXa="cp ~/Dropbox/TeX_stuff/templates/article_template.tex"
