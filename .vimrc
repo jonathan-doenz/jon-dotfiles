@@ -273,6 +273,10 @@ au BufNewFile,BufRead *.py
 " Standardization of indentation of other file types 
 au FileType javascript,html,css
 			\ setlocal tabstop=2 softtabstop=2 shiftwidth=2
+" " In case I collaborate with someone using 4 spaces for tabs (e.g. in Dataviz
+" " project), uncomment the following:
+" au FileType javascript,html,css
+" 			\ setlocal tabstop=4 softtabstop=4 shiftwidth=4
 " au BufNewFile,BufRead *.js, *.html, *.css
 " 			\ set tabstop=2 |
 " 			\ set softtabstop=2 |
@@ -754,6 +758,9 @@ nnoremap ;ia m`gg=G``
 
 " Copy whole document
 nnoremap ;ca m`ggyG``
+
+" Remove empty lines from whole document (ce for Clear Empty lines)
+nnoremap ;ce :%s/^\s*$//<CR>
 
 " Refresh file
 nnoremap ;re :edit<Space><C-R>%<CR>
