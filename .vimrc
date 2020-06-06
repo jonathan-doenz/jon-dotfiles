@@ -59,6 +59,9 @@ Plugin 'edkolev/tmuxline.vim'
 " Directories tree plugin
 Plugin 'scrooloose/nerdtree'
 
+" Bar with class and functions tags of current file to quickly jump to them
+Plugin 'majutsushi/tagbar'
+
 " Git integration
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
@@ -760,7 +763,7 @@ nnoremap ;ia m`gg=G``
 nnoremap ;ca m`ggyG``
 
 " Remove empty lines from whole document (ce for Clear Empty lines)
-nnoremap ;ce :%s/^\s*$//<CR>
+nnoremap ;ce m`:%s/^\s*$//<CR>``
 
 " Refresh file
 nnoremap ;re :edit<Space><C-R>%<CR>
@@ -814,6 +817,9 @@ nnoremap ;+x :!chmod +x %<CR>
 
 " Nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
+
+" Tagbar toggle
+nmap ;tb :TagbarToggle<CR>
 
 " " Run any file with bexec plugin
 " nmap <silent> <unique> <F5> :Bexec()<CR>
