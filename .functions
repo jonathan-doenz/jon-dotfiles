@@ -325,3 +325,19 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+
+# Auto activate conda environments if environment.yml file is in current directory
+# https://github.com/CoreyMSchafer/code_snippets/blob/master/conda_auto_env.sh
+function conda_auto_env() {
+  if [ -e "environment.yml" ]; then
+    ENV_NAME=$(head -n 1 environment.yml | cut -f2 -d ' ')
+    # Check if you are already in the environment
+    if [[ $CONDA_PREFIX != *$ENV_NAME* ]]; then
+      # Try to activate environment
+      source activate $ENV_NAME &>/dev/null
+    fi
+  fi
+}
+# call function before every prompt
+export PROMPT_COMMAND="conda_auto_env;$PROMPT_COMMAND"
