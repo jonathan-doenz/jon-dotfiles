@@ -361,3 +361,6 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Run image classification script on chosen image from anywhere
+alias classifyImage="python3 /Users/jonathandoenz/Dropbox/misc_projects/classify_my_images/classify_image.py"
