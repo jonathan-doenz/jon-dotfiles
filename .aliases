@@ -37,7 +37,6 @@ alias cdconda="cd ~/Dropbox/conda_stuff"
 alias cdcourses="cd ~/Dropbox/courses"
 alias cdana="cd ~/Dropbox/courses/Physics_courses_material/Analyse\ I\ et\ II/"
 alias cdep="cd ~/Dropbox/EPFL_2018-2019/"
-alias cdmlo="cd ~/Dropbox/EPFL_2018-2019/MLO_projects/summer_internship_2020/"
 alias cdka="cd ~/Dropbox/kaggle/"
 alias cdproj="cd ~/Dropbox/kaggle/India/"
 alias cdpic="cd ~/Pictures/Bibliothèque\ Photos.photoslibrary/Masters"
@@ -148,8 +147,13 @@ alias oplatexsymbols="open https://oeis.org/wiki/List_of_LaTeX_mathematical_symb
 alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 # alias tt="open ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 
-# MLO lab related aliases
+# Work
+# MLO lab
+alias cdmlo="cd ~/Dropbox/EPFL_2018-2019/MLO_projects"
+alias cdalgei="cd ~/Dropbox/EPFL_2018-2019/MLO_projects/data_imputation/AlgE-Impute"
+alias opalgegh="open https://github.com/epfl-iglobalhealth/AlgE-Impute"
 alias opmlovos="open https://whereby.com/iglobalhealth(mlo)"
+
 
 # Miscellaneous
 # web dev docs
