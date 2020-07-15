@@ -153,7 +153,7 @@ alias cdmlo="cd ~/Dropbox/EPFL_2018-2019/MLO_projects"
 alias cdalgei="cd ~/Dropbox/EPFL_2018-2019/MLO_projects/data_imputation/AlgE-Impute"
 alias opalgegh="open https://github.com/epfl-iglobalhealth/AlgE-Impute"
 alias opmlovos="open https://whereby.com/iglobalhealth(mlo)"
-
+alias opiddodb="open https://drive.switch.ch/index.php/apps/files/?dir=/IDDO_EDP/EDP_dataset/allFiles&fileid=2509965904"
 
 # Miscellaneous
 # web dev docs
