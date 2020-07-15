@@ -155,6 +155,9 @@ alias opalgegh="open https://github.com/epfl-iglobalhealth/AlgE-Impute"
 alias opmlovos="open https://whereby.com/iglobalhealth(mlo)"
 alias opiddodb="open https://drive.switch.ch/index.php/apps/files/?dir=/IDDO_EDP/EDP_dataset/allFiles&fileid=2509965904"
 
+# Jupyterlab
+alias cpjuptemplatehere="cp ~/Dropbox/jupyter_stuff/jupyterlab_snippets/imports_and_EDA_snippet.ipynb ."
+
 # Miscellaneous
 # web dev docs
 alias opweb="open https://developer.mozilla.org/en-US/docs/Web"
