@@ -100,6 +100,7 @@ alias opdlmo="open https://moodle.epfl.ch/course/view.php?id=15422"
 alias opdismo="open https://moodle.epfl.ch/course/view.php?id=4051"
 alias opdisgh="open https://github.com/LSIR/DIS"
 alias opomlgh="open https://github.com/epfml/OptML_course"
+alias opomlyt="open https://www.youtube.com/playlist?list=PL4O4bXkI-fAeYrsBqTUYn2xMjJAqlFQzX"
 alias opomlr="open https://www.overleaf.com/project/5e997ae25f97730001101ec9"
 alias opdvmo="open https://moodle.epfl.ch/course/view.php?id=15487"
 alias opdvmi="open https://com-480-data-visualization.github.io/2020-project-guidelines"
@@ -157,6 +158,7 @@ alias opiddodb="open https://drive.switch.ch/index.php/apps/files/?dir=/IDDO_EDP
 
 # Jupyterlab
 alias cpjuptemplatehere="cp ~/Dropbox/jupyter_stuff/jupyterlab_snippets/imports_and_EDA_snippet.ipynb ."
+alias cpjupclassify="cp ~/Dropbox/jupyter_stuff/jupyterlab_snippets/imports_and_EDA_models_snippet.ipynb ."
 
 # Miscellaneous
 # web dev docs
