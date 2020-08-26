@@ -461,3 +461,19 @@ snippet rmk rmk (or arbitrary) environment
 	\\begin{${1:rmk}}
 		${0:${VISUAL}}
 	\\end{$1}
+# Snippets from:
+# https://castel.dev/post/lecture-notes-1/
+snippet dm "Math" wA
+	\\[
+		$1
+	.\] $0
+# snippet todaysnip "Date"
+# 	`date +%F`
+# endsnippet
+# snippet mk "Math" wA
+# 	$${1}$`!p
+# 	if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+# 	    snip.rv = ' '
+# 	else:
+# 	    snip.rv = ''
+# 	`$2
