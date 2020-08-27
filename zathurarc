@@ -1,0 +1,6 @@
+
+# copy selection to system clipboard
+set selection-clipboard clipboard
+
+map p toggle_fullscreen
+map [fullscreen] p toggle_fullscreen
