@@ -9,6 +9,7 @@ brew install grep
 brew install fzf
 brew install cmake
 brew install grip
+brew install moreutils
 
 # zsh specific
 brew install lf
