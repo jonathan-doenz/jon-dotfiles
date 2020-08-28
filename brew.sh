@@ -24,6 +24,7 @@ brew cask install google-chrome
 brew cask install mendeley
 
 # pdf viewer
+brew cask install skim
 brew tap zegervdv/zathura
 brew install zathura
 brew install zathura-pdf-poppler
