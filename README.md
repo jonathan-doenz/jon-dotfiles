@@ -22,10 +22,12 @@ git clone https://github.com/jonathan-doenz/jon-dotfiles ~
 
 4) Run the dotfiles_syncker.sh script
 ```
-~/jon-dotfiles/dotfiles_syncker.sh 	# this replaces the dotfiles in home folder with a symlink to the files in ~/jon-dotfiles repository
+~/jon-dotfiles/scripts/dotfiles_syncker_zsh.sh 	# this replaces the dotfiles in home folder with a symlink to the files in ~/jon-dotfiles repository
 ```
 
-5) Source the fresh .bash_profile file for the preferences to take place and you are good to go!
+5) Source the fresh .zshrc file for the preferences to take place and you are good to go!
 ```
-source ~/.bash_profile
+source ~/.zshrc
 ```
+
+6) For all the in-depth customizations, follow the guidelines in the directory [guidelines](./guidelines).
