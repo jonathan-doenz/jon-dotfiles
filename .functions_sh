@@ -1,0 +1,157 @@
+#!/bin/sh
+
+# display folder content when cd to a directory
+function cd {
+	builtin cd "$@" && ls -F
+}
+
+# Create a new directory and enter it
+function mkd() {
+	mkdir -p "$@" && cd "$_";
+}
+
+# git stage and commit present repo
+function gitac() {
+	git add $1;
+	git commit -m "$2";
+}
+
+# git stage and commit present repo
+function gitAllc() {
+	git add -A;
+	git commit -m "$@";
+}
+
+# git stage and commit present repo
+function gitAllcpush() {
+	git add -A;
+	git commit -m "$@";
+	git push;
+}
+
+# Create a new TeX article file and open it with vim
+function TeXav() {
+	cp ~/Dropbox/TeX_stuff/templates/article_template.tex .; 
+	# Replace the tilde with the name of the home directory of the present 
+	# machine
+	sed s-{~-{$HOME- ./article_template.tex > "$1"; 
+	# Remove the copied template file if we are not in the source directory
+	# the file otherwise the template file would be permanently wiped out
+	if ! [ "$(pwd)" == $HOME"/Dropbox/TeX_stuff/templates" ]; then
+		rm ./article_template.tex; 
+	fi
+	vim "$1";
+}
+
+# open pdf file with Zathura
+function za() {
+	zathura "$@" &
+}
+
+
+# Print paragraphs where pattern $1 is found in file $2
+function greppar() {
+	awk -v RS='' -v ORS='\n\n' '/'$1'/' $2;
+}
+
+# Open new firefox window
+function firefox-window() {
+/usr/bin/env osascript <<-EOF
+tell application "System Events"
+    if (name of processes) contains "Firefox" then
+        tell application "Firefox" to activate
+        keystroke "n" using command down
+    else
+        tell application "Firefox" to activate
+    end if
+end tell
+EOF
+}
+
+# Open new window and launch google maps, translate, drive and calendar
+function opga() {
+	firefox-window;
+	open https://maps.google.com;
+	open https://translate.google.com;
+	open https://drive.google.com;
+	open https://calendar.google.com
+}
+
+# Open new window and launch google maps, translate, drive and calendar
+function opft() {
+	firefox-window;
+	open file:///Users/jonathandoenz/Dropbox/EPFL_2018-2019/Semester_1/timetable/timetable_Master_DS_semester_1.png
+}
+
+# Open qutebrowser
+function qb() {
+	open /Applications/qutebrowser.app;
+}
+
+# Countdown the number of seconds passed as argument
+countdown(){
+	# Convert input in seconds
+	if [ "$2" == "" ] || [ "$2" == "s" ] || [ "$2" == "sec" ] || [ "$2" == "second" ] || [ "$2" == "seconds" ]; then
+		let seconds=$1
+	elif [ "$2" == "m" ] || [ "$2" == "min" ] || [ "$2" == "minute" ] || [ "$2" == "minutes" ]; then
+		let seconds=$(($1*60))
+	elif [ "$2" == "h" ] || [ "$2" == "hr" ] || [ "$2" == "hour" ] || [ "$2" == "hours" ]; then
+		let seconds=$(($1*3600))
+	fi
+	# Countdown part
+	echo -e "Countdown started at:\t\t$(date)"
+	date1=$((`date +%s` + $seconds));
+	while [ "$date1" -ge `date +%s` ]; do 
+		## Is this more than 24h away?
+		days=$(($(($(( $date1 - $(date +%s))) * 1 ))/86400))
+		echo -ne "$days day(s) and $(date -ju -f %s $(($date1 - `date +%s`)) +%H:%M:%S)\r"
+		sleep 0.1
+	done
+	echo -e "Countdown terminated at:\t$(date)";
+	# If the sound file Glass.aiff exists, play the sound to notify countdown termination
+	if [ /System/Library/Sounds/Glass.aiff ]; then
+		afplay /System/Library/Sounds/Glass.aiff
+	fi
+}
+medic(){
+	countdown 20 min
+}
+# Stopwatch counting the number of seconds passed since execution. Terminate it with <C-c>
+stopwatch(){
+	echo -e "Stopwatch started at:\t$(date)"
+	date1=`date +%s`; 
+	while true; do 
+		days=$(( $(($(date +%s) - date1)) / 86400 ))
+		echo -ne "$days day(s) and $(date -ju -f %s $((`date +%s` - $date1)) +%H:%M:%S)\r"
+		sleep 0.1
+	done
+	echo -e "Stopwatch terminated at:\t$(date)"
+}
+
+# Scale recipe n times
+scale_recipe(){
+	~/Dropbox/python_stuff/scale_numbers.py $1 $2
+	printf "%s has been successfully scaled %.1f times!\nYou can have a look to the new file in the same directory as the original" $1 $2
+}
+# Change working directory to the top-most Finder window location
+function cdf() { # short for `cdfinder`
+	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+}
+
+# Auto activate conda environments if environment.yml file is in current directory
+# https://github.com/CoreyMSchafer/code_snippets/blob/master/conda_auto_env.sh
+function conda_auto_env() {
+  if [ -e "environment.yml" ]; then
+    ENV_NAME=$(head -n 1 environment.yml | cut -f2 -d ' ')
+    # Check if you are already in the environment
+    if [[ $CONDA_PREFIX != *$ENV_NAME* ]]; then
+      # Try to activate environment
+      source activate $ENV_NAME &>/dev/null
+    fi
+  fi
+}
+# call function before every prompt
+export PROMPT_COMMAND="conda_auto_env"
+precmd() { 
+	eval "$PROMPT_COMMAND" 
+}

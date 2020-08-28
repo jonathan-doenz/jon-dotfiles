@@ -1,0 +1,238 @@
+#!/bin/sh
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+# # enable go to parent directory with command "cdd"
+# alias cdd='cd -'
+# visit a series of directories one after the other in a circular way
+#alias cd="eval `cdring !* ' '`"
+
+
+# Shortcuts
+# Navigation shortcuts
+alias cddr="cd ~/Dropbox"
+alias cddl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias cdjd="cd ~/jon-dotfiles"
+alias cdt="cd ~/Dropbox/TeX_stuff"
+alias cdtt="cd ~/Dropbox/TeX_stuff/templates"
+alias cdvb="cd ~/.vim/bundle"
+alias cdcui="cd ~/Dropbox/cuisine"
+alias cdpy="cd ~/Dropbox/python_stuff"
+alias cdpym="cd ~/Dropbox/python_stuff/my_python_modules"
+alias cdc="cd ~/Dropbox/c_stuff"
+alias cdconda="cd ~/Dropbox/conda_stuff"
+alias cdcourses="cd ~/Dropbox/courses"
+alias cdana="cd ~/Dropbox/courses/Physics_courses_material/Analyse\ I\ et\ II/"
+alias cdep="cd ~/Dropbox/EPFL_2018-2019/"
+alias cdka="cd ~/Dropbox/kaggle/"
+alias cdproj="cd ~/Dropbox/kaggle/India/"
+alias cdpic="cd ~/Pictures/Bibliothèque\ Photos.photoslibrary/Masters"
+alias cdcv="cd ~/Dropbox/Curriculum_Vitae"
+
+# Courses
+# MA semester 2
+alias cdse="cd ~/Dropbox/EPFL_2018-2019/Semester_2"
+alias cdproj="cd ~/Dropbox/EPFL_2018-2019/semester_project"
+alias cddis="cd ~/Dropbox/EPFL_2018-2019/Semester_2/distributed_information_systems"
+alias cdaa="cd ~/Dropbox/EPFL_2018-2019/Semester_2/advanced_algorithms"
+alias cddeep="cd ~/Dropbox/EPFL_2018-2019/Semester_2/deep_learning"
+alias cdlds="cd ~/Dropbox/EPFL_2018-2019/Semester_2/lab_in_DS"
+alias cdoptml="cd ~/Dropbox/EPFL_2018-2019/Semester_2/optimization_for_ML"
+alias cddv="cd ~/Dropbox/EPFL_2018-2019/Semester_2/data_visualization"
+alias cdts="cd ~/Dropbox/EPFL_2018-2019/Semester_2/time_series"
+alias cdshs="cd ~/Dropbox/EPFL_2018-2019/Semester_2/SHS_2"
+# MA semester 1
+alias cdml="cd ~/Dropbox/EPFL_2018-2019/Semester_1/ML"
+alias cdnlp="cd ~/Dropbox/EPFL_2018-2019/Semester_1/NLP"
+alias cdshs1="cd ~/Dropbox/EPFL_2018-2019/Semester_1/SHS_1"
+alias cdlm="cd ~/Dropbox/EPFL_2018-2019/Semester_1/linear_models"
+alias cdmod="cd ~/Dropbox/EPFL_2018-2019/Semester_1/maths_of_data"
+alias cdntds="cd ~/Dropbox/EPFL_2018-2019/Semester_1/network_tour_of_ds"
+alias cds4ds="cd ~/Dropbox/EPFL_2018-2019/Semester_1/stats4ds"
+alias cday="cd ~/Dropbox/EPFL_2018-2019/admission_year"
+alias cds="cd ~/Dropbox/EPFL_2018-2019/Semester_1"
+alias cdsp="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_2/signal_processing"
+alias cddb="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_2/introduction_to_database_systems"
+alias cdpdb="cd ~/Dropbox/intro_database_project"
+alias cdpc="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_2/parallelism_and_concurrency"
+alias cdana="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_2/analyse4"
+alias cdcs="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_2/circuits_and_systems_2"
+alias cdai="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_2/these_courses_are_not_graded/intelligence_artificielle"
+alias cdlt="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_2/these_courses_are_not_graded/learning_theory"
+alias cdml2="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/machineLearning"
+alias cdnlp2="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/NLP"
+alias cdal="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/algorithms"
+alias cdms="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/modstoch"
+alias cdfp="cd ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/functionalProgramming"
+# Org
+alias cdorg="cd ~/Dropbox/org"
+
+# Open frequently used things
+# present semester's timetable
+alias opt="open ~/Dropbox/EPFL_2018-2019/Semester_2/timetable_semestre_2.pdf"
+alias opgma="open https://maps.google.com"
+alias opgtr="open https://translate.google.com"
+alias opgdr="open https://drive.google.com"
+alias opgca="open https://calendar.google.com"
+alias opwh="open https://web.whatsapp.com"
+
+# Open courses' webpage
+alias opmoodle="open https://moodle.epfl.ch/my/"
+alias opaamo="open https://moodle.epfl.ch/course/view.php?id=13734"
+alias opaa="open https://moodle.epfl.ch/course/view.php?id=13734"
+alias opaar="open https://www.overleaf.com/project/5e70dd891f5a2c000176872b"
+alias opdl="open https://fleuret.org/ee559"
+alias opdric="open https://drive.google.com/drive/u/0/folders/0B1V4guVusMb3VnJFLUxWYWxJYnM"
+alias opdlmo="open https://moodle.epfl.ch/course/view.php?id=15422"
+alias opdismo="open https://moodle.epfl.ch/course/view.php?id=4051"
+alias opdisgh="open https://github.com/LSIR/DIS"
+alias opomlgh="open https://github.com/epfml/OptML_course"
+alias opomlyt="open https://www.youtube.com/playlist?list=PL4O4bXkI-fAeYrsBqTUYn2xMjJAqlFQzX"
+alias opomlr="open https://www.overleaf.com/project/5e997ae25f97730001101ec9"
+alias opdvmo="open https://moodle.epfl.ch/course/view.php?id=15487"
+alias opdvmi="open https://com-480-data-visualization.github.io/2020-project-guidelines"
+alias opdvgh="open https://github.com/com-480-data-visualization/com-480-project-vizkhalifa"
+alias opdvr="open https://www.overleaf.com/project/5ea1938437cf8a00013ce0be"
+alias opdvws="open https://com-480-data-visualization.github.io/com-480-project-vizkhalifa/"
+alias opdvr1="open https://www.overleaf.com/project/5e7ba78112534f0001cfc67c"
+alias oplds="open https://epfl-dslab2020.github.io"
+alias opldsgh="open https://github.com/epfl-dslab2020/epfl-dslab2020.github.io"
+alias opldsr="open http://renku.iccluster.epfl.ch"
+alias opsp="open http://com303.learndsp.org/view/main/"
+alias opdb="open https://moodle.epfl.ch/course/view.php?id=198"
+alias opdb="open https://moodle.epfl.ch/course/view.php?id=198"
+alias oppc="open https://courseware.epfl.ch/courses/course-v1:EPFL+CS-206+2019_T1/course/"
+alias oppcg="open https://gitlab.epfl.ch/lamp/student-repositories-s19/cs206-doenz"
+alias opana="open https://moodle.epfl.ch/course/view.php?id=15556"
+alias opcs="open https://moodle.epfl.ch/course/view.php?id=14380"
+alias opoml="open https://github.com/epfml/OptML_course"
+alias opts="open https://moodle.epfl.ch/course/view.php?id=15393"
+alias opai="open https://moodle.epfl.ch/course/view.php?id=456"
+alias opco="open https://moodle.epfl.ch/course/view.php?id=14397"
+alias opml="open https://www.epfl.ch/labs/mlo/machine-learning-cs-433"
+alias opmlmo="open https://moodle.epfl.ch/course/view.php?id=14221"
+alias opmlgh="open https://github.com/epfml/ML_course"
+alias opmlr="open https://www.overleaf.com/project/5de511a635faa10001b0a7d7"
+alias opntdsmo="open https://moodle.epfl.ch/course/view.php?id=15299"
+alias opntdsgh="open https://github.com/mdeff/ntds_2019"
+alias opntdsr="open https://www.overleaf.com/project/5e002d816dd7730001d5fff3"
+alias opnlp="open https://coling.epfl.ch/"
+alias opnlpmo="open https://moodle.epfl.ch/course/view.php?id=14940"
+alias opmodmo="open https://moodle.epfl.ch/course/view.php?id=14220"
+alias oplmmo="open https://moodle.epfl.ch/course/view.php?id=15444"
+alias oplshsmo="open https://moodle.epfl.ch/course/view.php?id=15937"
+alias opshsr="open https://fr.overleaf.com/project/5e89a38ce7e96f00017a6783"
+alias opshsr1="open https://fr.overleaf.com/5929248872hpmjdmsghrgm"
+alias opal="open https://theory.epfl.ch/courses/algorithms/"
+alias opfp="open https://courseware.epfl.ch/dashboard"
+alias ops4ds="open http://smat.epfl.ch/courses/datasci.php"
+alias opanaph="open http://sma.epfl.ch/cours/csma/analyse4.htm"
+alias opshs="open https://moodle.epfl.ch/course/view.php?id=16118"
+alias opgdvim="open https://drive.google.com/drive/u/0/folders/1FvS5JhQHwxc2WyayvFFJQZ4KO0lfgJ9x"
+alias opmbcm="open https://gm-sittr-prod.s3.amazonaws.com/timetables/mbc/2019/5_701_Blancherie_dir_Bourdonnette.pdf"
+alias opmbce="open https://gm-sittr-prod.s3.amazonaws.com/timetables/mbc/2019/6_701_Parc_Scientifique_dir_Morges_gare.pdf"
+alias oplatexsymbols="open https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols"
+alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
+# alias tt="open ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
+
+# Work
+# MLO lab
+alias cdmlo="cd ~/Dropbox/EPFL_2018-2019/MLO_projects"
+alias cdalgei="cd ~/Dropbox/EPFL_2018-2019/MLO_projects/data_imputation/AlgE-Impute"
+alias opalgegh="open https://github.com/epfl-iglobalhealth/AlgE-Impute"
+alias opmlovos="open https://whereby.com/iglobalhealth(mlo)"
+alias opiddodb="open https://drive.switch.ch/index.php/apps/files/?dir=/IDDO_EDP/EDP_dataset/allFiles&fileid=2509965904"
+
+# Jupyterlab
+alias cpjuptemplatehere="cp ~/Dropbox/jupyter_stuff/jupyterlab_snippets/imports_and_EDA_snippet.ipynb ."
+alias cpjupclassify="cp ~/Dropbox/jupyter_stuff/jupyterlab_snippets/imports_and_EDA_models_snippet.ipynb ."
+
+# Miscellaneous
+# web dev docs
+alias opweb="open https://developer.mozilla.org/en-US/docs/Web"
+alias optor="open https://pytorch.org/docs/stable/index.html"
+
+# Temporary cd alias
+alias cdphysio="cd ~/Dropbox/physio"
+
+# Github shortcuts
+alias g="git"
+alias gits="git status"
+alias gita="git add"
+alias gitc="git commit -m"
+alias gitb="git branch"
+alias gitd="git diff"
+alias gitu="git reset HEAD --"
+alias gitco="git checkout"
+
+# Vim shortcuts
+alias lvim="vim -c \"normal '0\"" # open last modified file in vim
+# alias v="vim \"+normal\\\`\\\"" # (does not work for now) open in vim at last modified line)
+alias vimv="vim ~/.vimrc"
+alias vimvg="cd ~/jon-dotfiles; vim .vimrc"
+alias vimz="vim ~/.zshrc"
+alias vima="vim ~/.aliases_sh"
+alias vimag="cd ~/jon-dotfiles; vim .aliases_sh"
+alias vimf="vim ~/.functions_sh"
+alias vimfg="cd ~/jon-dotfiles; vim .functions_sh"
+alias vimw="vim ~/vimwiki/index.wiki"
+alias vimwt="vim ~/vimwiki/Tasks.wiki"
+alias vimt="vim ~/.tmux.conf"
+alias vimread="vim ~/Dropbox/org/gtd/reading.org"
+alias vimju="vim ~/Library/Jupyter/nbextensions/snippets/snippets.json"
+alias vimrm="vim README.md"
+alias vimtd="vim ~/Dropbox/EPFL_2018-2019/Semester_1/study_todos.md"
+# temporary alias
+alias vime="vim ~/Dropbox/python_stuff/test.py"
+alias stm="tmux source ~/.tmux.conf"
+alias vip="vim !(__init__).py"
+# alias vip="vim *.py"
+alias visc="vim index.html scripts/* css/style.css"
+
+# TeX shortcuts
+alias TeXa="cp ~/Dropbox/TeX_stuff/templates/article_template.tex"
+alias TeXb="cp ~/Dropbox/TeX_stuff/templates/beamer_template.tex"
+
+# Launch jupyter notebook/lab
+alias jn="jupyter notebook"
+alias jl="jupyter lab"
+
+# Start ranger
+alias ra="ranger"
+
+# Launch python3 in terminal
+alias p3="python3"
+
+# Launch quickview from terminal
+alias qlf="qlmanage -p "$@""
+# alias ql="qlmanage -p "$@" &gt;& /dev/null"
+
+# Quickview present semester's timetable
+alias qlft="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_2/timetable_semestre_2.pdf"
+# Quickview NTDS course's shedule
+alias qlfntdss="qlmanage -p ~/Dropbox/EPFL_2018-2019/Semester_1/network_tour_of_ds/ntds2019_schedule_v4.pdf"
+
+# Look at local weather forecast
+alias opwf="open https://darksky.net/forecast/46.5093,6.4983/ca24/en"
+
+# Look at gym schedule
+alias opfit="open https://www.activfitness.ch/Studio_Morges___Oeffnungszeiten_fr.page?ActiveID=11838"
+
+# Scrape pdf files using my script ~/Dropbox/python_stuff/scraping_pdf.py
+alias scrape_pdfs="~/Dropbox/python_stuff/scraping_script.py"
+
+# Miscellaneous shortcuts
+alias sb="source ~/.bash_profile"
+alias sz="source ~/.zshrc"
+
+# Get week number
+alias week='date +%V'
+
+# Run image classification script on chosen image from anywhere
+alias classifyImage="python3 /Users/jonathandoenz/Dropbox/misc_projects/classify_my_images/classify_image.py"
