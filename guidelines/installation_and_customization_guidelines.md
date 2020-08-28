@@ -44,6 +44,20 @@ rm -rf fonts
 -- Go to Preferences > Profiles > Colors
 -- Choose "Solarized dark"
 
+## Customize prompt from agnoster theme
+
+- Create copy of agnoster theme
+```
+cd ~/.oh-my-zsh/themes
+cp agnoster.zsh-theme agnoster_jon.zsh-theme
+```
+
+- Add these lines at the end of function prompt_end (after line 83 as of 2020.08.28):
+```
+#Adds the new line and ➜ as the start character.
+printf "\n ➜";
+```
+
 
 # Iterm2 additional shortcuts
 
