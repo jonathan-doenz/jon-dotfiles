@@ -191,7 +191,8 @@ alias vimtd="vim ~/Dropbox/EPFL_2018-2019/Semester_1/study_todos.md"
 # temporary alias
 alias vime="vim ~/Dropbox/python_stuff/test.py"
 alias stm="tmux source ~/.tmux.conf"
-alias vip="vim !(__init__).py"
+# alias vip="vim !(__init__).py"
+alias vip="vim [^__init__]*.py"
 # alias vip="vim *.py"
 alias visc="vim index.html scripts/* css/style.css"
 
