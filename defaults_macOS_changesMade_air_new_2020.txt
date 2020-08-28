@@ -1,0 +1,12 @@
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0 
+# Remove the animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 0 
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+# Set the icon size of Dock items to 36 pixels
+defaults write com.apple.dock tilesize -int 36
+# Allow key repeat in browser for example
+defaults write -g ApplePressAndHoldEnabled -bool false
+# Decrease size of dock so that it does not show up when approaching the cursor to the bottom 2 cm of the screen
+defaults write com.apple.dock tilesize -int 36
