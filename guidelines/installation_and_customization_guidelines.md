@@ -142,3 +142,7 @@ This is mainly to automatically update ctags in git repositories.
 ~/jon-dotfiles/scripts/set_up_git_zathura.sh
 ```
 
+# Enable compilation of Vimtex
+
+Either download [Latexmk](http://personal.psu.edu/jcc8//software/latexmk-jcc/), or download the full TeXLive distribution.
+
