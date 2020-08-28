@@ -7,6 +7,7 @@ brew install ctags
 brew install tree
 brew install grep
 brew install fzf
+brew install cmake
 
 # zsh specific
 brew install lf
