@@ -783,6 +783,9 @@ nnoremap ;sp :setlocal spell! spelllang=en_us<CR>
 " Open fugitive's :Gstatus quickfix window
 nnoremap ;gs :Gstatus<CR>
 
+" Open fugitive's :Gstatus quickfix window
+nnoremap ;ga :Gstatus<CR><C-W>50+
+
 " Open fugitive's :Glog
 nnoremap ;gl :Glog<CR>
 
