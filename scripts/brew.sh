@@ -22,6 +22,9 @@ brew cask install rstudio
 brew cask install firefox
 brew cask install google-chrome
 
+# academic writing
+brew cask install mactex
+
 # academic reading
 brew cask install mendeley
 
