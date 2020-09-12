@@ -121,6 +121,21 @@ python3 install.py --all
 - Go to: Preferences > Sidebar
 - Put a tick in box: "home_name"
 
+# Set up git config
+
+This allows to associate commits with the same username as usual.
+
+## Prerequisites 
+- git must be installed
+
+## Procedure:
+
+- Write in a command line:
+```
+set up git config --global user.name "jonathan.doenz"
+set up git config --global user.email MY_ASSOCIATED_EMAIL_ADDRESS
+```
+
 # Set up git templates
 
 This is mainly to automatically update ctags in git repositories.
