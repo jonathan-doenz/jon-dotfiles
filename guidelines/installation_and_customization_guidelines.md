@@ -136,6 +136,15 @@ set up git config --global user.name "jonathan.doenz"
 set up git config --global user.email MY_ASSOCIATED_EMAIL_ADDRESS
 ```
 
+# Set up global gitignore
+
+This specifies the location of the global gitignore. The file `~/.gitignore` should already be present there if the script `~/jon-dotfiles/scripts/dotfiles_syncker_zsh.sh` was run.
+
+- Write in a command line:
+```
+git config --global core.excludesFile '~/.gitignore'
+```
+
 # Set up git templates
 
 This is mainly to automatically update ctags in git repositories.
