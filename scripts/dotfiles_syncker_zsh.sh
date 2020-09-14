@@ -4,7 +4,7 @@
 dotfiles_dir="$(dirname "$(pwd)")"
 
 # dotfiles to be symlinked
-dotfiles=(".aliases" ".aliases_sh" ".bash_profile" ".bash_prompt" ".bashrc" ".zshrc" ".zshrc_jon" ".exports" ".functions" ".functions_sh" ".path" ".vimrc" ".tmux.conf") 
+dotfiles=(".aliases" ".aliases_sh" ".bash_profile" ".bash_prompt" ".bashrc" ".zshrc" ".zshrc_jon" ".exports" ".functions" ".functions_sh" ".path" ".vimrc" ".tmux.conf" ".gitignore") 
 
 # to do it on all dotfiles present, could run instead:
 # dotfiles=$(find ${dotfiles_dir} -name "\.[a-z,A-Z]*" -exec basename {} \; | grep -v ".git")
