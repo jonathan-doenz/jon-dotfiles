@@ -141,6 +141,20 @@ alias oplatexsymbols="open https://oeis.org/wiki/List_of_LaTeX_mathematical_symb
 alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 # alias tt="open ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimetable/timetable_MA1_cropped_2.pdf"
 
+# Semester 3
+# Applied Data Analysis
+alias opada="open https://dlab.epfl.ch/teaching/fall2020/cs401/"
+alias opadamo="open https://moodle.epfl.ch/course/view.php?id=15268"
+alias opadagh="open https://github.com/epfl-ada/2020"
+alias cdada="cd ~/Dropbox/EPFL_2018-2019/Semester_3/ADA_CS-401"
+# Applied proba and stochastic processes
+alias opapspmo="open https://moodle.epfl.ch/course/view.php?id=14329"
+alias cdapsp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/APSP_MGT-484"
+# Information security and privacy
+alias opispmo="open https://moodle.epfl.ch/course/view.php?id=15812"
+alias cdisp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/ISP_COM-402"
+
+
 # Work
 # MLO lab
 alias cdmlo="cd ~/Dropbox/EPFL_2018-2019/MLO_projects"
