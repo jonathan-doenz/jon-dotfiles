@@ -57,3 +57,6 @@ brew cask install kindle
 
 # virtual environment
 brew cask install virtualbox
+
+# reproducibility
+brew cask install docker
