@@ -153,10 +153,13 @@ alias tt="qlmanage -p ~/Dropbox/EPFL_2018-2019/admission_year/Semester_1/zetimet
 alias opada="open https://dlab.epfl.ch/teaching/fall2020/cs401/"
 alias opadamo="open https://moodle.epfl.ch/course/view.php?id=15268"
 alias opadagh="open https://github.com/epfl-ada/2020"
+alias cdada="cd ~/Dropbox/EPFL_2018-2019/Semester_3/ADA_CS-401"
 # Applied proba and stochastic processes
 alias opapspmo="open https://moodle.epfl.ch/course/view.php?id=14329"
+alias cdapsp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/APSP_MGT-484"
 # Information security and privacy
 alias opispmo="open https://moodle.epfl.ch/course/view.php?id=15812"
+alias cdisp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/ISP_COM-402"
 
 
 # Work
