@@ -160,6 +160,10 @@ alias cdapsp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/APSP_MGT-484"
 # Information security and privacy
 alias opispmo="open https://moodle.epfl.ch/course/view.php?id=15812"
 alias cdisp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/ISP_COM-402"
+# Markov chains and algorithmic applications
+alias opmcmo="open https://moodle.epfl.ch/course/view.php?id=15016"
+alias opmcpi="open https://piazza.com/class/kevuwei04ym223?cid=7"
+alias cdmc="cd ~/Dropbox/EPFL_2018-2019/Semester_3/MC_COM-516"
 
 
 # Work
