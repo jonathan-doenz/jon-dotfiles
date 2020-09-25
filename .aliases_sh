@@ -147,16 +147,20 @@ alias opada="open https://dlab.epfl.ch/teaching/fall2020/cs401/"
 alias opadamo="open https://moodle.epfl.ch/course/view.php?id=15268"
 alias opadagh="open https://github.com/epfl-ada/2020"
 alias cdada="cd ~/Dropbox/EPFL_2018-2019/Semester_3/ADA_CS-401"
-# Applied proba and stochastic processes
-alias opapspmo="open https://moodle.epfl.ch/course/view.php?id=14329"
-alias cdapsp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/APSP_MGT-484"
+alias opadast="open https://tube.switch.ch/channels/3d0dac80"
 # Information security and privacy
 alias opispmo="open https://moodle.epfl.ch/course/view.php?id=15812"
 alias cdisp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/ISP_COM-402"
+alias opispst="open https://tube.switch.ch/channels/cba50b19"
 # Markov chains and algorithmic applications
 alias opmcmo="open https://moodle.epfl.ch/course/view.php?id=15016"
 alias opmcpi="open https://piazza.com/class/kevuwei04ym223?cid=7"
 alias cdmc="cd ~/Dropbox/EPFL_2018-2019/Semester_3/MC_COM-516"
+alias opmcst="open https://tube.switch.ch/channels/ca8eb7b5"
+# Applied proba and stochastic processes
+alias opapspmo="open https://moodle.epfl.ch/course/view.php?id=14329"
+alias cdapsp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/APSP_MGT-484"
+alias opapspst="open https://tube.switch.ch/channels/605d1ced"
 
 
 # Work
