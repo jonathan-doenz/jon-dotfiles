@@ -161,6 +161,8 @@ alias opmcst="open https://tube.switch.ch/channels/ca8eb7b5"
 alias opapspmo="open https://moodle.epfl.ch/course/view.php?id=14329"
 alias cdapsp="cd ~/Dropbox/EPFL_2018-2019/Semester_3/APSP_MGT-484"
 alias opapspst="open https://tube.switch.ch/channels/605d1ced"
+# Semester project
+alias opsprep="open https://www.overleaf.com/project/5f6fc148ea382f000118fe1b"
 
 
 # Work
