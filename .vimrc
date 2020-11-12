@@ -1128,7 +1128,7 @@ iab bqc <blockquote><cite><CR><CR></cite></blockquote><CR><++><UP><UP><TAB>
 
 " Computed abbreviations
 " display current timestamp
-iab <expr> TS strftime("%c")
+" iab <expr> TS strftime("%c")
 " write last yanked text
 iab <expr> PPP getreg('')
 " insert content of preceding non-empty line
