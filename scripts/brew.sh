@@ -21,6 +21,7 @@ brew cask install rstudio
 # internet browsing
 brew cask install firefox
 brew cask install google-chrome
+brew cask install qutebrowser
 
 # academic writing
 brew cask install mactex
