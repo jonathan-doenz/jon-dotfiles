@@ -366,8 +366,17 @@ let g:ycm_key_invoke_completion = '<C-.>'
 " EOF
 
 " " Ale (Asychronous lint engine) configs
+" " Linters (flake8 flags general syntax problems, pydocstyle flags missing documentation)
+" let g:ale_linters = {'python': ['flake8', 'pydocstyle']}
 " let g:ale_lint_on_save = 1
 " let g:ale_lint_on_text_changed = 0
+" " Fixers (formats the code on save. Note that black and isort have to be
+" installed. E.g. using pip)
+" let g:ale_fixers = {
+	" '*': ['remove_trailing_lines', 'trim_whitespace'],
+	" 'python': ['black', 'isort'],
+	" }
+" let g:ale_fix_on_save = 1
 
 " vim markdown preview settings
 " if using `grip`:
