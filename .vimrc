@@ -898,6 +898,12 @@ inoremap ;gui <++>
 " map        <Space><Tab> <Esc>/<++><Enter>"_c4l
 
 " Arrow keys in normal mode
+" Up arrow mapped to scroll one line up
+nnoremap <silent> <UP> <C-Y>
+" Down arrow mapped to scroll one line down
+nnoremap <silent> <DOWN> <C-E>
+" Left arrow mapped to go to the previous place of edit
+nnoremap <silent> <LEFT> g;
 " Right arrow mapped to go to the next place of edit
 nnoremap <silent> <RIGHT> g,
 " Left arrow mapped to go to the previous place of edit
