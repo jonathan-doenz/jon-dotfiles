@@ -39,6 +39,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Export path to use ruby
+# export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.aliases_sh" ] && source "$HOME/.aliases_sh"
 [ -f "$HOME/.functions_sh" ] && source "$HOME/.functions_sh"
