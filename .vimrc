@@ -405,9 +405,9 @@ syntax on
 
 " vimwiki plugin settings
 let g:vimwiki_autowriteall = 1
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
+			\ 'syntax': 'markdown', 'ext': '.md'}]
 " let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
-" let g:vimwiki_list = [{'path': '~/vimwiki/',
-" 			\ 'syntax': 'markdown', 'ext': '.md'}]
 " let g:vimwiki_list = [{'path': '~/my_site/',
 " 			\ 'syntax': 'markdown', 'ext': '.md'}]
 
@@ -741,8 +741,8 @@ set completefunc=emoji#complete
 inoremap ,, <ESC>:w<CR>a
 nnoremap ,, :w<CR>
 
-" Use <BS> instead of typing :nohlsearch to remove highlighting 
-nmap <silent> <BS>  :nohlsearch<CR>
+" Use <C-BS> instead of typing :nohlsearch to remove highlighting 
+nmap <silent> <C-BS>  :nohlsearch<CR>
 
 " Split navigations: Ctrl-j to move to the split below, Ctrl-k to split above,
 " Ctrl-l to split right, Ctrl-h to split left
@@ -1124,7 +1124,7 @@ autocmd FileType python nmap yam mz[my]m`z
 " nmap ;pp :RunSilent open /tmp/vim-pandoc-out.pdf<CR>
 
 " vim markdown preview mappings
-let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_hotkey='<C-s>'
 
 " easymotion plugin mappings
 " nmap s <Plug>(easymotion-overwin-f2)
