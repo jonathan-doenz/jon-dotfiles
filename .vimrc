@@ -764,6 +764,8 @@ nnoremap <S-space> <C-U>
 inoremap <S-space> <space>
 nnoremap ;do IDONE<ESC>
 
+nnoremap ;so vip:sort<CR>
+
 " nnoremap <CR> za
 " nnoremap <space> za
 
@@ -817,6 +819,9 @@ autocmd User fugitive
 
 " Open .vimrc in new tab
 nnoremap vv :tabedit<Space>~/.vimrc<CR> 
+
+" Open work wiki in new tab
+nnoremap vw :tabedit<Space>~/Dropbox/vimwiki/Pneumoscope.md<CR> 
 
 " Open snippets file from current filetype
 nnoremap ;sni :tabe ~/jon-dotfiles/vim-snippets/snippets/%:e.snippets<CR>
