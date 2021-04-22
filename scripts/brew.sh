@@ -10,6 +10,7 @@ brew install fzf
 brew install cmake
 brew install grip
 brew install moreutils
+brew install ack
 
 # zsh specific
 brew install lf
