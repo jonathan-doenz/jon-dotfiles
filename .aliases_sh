@@ -186,6 +186,9 @@ alias opiddodb="open https://drive.switch.ch/index.php/apps/files/?dir=/IDDO_EDP
 alias cpjuptemplatehere="cp ~/Dropbox/jupyter_stuff/jupyterlab_snippets/imports_and_EDA_snippet.ipynb ."
 alias cpjupclassify="cp ~/Dropbox/jupyter_stuff/jupyterlab_snippets/imports_and_EDA_models_snippet.ipynb ."
 
+# Activate conda environments
+alias cap="conda activate pneumoscope_torch_gpu"
+
 # Miscellaneous
 # web dev docs
 alias opweb="open https://developer.mozilla.org/en-US/docs/Web"
