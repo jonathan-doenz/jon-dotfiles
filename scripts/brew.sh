@@ -17,6 +17,7 @@ brew install lf
 brew install zsh-syntax-highlighting
 
 # statistics software
+brew install r
 brew cask install rstudio
 
 # internet browsing
