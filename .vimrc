@@ -17,11 +17,195 @@
 
 " ================= If use VUNDLE, uncomment from here ===================
 
-set nocompatible              " required
-filetype off                  " required
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"" Vundle vestige start (TODO: delete me once it works with vim-plug)
+"set nocompatible              " required
+"filetype off                  " required
+"" set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+
+"" alternatively, pass a path where Vundle should install plugins
+""call vundle#begin('~/.vim/bundle')
+
+"" Some stuff inspired from:
+"" https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
+
+
+"" let Vundle manage Vundle, required
+"Plugin 'VundleVim/Vundle.vim'
+
+"" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+"Plugin 'tmhedberg/SimpylFold'
+"Plugin 'vim-scripts/indentpython.vim'
+
+"" Auto complete plugin. Now makes vim from brew to crash!
+"" Plugin was making Vim hang for 1 minute. ChatGPT suggested to remove it and
+"" use coc.nvim instead
+"" Plugin 'Valloric/YouCompleteMe'
+
+"" Auto complete plugin. Now makes vim from brew to crash!
+"Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
+"" Checking syntax of document on each save
+"" Plugin 'vim-syntastic/syntastic'
+"" ALE is more lightweight than syntastic
+"Plugin 'dense-analysis/ale'
+
+"" Color schemes
+"Plugin 'jnurmine/Zenburn'
+"Plugin 'altercation/vim-colors-solarized'
+"" Plugin 'mhartington/oceanic-next'
+"" Plugin 'romainl/flattened'
+
+"" Customize status line
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'edkolev/tmuxline.vim'
+
+"" Directories tree plugin
+"Plugin 'scrooloose/nerdtree'
+
+"" Bar with class and functions tags of current file to quickly jump to them
+"Plugin 'majutsushi/tagbar'
+
+"" Git integration
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-rhubarb'
+
+"" PEP8 checking 
+"Plugin 'nvie/vim-flake8'
+
+"" Super searching with Ctrl-P command, search files, tags, ...
+"Plugin 'kien/ctrlp.vim'
+
+"" Powerline displaying current file, git branch, virtualenv
+"" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+"" " Command-T plugin to open files and buffers, jump to tags, run commands...
+"" Plugin 'wincent/command-t'
+
+"" Enable . to repeat a plugin operation
+"Plugin 'tpope/vim-repeat'
+
+"" Use surrounding operations (hopefully doesn't conflict vimtex)
+"Plugin 'tpope/vim-surround'
+
+"" Use surrounding operations (hopefully doesn't conflict vimtex)
+"Plugin 'tpope/vim-commentary'
+
+"" Use many mappings starting with [ and ] symbols
+"Plugin 'tpope/vim-unimpaired'
+
+"" Automatic and smart addition of closing braces, brackets, etc...
+"Plugin 'Raimondi/delimitMate'
+
+"" Fast motion in document
+"" Plugin 'easymotion/vim-easymotion'
+"" vim-sneak remaps 's' in normal mode
+"Plugin 'justinmk/vim-sneak'
+
+"" Use vim as TeX editor
+"Plugin 'lervag/vimtex'
+
+"" Track the engine.
+"Plugin 'SirVer/ultisnips'
+
+"" Snippets are separated from the engine. Add this if you want them:
+"Plugin 'honza/vim-snippets'
+
+"" Easily align equations, tables on same character
+"Plugin 'junegunn/vim-easy-align'
+
+"" Easily align equations, tables on same character using Tabular
+"Plugin 'godlygeek/tabular'
+
+"" Use easy dragging in visual modes
+"Bundle 'zirrostig/vim-schlepp'
+
+"" Manage todo lists with vimwiki
+"Plugin 'vimwiki/vimwiki'
+
+"" Display run code in new pane
+"Plugin 'tpope/vim-dispatch'
+
+"" Javascript syntax highlighting
+"Plugin 'pangloss/vim-javascript'
+
+"" Save and restore vim-sessions better than :mksession
+"Plugin 'tpope/vim-obsession'
+
+"" Search patterns in all files of current directory
+"Plugin 'mileszs/ack.vim'
+
+"" Run C code in quickfix window
+"" Plugin 'skywind3000/asyncrun.vim'
+
+"" Execute files or visual selection with chosen mapping
+"Plugin 'fboender/bexec'
+
+"" " Ease to run python code interactively
+"" Plugin 'ivanov/vim-ipython'
+
+"" Ease to run python code interactively, more minimal method
+"Plugin 'benmills/vimux'
+"Plugin 'julienr/vim-cellmode'
+
+"" Color the color code in CSS files
+"Plugin 'ap/vim-css-color'
+
+"" Preview markdown file in safari
+"Plugin 'JamshedVesuna/vim-markdown-preview'
+"" " Instant markdown preview (does not work)
+"" Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
+
+"" Homogenize shortcuts between vim and tmux splits
+"Plugin 'christoomey/vim-tmux-navigator'
+
+"" Handle tags to have an IDE-like `go to` functionality
+"Plugin 'xolox/vim-misc'
+"" Plugin 'xolox/vim-easytags'
+
+"" Allow emojis insertion
+"Plugin 'junegunn/vim-emoji'
+
+"" Allow to run scripts from vim to other tmux panes
+
+"" Plugin 'sjl/tslime.vim'
+"" Plugin 'benmills/vimux'
+
+""" git repos on your local machine (i.e. when working on your own plugin)
+""" To do: make a symlink in ~/.vim/bundle/my-vim-plugins to the plugins in my
+""" git repo located at ~/Dropbox/vim/plugin
+""" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
+""Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin'
+"" set runtimepath^=~/.vim/bundle/my-vim-plugins/smartcom
+"" set runtimepath^=~/.vim/bundle/my-vim-plugins/yankmatches
+
+""" From Damian Conway's vimrc
+"""====[ Ensure autodoc'd plugins are supported ]===========
+""" Plugin '_autodoc.vim' " this file is not present
+
+"""=====[ Enable Nmap command for documented mappings ]================
+"""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " example how to include personal plugins
+""Plugin 'yankmatches', {'rtp': 'yankmatches/'}
+""" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/yankmatches.vim'
+""" Plugin 'yankmatches', {'rtp': 'file:///Users/jonathandoenz/Dropbox/vim/plugin'}
+""" Plugin 'yankmatches.vim'
+
+""" =====[ Smart completion via <TAB> and <S-TAB> ]=============
+""Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/smartcom.vim'
+
+""" =====[ Keep visual selection selected after a move ]=======
+""Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/persistentvisuals.vim'
+
+"" END plugins set up
+
+"" All of your Plugins must be added before the following line
+"call vundle#end()            " required
+"" Vundle vestige end
+
+" vim-plug version start
+call plug#begin('~/.vim/plugged')
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/.vim/bundle')
@@ -30,47 +214,49 @@ call vundle#begin()
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
 
 " Auto complete plugin. Now makes vim from brew to crash!
-Plugin 'Valloric/YouCompleteMe'
+" Plugin was making Vim hang for 1 minute. ChatGPT suggested to remove it and
+" use coc.nvim instead
+" Plugin 'Valloric/YouCompleteMe'
+
+" Auto complete plugin. Now makes vim from brew to crash!
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Checking syntax of document on each save
 " Plugin 'vim-syntastic/syntastic'
 " ALE is more lightweight than syntastic
-Plugin 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 " Color schemes
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
 " Plugin 'mhartington/oceanic-next'
 " Plugin 'romainl/flattened'
 
 " Customize status line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'edkolev/tmuxline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 
 " Directories tree plugin
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Bar with class and functions tags of current file to quickly jump to them
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " Git integration
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " PEP8 checking 
-Plugin 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 
 " Super searching with Ctrl-P command, search files, tags, ...
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
 " Powerline displaying current file, git branch, virtualenv
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -79,123 +265,95 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'wincent/command-t'
 
 " Enable . to repeat a plugin operation
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " Use surrounding operations (hopefully doesn't conflict vimtex)
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Use surrounding operations (hopefully doesn't conflict vimtex)
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " Use many mappings starting with [ and ] symbols
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " Automatic and smart addition of closing braces, brackets, etc...
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Fast motion in document
 " Plugin 'easymotion/vim-easymotion'
 " vim-sneak remaps 's' in normal mode
-Plugin 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 
 " Use vim as TeX editor
-Plugin 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " Easily align equations, tables on same character
-Plugin 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 
 " Easily align equations, tables on same character using Tabular
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
-" Use easy dragging in visual modes
-Bundle 'zirrostig/vim-schlepp'
+" " Use easy dragging in visual modes
+" Bundle 'zirrostig/vim-schlepp'
 
 " Manage todo lists with vimwiki
-Plugin 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'
 
 " Display run code in new pane
-Plugin 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch'
 
 " Javascript syntax highlighting
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " Save and restore vim-sessions better than :mksession
-Plugin 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession'
 
 " Search patterns in all files of current directory
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 " Run C code in quickfix window
 " Plugin 'skywind3000/asyncrun.vim'
 
 " Execute files or visual selection with chosen mapping
-Plugin 'fboender/bexec'
+Plug 'fboender/bexec'
 
 " " Ease to run python code interactively
 " Plugin 'ivanov/vim-ipython'
 
 " Ease to run python code interactively, more minimal method
-Plugin 'benmills/vimux'
-Plugin 'julienr/vim-cellmode'
+Plug 'benmills/vimux'
+Plug 'julienr/vim-cellmode'
 
 " Color the color code in CSS files
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 " Preview markdown file in safari
-Plugin 'JamshedVesuna/vim-markdown-preview'
+Plug 'JamshedVesuna/vim-markdown-preview'
 " " Instant markdown preview (does not work)
 " Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 
 " Homogenize shortcuts between vim and tmux splits
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Handle tags to have an IDE-like `go to` functionality
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+" Plugin 'xolox/vim-easytags'
 
 " Allow emojis insertion
-Plugin 'junegunn/vim-emoji'
-
-" Allow to run scripts from vim to other tmux panes
-
-" Plugin 'sjl/tslime.vim'
-" Plugin 'benmills/vimux'
-
-"" git repos on your local machine (i.e. when working on your own plugin)
-"" To do: make a symlink in ~/.vim/bundle/my-vim-plugins to the plugins in my
-"" git repo located at ~/Dropbox/vim/plugin
-"" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
-"Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin'
-" set runtimepath^=~/.vim/bundle/my-vim-plugins/smartcom
-" set runtimepath^=~/.vim/bundle/my-vim-plugins/yankmatches
-
-"" From Damian Conway's vimrc
-""====[ Ensure autodoc'd plugins are supported ]===========
-"" Plugin '_autodoc.vim' " this file is not present
-
-""=====[ Enable Nmap command for documented mappings ]================
-""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " example how to include personal plugins
-"Plugin 'yankmatches', {'rtp': 'yankmatches/'}
-"" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/yankmatches.vim'
-"" Plugin 'yankmatches', {'rtp': 'file:///Users/jonathandoenz/Dropbox/vim/plugin'}
-"" Plugin 'yankmatches.vim'
-
-"" =====[ Smart completion via <TAB> and <S-TAB> ]=============
-"Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/smartcom.vim'
-
-"" =====[ Keep visual selection selected after a move ]=======
-"Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/persistentvisuals.vim'
+Plug 'junegunn/vim-emoji'
 
 " END plugins set up
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
+" vim-plug version start
+
 filetype plugin indent on    " required
 
 
@@ -258,7 +416,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Work around enabling use of custom local snippets
 " https://github.com/SirVer/ultisnips/issues/711
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+" let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+" let g:UltiSnipsSnippetDirectories = ['~/jon-dotfiles/vim-snippets/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['~/jon-dotfiles/vim-snippets/UltiSnips']
 
 " Customize snippets' variables for docstrings
 let g:snips_author="Jonathan Doenz"
@@ -373,9 +533,9 @@ let g:ycm_key_invoke_completion = '<C-.>'
 " " Fixers (formats the code on save. Note that black and isort have to be
 " installed. E.g. using pip)
 " let g:ale_fixers = {
-	" '*': ['remove_trailing_lines', 'trim_whitespace'],
-	" 'python': ['black', 'isort'],
-	" }
+" 	'*': ['remove_trailing_lines', 'trim_whitespace'],
+" 	'python': ['black', 'isort'],
+" 	}
 " let g:ale_fix_on_save = 1
 
 " vim markdown preview settings
@@ -507,14 +667,26 @@ endif
 " colorscheme solarized
 " " end solarized scheme uncomment
 
-" Old time version start uncomment
-if has('gui_running')
-	set background=dark
-	colorscheme solarized
-else
-	colorscheme zenburn
+" For automatic change to light/dark modes. How it works:
+" 1. Upon theme change, iTerm triggers the corresponding script:
+" ~/jon-dotfiles/scripts/set_vim_dark.sh
+" OR
+" ~/jon-dotfiles/scripts/set_vim_light.sh
+" 2. The script writes "colorscheme name_of_colorscheme" in ~/.vimrc_background
+" 3. ~/.vimrc_background is sourced
+" Note: the triggers do not work as of 2024.06.11
+if filereadable(expand("~/.vimrc_background"))
+    source ~/.vimrc_background
 endif
-" Old time version start uncomment
+
+" " Old time version start uncomment
+" if has('gui_running')
+" 	set background=dark
+" 	colorscheme solarized
+" else
+" 	colorscheme zenburn
+" endif
+" " Old time version start uncomment
 
 " " from mhartington:
 " set background=dark
@@ -689,6 +861,10 @@ set wildmode=list:longest,full
 ""augroup END
 """ End overwritten by Nerdtree
 
+" Tagbar plugin settings
+" Show tags in order they appear in the file by default (i.e. don't sort them)
+let g:tagbar_sort = 0
+
 " Schlepp plugin settings
 " When moving text left, Schlepp by default does not allow you to move left 
 " if any text is all the way left. To allow the 'Squishing' of text 
@@ -742,7 +918,8 @@ inoremap ,, <ESC>:w<CR>a
 nnoremap ,, :w<CR>
 
 " Use <C-BS> instead of typing :nohlsearch to remove highlighting 
-nmap <silent> <C-BS>  :nohlsearch<CR>
+" nmap <silent> <C-BS>  :nohlsearch<CR>
+nnoremap ;<BS> :nohlsearch<CR>
 
 " Split navigations: Ctrl-j to move to the split below, Ctrl-k to split above,
 " Ctrl-l to split right, Ctrl-h to split left
@@ -780,7 +957,8 @@ nnoremap ;ca m`ggyG``
 nnoremap ;ce m`:%s/^\s*$//<CR>``
 
 " Refresh file
-nnoremap ;re :edit<Space><C-R>%<CR>
+nnoremap ;re :e!<CR>
+" nnoremap ;re :edit<Space><C-R>%<CR>
 
 " Display file path
 nnoremap ;pat :echo expand('%:p')<CR>
@@ -817,11 +995,25 @@ autocmd User fugitive
 " Add empty line below
 " nnoremap OO m`O<ESC>d$``
 
+" Add blank lines and start insert mode at the bottom (useful when starting
+" vim documents on large screens and do not want to look at the top of the
+" screen
+nnoremap ;oo yy17pGA
+
+" Same as ;oo but do it in a new tab
+nnoremap ;OO :tabe<CR>yy17pGA
+
 " Open .vimrc in new tab
 nnoremap vv :tabedit<Space>~/.vimrc<CR> 
 
 " Open work wiki in new tab
 nnoremap vw :tabedit<Space>~/Dropbox/vimwiki/Pneumoscope.md<CR> 
+
+" Open projects wiki in new tab
+nnoremap vp :tabedit<Space>~/Dropbox/vimwiki/projects.md<CR> 
+
+" Open work email addresses in new tab
+nnoremap vm :tabedit<Space>~/Dropbox/EPFL_DS/MLO_projects/email_addresses.txt<CR> 
 
 " Open snippets file from current filetype
 nnoremap ;sni :tabe ~/jon-dotfiles/vim-snippets/snippets/%:e.snippets<CR>
@@ -877,6 +1069,9 @@ map <Leader>tt <Plug>VimwikiToggleListItem
 
 " Run python script and show result in horizontal split
 " Run :Dispatch should work
+" TODO: use python from current virtual environment
+" /opt/anaconda3/envs/pneumoscope/bin/python
+" autocmd FileType python nmap ;; :w<CR>
 
 " Run C script
 autocmd FileType c nnoremap <F5> :make %<<CR>:!clear; ./%<<CR>
@@ -1131,9 +1326,11 @@ autocmd FileType python nmap yam mz[my]m`z
 " vim markdown preview mappings
 let vim_markdown_preview_hotkey='<C-s>'
 
-" easymotion plugin mappings
+" easymotion plugin mappings (triggers annoying Mac sound at every search)
+" let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" " Jump to anywhere with `s{char}{char}{label}`
 " nmap s <Plug>(easymotion-overwin-f2)
-" Turn on case insensitive feature
+" " Turn on case insensitive feature
 " let g:EasyMotion_smartcase = 1
 
 " Reverse order of class-attributes: class.attr -> attr.class
@@ -1168,6 +1365,11 @@ nnoremap ;db :g /^)/-1 s/,$//<CR>
 
 " Save the macro under register d
 " nnoremap ;da |}kkV:s/\kb.(kb*\zs,//jjj0
+
+" Escape with Swiss keyboard
+nnoremap <C-¨> <ESC>
+nnoremap è <ESC>
+nnoremap <C-è> <ESC>
 
 " Terminal mode mappings
 " tnoremap <C-ESC> <C-\><C-n>
