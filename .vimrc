@@ -13,208 +13,9 @@
 " " execute pathogen#infect('bundle/persistentvisuals', '~/Dropbox/vim/plugin/persistentvisuals.vim')
 " execute pathogen#infect('bundle/persistentvisuals', '~/Dropbox/vim/plugin/persistentvisuals')
 
-" ================== If use Pathogen, uncomment to here ==================
-
-" ================= If use VUNDLE, uncomment from here ===================
-
-"" Vundle vestige start (TODO: delete me once it works with vim-plug)
-"set nocompatible              " required
-"filetype off                  " required
-"" set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-
-"" alternatively, pass a path where Vundle should install plugins
-""call vundle#begin('~/.vim/bundle')
-
-"" Some stuff inspired from:
-"" https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
-
-
-"" let Vundle manage Vundle, required
-"Plugin 'VundleVim/Vundle.vim'
-
-"" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-"Plugin 'tmhedberg/SimpylFold'
-"Plugin 'vim-scripts/indentpython.vim'
-
-"" Auto complete plugin. Now makes vim from brew to crash!
-"" Plugin was making Vim hang for 1 minute. ChatGPT suggested to remove it and
-"" use coc.nvim instead
-"" Plugin 'Valloric/YouCompleteMe'
-
-"" Auto complete plugin. Now makes vim from brew to crash!
-"Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-
-"" Checking syntax of document on each save
-"" Plugin 'vim-syntastic/syntastic'
-"" ALE is more lightweight than syntastic
-"Plugin 'dense-analysis/ale'
-
-"" Color schemes
-"Plugin 'jnurmine/Zenburn'
-"Plugin 'altercation/vim-colors-solarized'
-"" Plugin 'mhartington/oceanic-next'
-"" Plugin 'romainl/flattened'
-
-"" Customize status line
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'edkolev/tmuxline.vim'
-
-"" Directories tree plugin
-"Plugin 'scrooloose/nerdtree'
-
-"" Bar with class and functions tags of current file to quickly jump to them
-"Plugin 'majutsushi/tagbar'
-
-"" Git integration
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'tpope/vim-rhubarb'
-
-"" PEP8 checking 
-"Plugin 'nvie/vim-flake8'
-
-"" Super searching with Ctrl-P command, search files, tags, ...
-"Plugin 'kien/ctrlp.vim'
-
-"" Powerline displaying current file, git branch, virtualenv
-"" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-"" " Command-T plugin to open files and buffers, jump to tags, run commands...
-"" Plugin 'wincent/command-t'
-
-"" Enable . to repeat a plugin operation
-"Plugin 'tpope/vim-repeat'
-
-"" Use surrounding operations (hopefully doesn't conflict vimtex)
-"Plugin 'tpope/vim-surround'
-
-"" Use surrounding operations (hopefully doesn't conflict vimtex)
-"Plugin 'tpope/vim-commentary'
-
-"" Use many mappings starting with [ and ] symbols
-"Plugin 'tpope/vim-unimpaired'
-
-"" Automatic and smart addition of closing braces, brackets, etc...
-"Plugin 'Raimondi/delimitMate'
-
-"" Fast motion in document
-"" Plugin 'easymotion/vim-easymotion'
-"" vim-sneak remaps 's' in normal mode
-"Plugin 'justinmk/vim-sneak'
-
-"" Use vim as TeX editor
-"Plugin 'lervag/vimtex'
-
-"" Track the engine.
-"Plugin 'SirVer/ultisnips'
-
-"" Snippets are separated from the engine. Add this if you want them:
-"Plugin 'honza/vim-snippets'
-
-"" Easily align equations, tables on same character
-"Plugin 'junegunn/vim-easy-align'
-
-"" Easily align equations, tables on same character using Tabular
-"Plugin 'godlygeek/tabular'
-
-"" Use easy dragging in visual modes
-"Bundle 'zirrostig/vim-schlepp'
-
-"" Manage todo lists with vimwiki
-"Plugin 'vimwiki/vimwiki'
-
-"" Display run code in new pane
-"Plugin 'tpope/vim-dispatch'
-
-"" Javascript syntax highlighting
-"Plugin 'pangloss/vim-javascript'
-
-"" Save and restore vim-sessions better than :mksession
-"Plugin 'tpope/vim-obsession'
-
-"" Search patterns in all files of current directory
-"Plugin 'mileszs/ack.vim'
-
-"" Run C code in quickfix window
-"" Plugin 'skywind3000/asyncrun.vim'
-
-"" Execute files or visual selection with chosen mapping
-"Plugin 'fboender/bexec'
-
-"" " Ease to run python code interactively
-"" Plugin 'ivanov/vim-ipython'
-
-"" Ease to run python code interactively, more minimal method
-"Plugin 'benmills/vimux'
-"Plugin 'julienr/vim-cellmode'
-
-"" Color the color code in CSS files
-"Plugin 'ap/vim-css-color'
-
-"" Preview markdown file in safari
-"Plugin 'JamshedVesuna/vim-markdown-preview'
-"" " Instant markdown preview (does not work)
-"" Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
-
-"" Homogenize shortcuts between vim and tmux splits
-"Plugin 'christoomey/vim-tmux-navigator'
-
-"" Handle tags to have an IDE-like `go to` functionality
-"Plugin 'xolox/vim-misc'
-"" Plugin 'xolox/vim-easytags'
-
-"" Allow emojis insertion
-"Plugin 'junegunn/vim-emoji'
-
-"" Allow to run scripts from vim to other tmux panes
-
-"" Plugin 'sjl/tslime.vim'
-"" Plugin 'benmills/vimux'
-
-""" git repos on your local machine (i.e. when working on your own plugin)
-""" To do: make a symlink in ~/.vim/bundle/my-vim-plugins to the plugins in my
-""" git repo located at ~/Dropbox/vim/plugin
-""" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/plugin_name_here'
-""Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin'
-"" set runtimepath^=~/.vim/bundle/my-vim-plugins/smartcom
-"" set runtimepath^=~/.vim/bundle/my-vim-plugins/yankmatches
-
-""" From Damian Conway's vimrc
-"""====[ Ensure autodoc'd plugins are supported ]===========
-""" Plugin '_autodoc.vim' " this file is not present
-
-"""=====[ Enable Nmap command for documented mappings ]================
-"""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " example how to include personal plugins
-""Plugin 'yankmatches', {'rtp': 'yankmatches/'}
-""" Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/yankmatches.vim'
-""" Plugin 'yankmatches', {'rtp': 'file:///Users/jonathandoenz/Dropbox/vim/plugin'}
-""" Plugin 'yankmatches.vim'
-
-""" =====[ Smart completion via <TAB> and <S-TAB> ]=============
-""Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/smartcom.vim'
-
-""" =====[ Keep visual selection selected after a move ]=======
-""Plugin 'file:///Users/jonathandoenz/Dropbox/vim/plugin/persistentvisuals.vim'
-
-"" END plugins set up
-
-"" All of your Plugins must be added before the following line
-"call vundle#end()            " required
-"" Vundle vestige end
-
-" vim-plug version start
 call plug#begin('~/.vim/plugged')
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/.vim/bundle')
-
-" Some stuff inspired from:
-" https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
-
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+" Add all your plugins here
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
@@ -352,13 +153,8 @@ Plug 'junegunn/vim-emoji'
 
 " All of your Plugins must be added before the following line
 call plug#end()
-" vim-plug version start
 
 filetype plugin indent on    " required
-
-
-" ================= If use VUNDLE, uncomment until here ===================
-
 
 " Add built-in matchit plugin to allow % to jump to matching html tags, if/else clauses, ...
 packadd! matchit
@@ -1364,7 +1160,8 @@ vnoremap ;tnl :%!nl<CR>h<C-V>}kdl<C-V>}kwhc)<SPACE><ESC>
 nnoremap ;db :g /^)/-1 s/,$//<CR>
 
 " Save the macro under register d
-" nnoremap ;da |}kkV:s/\kb.(kb*\zs,//jjj0
+" nnoremap ;da |}kkV:s/\kb.(kb*\zs,//
+jjj0
 
 " Escape with Swiss keyboard
 nnoremap <C-¨> <ESC>
